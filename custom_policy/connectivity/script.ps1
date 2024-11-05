@@ -1,3 +1,5 @@
+# Define the list of file names
+$fileNames = @(
 "dine_alert_connectivity_01_activity_log_firewall_delete.json",
 "dine_alert_connectivity_01_activity_log_nsg_delete.json",
 "dine_alert_connectivity_01_activity_log_route_table_update.json",
@@ -48,3 +50,11 @@
 "dine_alert_connectivity_02_vpn_gw_ingress_alert.json",
 "dine_alert_connectivity_02_vpn_gw_tunnel_ingress_packet_drop_count_alert.json",
 "dine_alert_connectivity_02_vpn_gw_tunnel_ingress_packet_drop_mismatch_alert.json"
+)
+
+# Create each file in the list
+foreach ($fileName in $fileNames) {
+    New-Item -Path $fileName -ItemType File -Force
+}
+
+Write-Output "All files have been created successfully."

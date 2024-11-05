@@ -65,7 +65,8 @@ de01d381-bae9-4670-8870-786f89f49e26	dine_mdfc_defender_sql_and_ama
 deny_dine_append_tls_ssl                deny_dine_append_tls_ssl
 audit_guardrails_az_kv                  audit_guardrails_for_azure_Key_Vault
 audit_backup_and_recovery               audit_backup_and_recovery
-
+dine_alert_lz                           dine_azure_monitor_baseline_alerts_for_landing_zone
+modify_aum_check_updates                modify_aum_check_updates
 
 ### Definitions built-in
 88c0b9da-ce96-4b03-9635-f29a937e2900	deny_ip_forwarding_network_interface

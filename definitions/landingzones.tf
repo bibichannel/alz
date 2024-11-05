@@ -37,4 +37,57 @@
 #   )
 # }
 
-# # 
+# https://www.azadvertizer.net/azpolicyinitiativesadvertizer/Alerting-LandingZone.html
+module "dine_alert_lz_01_custom_policy_definitions" {
+  source              = "..//modules/definition"
+  for_each            = toset(fileset("${path.module}/../custom_policy/landing_zones/", "dine_alert_lz_01*.json"))
+  file_path           = "${path.module}/../custom_policy/landing_zones/${each.value}"
+  management_group_id = var.landing_zones_management_group_id
+}
+
+module "dine_azure_monitor_baseline_alerts_for_landing_zone_01" {
+  source                  = "..//modules/initiative"
+  initiative_name         = "dine_alert_lz_01"
+  initiative_display_name = "Deploy Azure Monitor Baseline Alerts for Landing Zone part 1"
+  initiative_description  = "Initiative to deploy AMBA alerts relevant to the ALZ LandingZone management group"
+  initiative_category     = "Monitoring"
+  management_group_id     = var.landing_zones_management_group_id
+  merge_effects           = true
+  merge_parameters        = false
+  initiative_version      = "1.0.0"
+  member_definitions = [
+        for policy in module.dine_alert_lz_01_custom_policy_definitions : policy.definition
+    ]
+  
+}
+
+module "dine_alert_lz_02_custom_policy_definitions" {
+  source              = "..//modules/definition"
+  for_each            = toset(fileset("${path.module}/../custom_policy/landing_zones/", "dine_alert_lz_02*.json"))
+  file_path           = "${path.module}/../custom_policy/landing_zones/${each.value}"
+  management_group_id = var.landing_zones_management_group_id
+}
+
+module "dine_azure_monitor_baseline_alerts_for_landing_zone_02" {
+  source                  = "..//modules/initiative"
+  initiative_name         = "dine_alert_lz_02"
+  initiative_display_name = "Deploy Azure Monitor Baseline Alerts for Landing Zone part 2"
+  initiative_description  = "Initiative to deploy AMBA alerts relevant to the ALZ LandingZone management group"
+  initiative_category     = "Monitoring"
+  management_group_id     = var.landing_zones_management_group_id
+  merge_effects           = true
+  merge_parameters        = false
+  initiative_version      = "1.0.0"
+  member_definitions = [
+        for policy in module.dine_alert_lz_02_custom_policy_definitions : policy.definition
+    ]
+  
+}
+
+output "list_of_initiative_parameters_01" {
+  value = keys(module.dine_azure_monitor_baseline_alerts_for_landing_zone_01.parameters)
+}
+
+output "list_of_initiative_parameters_02" {
+  value = keys(module.dine_azure_monitor_baseline_alerts_for_landing_zone_02.parameters)
+}
