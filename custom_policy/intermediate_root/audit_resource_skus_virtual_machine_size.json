@@ -1,0 +1,56 @@
+{
+    "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-definition-schema.json",
+    "name": "cccc23c7-8427-4f53-ad12-b6a63eb452b3",
+    "properties": {
+        "displayName": "Allowed virtual machine size SKUs",
+        "policyType": "BuiltIn",
+        "mode": "Indexed",
+        "description": "This policy enables you to specify a set of virtual machine size SKUs that your organization can deploy.",
+        "metadata": {
+            "version": "1.0.1",
+            "category": "Compute"
+        },
+        "parameters": {
+            "effect": {
+                "type": "String",
+                "metadata": {
+                    "displayName": "Effect",
+                    "description": "Enable or disable the execution of the audit policy"
+                },
+                "allowedValues": [
+                    "Audit",
+                    "Deny",
+                    "Disabled"
+                ],
+                "defaultValue": "Audit"
+            },
+            "listOfAllowedSKUs": {
+                "type": "Array",
+                "metadata": {
+                    "description": "The list of size SKUs that can be specified for virtual machines.",
+                    "displayName": "Allowed Size SKUs",
+                    "strongType": "VMSKUs"
+                }
+            }
+        },
+        "policyRule": {
+            "if": {
+                "allOf": [
+                    {
+                        "field": "type",
+                        "equals": "Microsoft.Compute/virtualMachines"
+                    },
+                    {
+                        "not": {
+                            "field": "Microsoft.Compute/virtualMachines/sku.name",
+                            "in": "[parameters('listOfAllowedSKUs')]"
+                        }
+                    }
+                ]
+            },
+            "then": {
+                "effect": "[parameters('effect')]"
+            }
+        }
+    }
+}

@@ -1,0 +1,59 @@
+# Define the list of file names
+$fileNames = @(
+    "dine_alert_lz_activitylog_key_vault_delete.json",
+    "dine_alert_lz_activitylog_nsg_delete.json",
+    "dine_alert_lz_activitylog_route_table_update.json",
+    "dine_alert_lz_activitylog_storage_account_delete.json",
+    "dine_alert_lz_ag_application_gateway_total_time_alert.json",
+    "dine_alert_lz_ag_backend_last_byte_response_time_alert.json",
+    "dine_alert_lz_ag_capacity_units_alert.json",
+    "dine_alert_lz_ag_compute_units_alert.json",
+    "dine_alert_lz_ag_cpu_utilization_alert.json",
+    "dine_alert_lz_ag_failed_requests_alert.json",
+    "dine_alert_lz_ag_response_status_alert.json",
+    "dine_alert_lz_ag_unhealthy_host_count_alert.json",
+    "dine_alert_lz_alb_data_path_availability_alert.json",
+    "dine_alert_lz_alb_global_backend_availability_alert.json",
+    "dine_alert_lz_alb_health_probe_status_alert.json",
+    "dine_alert_lz_alb_used_snat_ports_alert.json",
+    "dine_alert_lz_wsf_cpu_percentage_alert.json",
+    "dine_alert_lz_wsf_disk_queue_length_alert.json",
+    "dine_alert_lz_wsf_http_queue_length_alert.json",
+    "dine_alert_lz_wsf_memory_percentage_alert.json",
+    "dine_alert_lz_fd_backend_health_alert.json",
+    "dine_alert_lz_fd_backend_request_latency_alert.json",
+    "dine_alert_lz_front_door_cdn_origin_health_percentage_alert.json",
+    "dine_alert_lz_front_door_cdn_origin_latency_alert.json",
+    "dine_alert_lz_front_door_cdn_percentage_4xx_alert.json",
+    "dine_alert_lz_front_door_cdn_percentage_5xx_alert.json",
+    "dine_alert_lz_key_vault_availability_alert.json",
+    "dine_alert_lz_key_vault_capacity_alert.json",
+    "dine_alert_lz_key_vault_latency_alert.json",
+    "dine_alert_lz_key_vault_requests_alert.json",
+    "dine_alert_lz_public_ip_bytes_in_ddos_attack_alert.json",
+    "dine_alert_lz_public_ip_ddos_attack_alert.json",
+    "dine_alert_lz_public_ip_packets_in_ddos_attack_alert.json",
+    "dine_alert_lz_public_ip_vip_availability_alert.json",
+    "dine_alert_lz_recovery_vault_backup_health_monitor_alert.json",
+    "dine_alert_lz_storage_account_availability_alert.json",
+    "dine_alert_lz_tm_endpoint_health_alert.json",
+    "dine_alert_lz_vm_cpu_alert.json",
+    "dine_alert_lz_vm_data_disk_read_latency_alert.json",
+    "dine_alert_lz_vm_data_disk_space_alert.json",
+    "dine_alert_lz_vm_data_disk_write_latency_alert.json",
+    "dine_alert_lz_vm_heartbeat_alert.json",
+    "dine_alert_lz_vm_memory_alert.json",
+    "dine_alert_lz_vm_network_in_alert.json",
+    "dine_alert_lz_vm_network_out_alert.json",
+    "dine_alert_lz_vm_os_disk_read_latency_alert.json",
+    "dine_alert_lz_vm_os_disk_space_alert.json",
+    "dine_alert_lz_vm_os_disk_write_latency_alert.json",
+    "dine_alert_lz_vnet_ddos_attack_alert.json"
+)
+
+# Create each file in the list
+foreach ($fileName in $fileNames) {
+    New-Item -Path $fileName -ItemType File -Force
+}
+
+Write-Output "All files have been created successfully."
