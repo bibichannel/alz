@@ -1,6 +1,6 @@
 {
     "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-definition-schema.json",
-    "name": "Deploy_activitylog_NSG_Delete",
+    "name": "Deploy_activitylog_NSG_Delete_At_Lz",
     "properties": {
         "policyType": "Custom",
         "mode": "All",

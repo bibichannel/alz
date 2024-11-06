@@ -1,6 +1,6 @@
 {
     "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-definition-schema.json",
-    "name": "Deploy_KeyVault_Latency_Alert",
+    "name": "Deploy_KeyVault_Latency_Alert_At_LZ",
     "properties": {
         "policyType": "Custom",
         "mode": "All",

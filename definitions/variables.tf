@@ -6,6 +6,30 @@ variable "landing_zones_management_group_id" {
   type = string
 }
 
-variable "foundations_management_group_id" {
+variable "connectivity_management_group_id" {
+  type = string
+}
+
+variable "identity_management_group_id" {
+  type = string
+}
+
+variable "management_management_group_id" {
+  type = string
+}
+
+variable "security_management_group_id" {
+  type = string
+}
+
+variable "legacy_management_group_id" {
+  type = string
+}
+
+variable "decommissioned_management_group_id" {
+  type = string
+}
+
+variable "sandbox_management_group_id" {
   type = string
 }
