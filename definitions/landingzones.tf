@@ -24,8 +24,8 @@ module "deny_dine_append_tls_ssl_custom_policy_definitions" {
 module "deny_dine_append_tls_ssl" {
   source                  = "..//modules/initiative"
   initiative_name         = "deny_dine_append_tls_ssl"
-  initiative_display_name = "Enforce enhanced recovery and backup policies"
-  initiative_description  = "Enforce enhanced recovery and backup policies on assigned scopes."
+  initiative_display_name = "Deny or Deploy and append TLS requirements and SSL enforcement on resources without Encryption in transit"
+  initiative_description  = "Choose either Deploy if not exist and append in combination with audit or Select Deny in the Policy effect. Deny polices shift left. Deploy if not exist and append enforce but can be changed, and because missing existence condition require then the combination of Audit."
   initiative_category     = "Backup"
   management_group_id     = var.landing_zones_management_group_id
   merge_effects           = true

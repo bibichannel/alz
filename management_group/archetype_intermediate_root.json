@@ -1,0 +1,29 @@
+{
+    "assignment_scope_name": "testing_mg",
+    "assignment_scope_id": "/providers/Microsoft.Management/managementGroups/testing_mg",
+    "builtin_definitions": [
+        {
+            "definition": "06a78e20-9358-41c9-923c-fb736d382a4d"
+        },
+        {
+            "definition": "6c112d4e-5bc7-47ae-a041-ea2d9dccd749",
+            "assignment_effect": "Disabled",
+            "assignment_parameters": {
+                "listOfResourceTypesNotAllowed": ["EC2"]
+            }
+        }
+    ],
+    "custom_definitions": [],
+    "builtin_defnition_sets": [],
+    "custom_defnition_sets": [
+        {
+            "initiative": "audit_unused_resources",
+            "assignment_effect": "Disabled"
+        },
+        {
+            "initiative": "audit_backup_and_recovery",
+            "assignment_parameters": {
+            }
+        }
+    ]
+}

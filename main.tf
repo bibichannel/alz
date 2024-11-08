@@ -14,3 +14,25 @@ module "definitions" {
   decommissioned_management_group_id    = data.azurerm_management_group.contoso.id
   sandbox_management_group_id           = data.azurerm_management_group.contoso.id
 }
+
+output "id_mg" {
+  value = data.azurerm_management_group.contoso.id
+}
+
+# data "azurerm_policy_set_definition" "definitions_sets_custom_info" {
+#   name = module.definitions.audit_unused_resources_cost_optimization.name
+#   management_group_name = "testing_mg"
+# } 
+
+
+# output "infomation" {
+#   value = data.azurerm_policy_set_definition.definitions_sets_custom_info
+# }
+
+# output "definitions_name" {
+#   value = module.definitions.audit_unused_resources_cost_optimization.name
+# }
+
+# output "definitions_id" {
+#   value = module.definitions.audit_unused_resources_cost_optimization.id
+# }

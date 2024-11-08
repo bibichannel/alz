@@ -55,8 +55,8 @@
 #   description = "This is the custom Policy Set Definition for enforcing Azure Compute Security Benchmark compliance auditing"
 # }
 
-# output "unused_resources_cost_optimization" {
-#   value       = module.unused_resources_cost_optimization.initiative
+# output "audit_unused_resources_cost_optimization" {
+#   value       = module.audit_unused_resources_cost_optimization
 #   description = "This is the custom Policy Set Definition for optimizing cost by detecting unused resources"
 # }
 
