@@ -13,8 +13,6 @@ module "dine_azure_monitor_baseline_alerts_for_connectivity_01" {
   initiative_description  = "This initiative deploys Azure Monitor Baseline Alerts to monitor Network components such as Azure Firewalls, ExpressRoute, VPN, and Private DNS Zones."
   initiative_category     = "Monitoring"
   management_group_id     = var.connectivity_management_group_id
-  merge_effects           = true
-  merge_parameters        = false
   initiative_version      = "1.0.0"
   member_definitions = [
     for policy in module.dine_alert_connectivity_01_custom_policy_definitions : policy.definition
@@ -36,8 +34,6 @@ module "dine_azure_monitor_baseline_alerts_for_connectivity_02" {
   initiative_description  = "This initiative deploys Azure Monitor Baseline Alerts to monitor Network components such as Azure Firewalls, ExpressRoute, VPN, and Private DNS Zones."
   initiative_category     = "Monitoring"
   management_group_id     = var.connectivity_management_group_id
-  merge_effects           = true
-  merge_parameters        = false
   initiative_version      = "1.0.0"
   member_definitions = [
     for policy in module.dine_alert_connectivity_02_custom_policy_definitions : policy.definition

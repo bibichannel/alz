@@ -77,8 +77,6 @@ module "audit_backup_and_recovery" {
   initiative_description  = "Enforce enhanced recovery and backup policies on assigned scopes."
   initiative_category     = "Backup"
   management_group_id     = var.intermediate_root_management_group_id
-  merge_effects           = true
-  merge_parameters        = false
   initiative_version      = "1.0.0"
   member_definitions = [
     for definition in data.azurerm_policy_definition.audit_backup_and_recovery_policy_definitions : definition
@@ -105,8 +103,6 @@ module "modify_aum_check_updates" {
   initiative_description  = "Configure auto-assessment (every 24 hours) for OS updates. You can control the scope of assignment according to machine subscription, resource group, location or tag. Learn more about this for Windows: https://aka.ms/computevm-windowspatchassessmentmode, for Linux: https://aka.ms/computevm-linuxpatchassessmentmode."
   initiative_category     = "Security Center"
   management_group_id     = var.intermediate_root_management_group_id
-  merge_effects           = true
-  merge_parameters        = false
   initiative_version      = "1.0.0"
   member_definitions = [
     for definition in data.azurerm_policy_definition.modify_aum_check_updates_policy_definitions : definition
@@ -182,7 +178,6 @@ module "audit_public_paas_endpoints" {
   initiative_description  = "This policy initiative is a group of policies that prevents creation of Azure PaaS services with exposed public endpoints"
   initiative_category     = "Network"
   management_group_id     = var.intermediate_root_management_group_id
-  merge_effects           = true
   merge_parameters        = false
   initiative_version      = "1.0.0"
   member_definitions = concat(
@@ -257,8 +252,6 @@ module "dine_private_dns_zones" {
   initiative_description  = "This policy initiative is a group of policies that ensures private endpoints to Azure PaaS services are integrated with Azure Private DNS zones"
   initiative_category     = "Network"
   management_group_id     = var.intermediate_root_management_group_id
-  merge_effects           = true
-  merge_parameters        = false
   initiative_version      = "1.0.0"
   member_definitions = [
     for definition in data.azurerm_policy_definition.dine_private_dns_zones_policy_definitions : definition

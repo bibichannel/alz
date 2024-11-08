@@ -1,24 +1,6 @@
-initiative = "n/a"
-assignment_name = "null"
-assignment_display_name = "null"
-assignment_description = "null"
-assignment_effect = "null"
-assignment_metadata = "null"
-assignment_parameters = "null"
-assignment_enforcement_mode = "true"
-assignment_location = "westeurope"
-assignment_not_scopes = "[]"
-failure_percentage = "null"
-identity_ids = "null"
-location_filters = "[]"
-non_compliance_messages = "{}"
-overrides = "[]"
-parallel_deployments = "null"
-re_evaluate_compliance = "false"
-remediation_scope = "null"
-resource_count = "null"
-resource_selectors = "[]"
-role_assignment_scope = "null"
-role_definition_ids = "[]"
-skip_remediation = "false"
-skip_role_assignment = "false"
+dine_mdfc_config
+audit_encryption_cmk
+dine_alert_lz_02
+audit_public_paas_endpoints
+dine_alert_management
+deny_dine_append_tls_ssl

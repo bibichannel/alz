@@ -39,7 +39,6 @@ module "dine_microsoft_defender_for_cloud_configuration" {
   initiative_description  = "Deploy Microsoft Defender for Cloud Configuration"
   initiative_category     = "Security Center"
   management_group_id     = var.intermediate_root_management_group_id
-  merge_effects           = true
   merge_parameters        = false
   initiative_version      = "1.0.0"
   member_definitions = concat(
@@ -71,8 +70,6 @@ module "dine_azure_compute_security_benchmark_compliance" {
   initiative_description  = "Enforce Azure Compute Security Benchmark compliance auditing for Windows and Linux virtual machines."
   initiative_category     = "Guest Configuration"
   management_group_id     = var.intermediate_root_management_group_id
-  merge_effects           = true
-  merge_parameters        = false
   initiative_version      = "1.0.0"
   member_definitions = [
     for definition in data.azurerm_policy_definition.dine_acsb_policy_definitions : definition
@@ -94,8 +91,6 @@ module "audit_unused_resources_cost_optimization" {
   initiative_description  = "Optimize cost by detecting unused but chargeable resources. Leverage this Azure Policy Initiative as a cost control tool to reveal orphaned resources that are contributing cost."
   initiative_category     = "Cost Optimization"
   management_group_id     = var.intermediate_root_management_group_id
-  merge_effects           = true
-  merge_parameters        = false
   initiative_version      = "1.0.0"
   member_definitions = [
     for policy in module.audit_unused_resources_policy_definitions : policy.definition
@@ -117,8 +112,6 @@ module "dine_azure_monitor_baseline_alerts_for_service_health" {
   initiative_description  = "This initiative deploys Azure Monitor Baseline Alerts to monitor Service Health Events such as Service issues, Planned maintenance, Health advisories, Security advisories, and Resource health."
   initiative_category     = "Monitoring"
   management_group_id     = var.intermediate_root_management_group_id
-  merge_effects           = true
-  merge_parameters        = false
   initiative_version      = "1.0.0"
   member_definitions = [
     for policy in module.dine_service_health_policy_definitions : policy.definition

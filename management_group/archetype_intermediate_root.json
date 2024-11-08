@@ -1,5 +1,5 @@
 {
-    "assignment_scope_name": "testing_mg",
+    "definition_location": "testing_mg",
     "assignment_scope_id": "/providers/Microsoft.Management/managementGroups/testing_mg",
     "builtin_definitions": [
         {
@@ -18,11 +18,17 @@
     "custom_defnition_sets": [
         {
             "initiative": "audit_unused_resources",
-            "assignment_effect": "Disabled"
+            "assignment_parameters": {
+                "effect": "Disabled"
+            }
         },
         {
             "initiative": "audit_backup_and_recovery",
             "assignment_parameters": {
+                "checkAlwaysOnSoftDeleteOnly": true,
+                "checkLockedImmutabilityOnly": true,
+                "checkLockedImmutabiltyOnly": true,
+                "effect": "Disabled"
             }
         }
     ]

@@ -24,8 +24,6 @@ module "deny_dine_alz_decommissioned" {
   initiative_description  = "Enforce policies in the Decommissioned Landing Zone."
   initiative_category     = "Decommissioned"
   management_group_id     = var.decommissioned_management_group_id
-  merge_effects           = true
-  merge_parameters        = false
   initiative_version      = "1.0.0"
   member_definitions = concat(
     [for definition in data.azurerm_policy_definition.deny_dine_alz_decommissioned_policy_definitions : definition],

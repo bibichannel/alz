@@ -13,7 +13,6 @@ module "dine_azure_monitor_baseline_alerts_for_management" {
   initiative_description  = "Initiative to deploy AMBA alerts relevant to the ALZ Management management group"
   initiative_category     = "Monitoring"
   management_group_id     = var.management_management_group_id
-  merge_effects           = true
   merge_parameters        = false
   initiative_version      = "1.0.0"
   member_definitions = [

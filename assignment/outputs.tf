@@ -1,5 +1,5 @@
-output "assignment_scope_name" {
-  value = local.assignment_scope_name
+output "definition_location" {
+  value = local.definition_location
 }
 
 output "assignment_scope_id" {

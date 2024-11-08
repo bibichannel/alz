@@ -52,7 +52,6 @@ module "audit_resources_without_encryption_with_cmk" {
   initiative_description  = "Audit resources without Encryption with a customer-managed key (CMK)"
   initiative_category     = "Encryption"
   management_group_id     = var.security_management_group_id
-  merge_effects           = true
   merge_parameters        = false
   initiative_version      = "1.0.0"
   member_definitions = concat(

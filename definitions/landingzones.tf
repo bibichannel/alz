@@ -28,7 +28,6 @@ module "deny_dine_append_tls_ssl" {
   initiative_description  = "Choose either Deploy if not exist and append in combination with audit or Select Deny in the Policy effect. Deny polices shift left. Deploy if not exist and append enforce but can be changed, and because missing existence condition require then the combination of Audit."
   initiative_category     = "Backup"
   management_group_id     = var.landing_zones_management_group_id
-  merge_effects           = true
   merge_parameters        = false
   initiative_version      = "1.0.0"
   member_definitions = concat(
@@ -52,7 +51,6 @@ module "dine_azure_monitor_baseline_alerts_for_landing_zone_01" {
   initiative_description  = "Initiative to deploy AMBA alerts relevant to the ALZ LandingZone management group"
   initiative_category     = "Monitoring"
   management_group_id     = var.landing_zones_management_group_id
-  merge_effects           = true
   merge_parameters        = false
   initiative_version      = "1.0.0"
   member_definitions = [
@@ -75,7 +73,6 @@ module "dine_azure_monitor_baseline_alerts_for_landing_zone_02" {
   initiative_description  = "Initiative to deploy AMBA alerts relevant to the ALZ LandingZone management group"
   initiative_category     = "Monitoring"
   management_group_id     = var.landing_zones_management_group_id
-  merge_effects           = true
   merge_parameters        = false
   initiative_version      = "1.0.0"
   member_definitions = [
