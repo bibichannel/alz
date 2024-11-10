@@ -1,0 +1,274 @@
+{
+    "definition_location": "testing_mg",
+    "assignment_scope_id": "/providers/Microsoft.Management/managementGroups/foundations",
+    "builtin_definitions": [
+        {
+            "definition": "7bca8353-aa3b-429b-904a-9229c4385837",
+            "assignment_display_name": "Subnets should be private",
+            "assignment_effect": "Audit"
+        },
+        {
+            "definition": "78460a36-508a-49a4-b2b2-2f5ec564f4bb",
+            "assignment_display_name": "Do not allow deletion of resource types",
+            "assignment_effect": "DenyAction",
+            "assignment_parameters": {
+                "listOfResourceTypesDisallowedForDeletion": []
+            }
+        },
+        {
+            "definition": "e56962a6-4747-49cd-b67b-bf8b01975c4c",
+            "assignment_display_name": "Allowed locations",
+            "assignment_parameters": {
+                "listOfAllowedLocations": []
+            }
+        }
+    ],
+    "custom_definitions": [],
+    "builtin_defnition_sets": [
+        {
+            "initiative": "924bfe3a-762f-40e7-86dd-5c8b95eb09e6",
+            "assignment_display_name": "Enable Azure Monitor for VMs with Azure Monitoring Agent(AMA)",
+            "assignment_effect": "Disabled",
+            "role_definition_ids": [
+                "/providers/Microsoft.Authorization/roleDefinitions/18d7d88d-d35e-4fb5-a5c3-7773c20a72d9",
+                "/providers/Microsoft.Authorization/roleDefinitions/92aaf0da-9dab-42b6-94a3-d43ce8d16293",
+                "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
+                "/providers/Microsoft.Authorization/roleDefinitions/749f88d5-cbae-40b8-bcfc-e573ddc772fa",
+                "/providers/Microsoft.Authorization/roleDefinitions/9980e02c-c2be-4d73-94e8-173b1dc7cf3c"
+            ],
+            "assignment_parameters": {
+                "enableProcessesAndDependencies": true,
+                "bringYourOwnUserAssignedManagedIdentity": true,
+                "restrictBringYourOwnUserAssignedIdentityToSubscription": true,
+                "userAssignedIdentityResourceId": "",
+                "userAssignedManagedIdentityName": "",
+                "userAssignedManagedIdentityResourceGroup": "",
+                "scopeToSupportedImages": true,
+                "dcrResourceId": "",
+                "listOfImageIdToInclude_linux": [],
+                "listOfImageIdToInclude_windows": []
+            }
+        },
+        {
+            "initiative": "f5bf694c-cca7-4033-b883-3a23327d5485",
+            "assignment_display_name": "Enable Azure Monitor for VMSS with Azure Monitoring Agent(AMA)",
+            "assignment_effect": "Disabled",
+            "role_definition_ids": [
+                "/providers/Microsoft.Authorization/roleDefinitions/18d7d88d-d35e-4fb5-a5c3-7773c20a72d9",
+                "/providers/Microsoft.Authorization/roleDefinitions/92aaf0da-9dab-42b6-94a3-d43ce8d16293",
+                "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
+                "/providers/Microsoft.Authorization/roleDefinitions/749f88d5-cbae-40b8-bcfc-e573ddc772fa",
+                "/providers/Microsoft.Authorization/roleDefinitions/9980e02c-c2be-4d73-94e8-173b1dc7cf3c"
+            ],
+            "assignment_parameters": {
+                "enableProcessesAndDependencies": false,
+                "bringYourOwnUserAssignedManagedIdentity": false,
+                "restrictBringYourOwnUserAssignedIdentityToSubscription": true,
+                "userAssignedIdentityResourceId": "",
+                "userAssignedManagedIdentityName": "",
+                "userAssignedManagedIdentityResourceGroup": "",
+                "listOfImageIdToInclude_windows": [],
+                "listOfImageIdToInclude_linux": [],
+                "scopeToSupportedImages": true,
+                "dcrResourceId": ""
+            }
+        },
+        {
+            "initiative": "2b00397d-c309-49c4-aa5a-f0b2c5bc6321",
+            "assignment_display_name": "Enable Azure Monitor for Hybrid VMs with AMA",
+            "assignment_effect": "Disabled",
+            "role_definition_ids": [
+                "/providers/Microsoft.Authorization/roleDefinitions/cd570a14-e51a-42ad-bac8-bafd67325302",
+                "/providers/Microsoft.Authorization/roleDefinitions/92aaf0da-9dab-42b6-94a3-d43ce8d16293",
+                "/providers/Microsoft.Authorization/roleDefinitions/749f88d5-cbae-40b8-bcfc-e573ddc772fa"
+            ],
+            "assignment_parameters": {
+                "enableProcessesAndDependencies": false,
+                "dcrResourceId": ""
+            }
+        },
+        {
+            "initiative": "92a36f05-ebc9-4bba-9128-b47ad2ea3354",
+            "assignment_display_name": "Enable ChangeTracking and Inventory for virtual machines",
+            "assignment_effect": "Disabled",
+            "role_definition_ids": [
+                "/providers/Microsoft.Authorization/roleDefinitions/18d7d88d-d35e-4fb5-a5c3-7773c20a72d9",
+                "/providers/Microsoft.Authorization/roleDefinitions/92aaf0da-9dab-42b6-94a3-d43ce8d16293",
+                "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
+                "/providers/Microsoft.Authorization/roleDefinitions/749f88d5-cbae-40b8-bcfc-e573ddc772fa",
+                "/providers/Microsoft.Authorization/roleDefinitions/9980e02c-c2be-4d73-94e8-173b1dc7cf3c"
+            ],
+            "assignment_parameters": {
+                "bringYourOwnUserAssignedManagedIdentity": false,
+                "restrictBringYourOwnUserAssignedIdentityToSubscription": true,
+                "userAssignedIdentityResourceId": "",
+                "userAssignedManagedIdentityName": "",
+                "userAssignedManagedIdentityResourceGroup": "",
+                "dcrResourceId": "",
+                "listOfApplicableLocations": [
+                    "australiasoutheast",
+                    "australiaeast",
+                    "brazilsouth",
+                    "canadacentral",
+                    "centralindia",
+                    "centralus",
+                    "eastasia",
+                    "eastus2euap",
+                    "eastus",
+                    "eastus2",
+                    "francecentral",
+                    "japaneast",
+                    "koreacentral",
+                    "northcentralus",
+                    "northeurope",
+                    "norwayeast",
+                    "southcentralus",
+                    "southeastasia",
+                    "switzerlandnorth",
+                    "uaenorth",
+                    "uksouth",
+                    "westcentralus",
+                    "westeurope",
+                    "westus",
+                    "westus2"
+                ]
+            }
+        },
+        {
+            "initiative": "c4a70814-96be-461c-889f-2b27429120dc",
+            "assignment_display_name": "Enable ChangeTracking and Inventory for virtual machine scale sets",
+            "assignment_effect": "Disabled",
+            "role_definition_ids": [
+                "/providers/Microsoft.Authorization/roleDefinitions/18d7d88d-d35e-4fb5-a5c3-7773c20a72d9",
+                "/providers/Microsoft.Authorization/roleDefinitions/92aaf0da-9dab-42b6-94a3-d43ce8d16293",
+                "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
+                "/providers/Microsoft.Authorization/roleDefinitions/749f88d5-cbae-40b8-bcfc-e573ddc772fa",
+                "/providers/Microsoft.Authorization/roleDefinitions/9980e02c-c2be-4d73-94e8-173b1dc7cf3c"
+            ],
+            "assignment_parameters": {
+                "bringYourOwnUserAssignedManagedIdentity": false,
+                "restrictBringYourOwnUserAssignedIdentityToSubscription": true,
+                "userAssignedIdentityResourceId": "",
+                "userAssignedManagedIdentityName": "",
+                "userAssignedManagedIdentityResourceGroup": "",
+                "dcrResourceId": "",
+                "listOfApplicableLocations": [
+                    "australiasoutheast",
+                    "australiaeast",
+                    "brazilsouth",
+                    "canadacentral",
+                    "centralindia",
+                    "centralus",
+                    "eastasia",
+                    "eastus2euap",
+                    "eastus",
+                    "eastus2",
+                    "francecentral",
+                    "japaneast",
+                    "koreacentral",
+                    "northcentralus",
+                    "northeurope",
+                    "norwayeast",
+                    "southcentralus",
+                    "southeastasia",
+                    "switzerlandnorth",
+                    "uaenorth",
+                    "uksouth",
+                    "westcentralus",
+                    "westeurope",
+                    "westus",
+                    "westus2"
+                ]
+            }
+        },
+        {
+            "initiative": "53448c70-089b-4f52-8f38-89196d7f2de1",
+            "assignment_display_name": "Enable ChangeTracking and Inventory for Arc-enabled virtual machines",
+            "assignment_effect": "Disabled",
+            "role_definition_ids": [
+                "/providers/Microsoft.Authorization/roleDefinitions/cd570a14-e51a-42ad-bac8-bafd67325302",
+                "/providers/Microsoft.Authorization/roleDefinitions/92aaf0da-9dab-42b6-94a3-d43ce8d16293",
+                "/providers/Microsoft.Authorization/roleDefinitions/749f88d5-cbae-40b8-bcfc-e573ddc772fa"
+            ],
+            "assignment_parameters": {
+                "dcrResourceId": "",
+                "listOfApplicableLocations": [
+                    "australiasoutheast",
+                    "australiaeast",
+                    "brazilsouth",
+                    "canadacentral",
+                    "centralindia",
+                    "centralus",
+                    "eastasia",
+                    "eastus2euap",
+                    "eastus",
+                    "eastus2",
+                    "francecentral",
+                    "japaneast",
+                    "koreacentral",
+                    "northcentralus",
+                    "northeurope",
+                    "norwayeast",
+                    "southcentralus",
+                    "southeastasia",
+                    "switzerlandnorth",
+                    "uaenorth",
+                    "uksouth",
+                    "westcentralus",
+                    "westeurope",
+                    "westus",
+                    "westus2"
+                ]
+            }
+        },
+        {
+            "initiative": "de01d381-bae9-4670-8870-786f89f49e26",
+            "assignment_display_name": "Configure SQL VMs and Arc-enabled SQL Servers to install Microsoft Defender for SQL and AMA with a user-defined LA workspace",
+            "role_definition_ids": [
+                "/providers/Microsoft.Authorization/roleDefinitions/cd570a14-e51a-42ad-bac8-bafd67325302",
+                "/providers/Microsoft.Authorization/roleDefinitions/92aaf0da-9dab-42b6-94a3-d43ce8d16293",
+                "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
+                "/providers/Microsoft.Authorization/roleDefinitions/749f88d5-cbae-40b8-bcfc-e573ddc772fa",
+                "/providers/Microsoft.Authorization/roleDefinitions/9980e02c-c2be-4d73-94e8-173b1dc7cf3c"
+            ],
+            "assignment_parameters": {
+                "userWorkspaceResourceId": "",
+                "workspaceRegion": "",
+                "userWorkspaceId": "",
+                "enableCollectionOfSqlQueriesForSecurityResearch": false,
+                "builtInIdentityResourceGroupLocation": "eastus",
+                "bringYourOwnUserAssignedManagedIdentity": false,
+                "userAssignedIdentityResourceId": "",
+                "bringYourOwnDcr": false,
+                "dcrResourceId": ""
+            }
+ 
+        }
+    ],
+    "custom_defnition_sets": [
+        {
+            "initiative": "audit_backup_and_recovery",
+            "assignment_display_name": "Enforce enhanced recovery and backup policies",
+            "assignment_parameters": {
+                "checkAlwaysOnSoftDeleteOnly": true,
+                "checkLockedImmutabilityOnly": true,
+                "checkLockedImmutabiltyOnly": true,
+                "effect": "Audit"
+            }
+        },
+        {
+            "initiative": "modify_aum_check_updates",
+            "assignment_display_name": "Configure periodic checking for missing system updates on azure virtual machines and Arc-enabled virtual machines",
+            "role_definition_ids": [
+                "/providers/Microsoft.Authorization/roleDefinitions/cd570a14-e51a-42ad-bac8-bafd67325302",
+                "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+            ],
+            "assignment_parameters": {
+                "assessmentMode": "AutomaticByPlatform",
+                "locations": [],
+                "tagOperator": "Any",
+                "tagValues": {}
+            }
+        }
+    ]
+}

@@ -164,26 +164,43 @@ module "audit_resource_skus" {
   ]
 }
 
-# module "audit_deny_tag_for_resources" {
-#   source = "..//modules/initiative"
-#   initiative_name         = "tag_governance_for_inherit"
-#   initiative_display_name = "Tag Governance for Inherit"
-#   initiative_description  = "Tag Governance for Inherit"
-#   initiative_category     = "Tag Governance"
-#   management_group_id     = var.intermediate_root_management_group_id
-#   member_definitions = [
+# Custom
+module "tag_governance_policy_definitions" {
+  source              = "..//modules/definition"
+  for_each            = toset(fileset("${path.module}/../custom_policy/intermediate_root/", "tag_governance*.json"))
+  file_path           = "${path.module}/../custom_policy/intermediate_root/${each.value}"
+  management_group_id = var.intermediate_root_management_group_id
+}
 
-#   ]
-# }
+module "audit_deny_tag_for_resources" {
+  source = "..//modules/initiative"
+  initiative_name         = "tag_governance"
+  initiative_display_name = "Tag Governance"
+  initiative_description  = "Tag Governance"
+  initiative_category     = "Tags"
+  management_group_id     = var.intermediate_root_management_group_id
+  member_definitions = [
+    for policy in module.tag_governance_policy_definitions : policy.definition
+  ]
+}
 
-# module "audit_denyaction_log_analytics_workspace" {
-#   source = "../modules/initiative"
-#   initiative_name         = "ensure_log_analytics_workspace_compliance_and_protection"
-#   initiative_display_name = "Ensure Log Analytics Workspace compliance and protection"
-#   initiative_description  = "Ensure Log Analytics Workspace compliance and protection"
-#   initiative_category     = "Tag Governance"
-#   management_group_id     = var.intermediate_root_management_group_id
-#   member_definitions = [
+# audit_denyaction_log_analytics_workspace_presence
 
-#   ]
-# }
+module "audit_denyaction_log_analytics_workspace_policy_definitions" {
+  source              = "..//modules/definition"
+  for_each            = toset(fileset("${path.module}/../custom_policy/intermediate_root/", "audit_denyaction_law*.json"))
+  file_path           = "${path.module}/../custom_policy/intermediate_root/${each.value}"
+  management_group_id = var.intermediate_root_management_group_id
+}
+
+module "audit_denyaction_log_analytics_workspace" {
+  source = "../modules/initiative"
+  initiative_name         = "audit_denyaction_law"
+  initiative_display_name = "Ensure Log Analytics Workspace compliance and protection"
+  initiative_description  = "Ensure Log Analytics Workspace compliance and protection"
+  initiative_category     = "Tag Governance"
+  management_group_id     = var.intermediate_root_management_group_id
+  member_definitions = [
+    for policy in module.audit_denyaction_log_analytics_workspace_policy_definitions : policy.definition
+  ]
+}

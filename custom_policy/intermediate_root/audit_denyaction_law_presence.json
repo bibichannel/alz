@@ -1,0 +1,44 @@
+{
+    "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-definition-schema.json",
+    "name": "audit_log_analytics_workspace",
+    "properties": {
+        "displayName": "Audit if no Log Analytics workspace exists",
+        "description": "This policy audits if no Log Analytics workspace exists within the specified scope.",
+        "policyType": "Custom",
+        "metadata": {
+            "category": "Monitoring",
+            "version": "1.0.0"
+        },
+        "mode": "All",
+        "parameters": {
+            "effect": {
+                "type": "String",
+                "metadata": {
+                    "displayName": "Effect",
+                    "description": "Disabled or auditIfNotExists the execution of the Policy"
+                },
+                "allowedValues": [
+                    "auditIfNotExists",
+                    "Disabled"
+                ],
+                "defaultValue": "auditIfNotExists"
+            }
+        },
+        "policyRule": {
+            "if": {
+                "field": "type",
+                "equals": "Microsoft.OperationalInsights/workspaces"
+            },
+            "then": {
+                "effect": "[parameters('effect')]",
+                "details": {
+                    "type": "Microsoft.OperationalInsights/workspaces",
+                    "existenceCondition": {
+                        "field": "type",
+                        "equals": "Microsoft.OperationalInsights/workspaces"
+                    }
+                }
+            }
+        }
+    }
+}

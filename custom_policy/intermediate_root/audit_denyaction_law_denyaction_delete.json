@@ -1,0 +1,32 @@
+{
+    "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-definition-schema.json",
+    "name": "denyaction_detete_law",
+    "properties": {
+        "displayName": "DenyAction actions deletion of Log Analytics workspaces",
+        "description": "This policy denies the deletion of Log Analytics workspaces.",
+        "policyType": "Custom",
+        "metadata": {
+            "category": "Monitoring",
+            "version": "1.0.0"
+        },
+        "mode": "Indexed",
+        "parameters": {},
+        "policyRule": {
+            "if": {
+                "field": "type",
+                "equals": "Microsoft.OperationalInsights/workspaces"
+            },
+            "then": {
+                "effect": "DenyAction",
+                "details": {
+                    "actionNames": [
+                        "delete"
+                    ],
+                    "cascadeBehaviors": {
+                        "resourceGroup": "deny"
+                    }
+                }
+            }
+        }
+    }
+}

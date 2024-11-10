@@ -107,8 +107,7 @@ deny_create_resources_temporary
 ---
 
 ## Foundations
-### Definition sets built-in
-```
+### Definition sets built-in```
 924bfe3a-762f-40e7-86dd-5c8b95eb09e6	dine_vm_monitoring
 f5bf694c-cca7-4033-b883-3a23327d5485	dine_vmss_monitoring
 2b00397d-c309-49c4-aa5a-f0b2c5bc6321	dine_vm_hybrid_monitoring
@@ -138,6 +137,36 @@ e56962a6-4747-49cd-b67b-bf8b01975c4c	deny_locations
 deny_create_resources_temporary
 ```
 
+**```
+924bfe3a-762f-40e7-86dd-5c8b95eb09e6	dine_vm_monitoring
+f5bf694c-cca7-4033-b883-3a23327d5485	dine_vmss_monitoring
+2b00397d-c309-49c4-aa5a-f0b2c5bc6321	dine_vm_hybrid_monitoring
+92a36f05-ebc9-4bba-9128-b47ad2ea3354	dine_change_tracking_and_inventory_vm
+c4a70814-96be-461c-889f-2b27429120dc	dine_change_tracking_and_inventory_vmss
+53448c70-089b-4f52-8f38-89196d7f2de1	dine_change_tracking_and_inventory_vm_arc
+de01d381-bae9-4670-8870-786f89f49e26	dine_mdfc_defender_sql_and_ama
+```
+
+### Definition sets custom
+```
+audit_guardrails_az_kv                  audit_guardrails_for_azure_Key_Vault
+audit_backup_and_recovery               audit_backup_and_recovery
+modify_aum_check_updates                modify_aum_check_updates
+enforce_tag_specification               enforce_tag_specification
+```
+
+### Definitions built-in
+```
+7bca8353-aa3b-429b-904a-9229c4385837	audit_subnet_private
+78460a36-508a-49a4-b2b2-2f5ec564f4bb	denyaction_resource_deletion
+e56962a6-4747-49cd-b67b-bf8b01975c4c	deny_locations
+```
+
+### Definitions custom
+```
+deny_create_resources_temporary
+```
+**
 ---
 
 ## Connectivity

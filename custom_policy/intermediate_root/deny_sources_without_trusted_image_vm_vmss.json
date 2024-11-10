@@ -1,0 +1,69 @@
+{
+    "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-definition-schema.json",
+    "name": "deny_vm_vmss_without_trusted_sources",
+    "properties": {
+        "displayName": "Only allow VMs and VMSS from known image publishers" ,
+        "description": "This policy enables you to restrict the set of images that can be used to create virtual machines and virtual machine scale sets. It allows you to exclude images from specific publishers, such as third-party vendors, and to exclude images from the Azure Marketplace.",
+        "mode": "Indexed",
+        "metadata": {
+            "version": "1.0.0",
+            "category": "Compute"
+        },
+        "parameters": {
+            "effect": {
+                "type": "String",
+                "metadata": {
+                    "displayName": "Effect",
+                    "description": "Deny or Disabled the execution of the Policy"
+                },
+                "allowedValues": [
+                    "Deny",
+                    "Disabled"
+                ],
+                "defaultValue": "Deny"
+            },
+            "publishersToExcludeFromPolicy": {
+                 "type": "Array",
+                 "metadata": {
+                      "displayName": "Excluded Publishers",
+                      "description": "An array of publishers to exclude from evaluation, such as Microsoft"
+                 },
+                 "defaultValue": [
+                    "microsoft-ads",
+                    "AzureDatabricks",
+                    "microsoft-aks"                   
+               ]
+            }
+         },
+        "policyRule": {
+            "if": {
+                "allOf": [
+                    {
+                       "field": "type",
+                       "in": [
+                           "Microsoft.Compute/VirtualMachineScaleSets",
+                            "Microsoft.Compute/virtualMachines"
+                        ]
+                    },
+                    {
+                       "field": "Microsoft.Compute/imagePublisher",
+                       "notIn": "[parameters('publishersToExcludeFromPolicy')]"
+                    },
+                    {
+                    "not" : {
+                        "anyOf": [
+                         {
+                           "field": "Microsoft.Compute/virtualMachines/storageProfile.imageReference.id",
+                           "contains": "Microsoft.Compute/galleries"
+                         }
+                       ]
+                    }
+                  }
+                ]
+            },        
+            "then": {
+                "effect": "[parameters('effect')]"
+            }
+        }
+    }
+}

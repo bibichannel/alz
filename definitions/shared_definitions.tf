@@ -259,30 +259,49 @@ module "dine_private_dns_zones" {
 }
 
 # # This definition set for tag governance according to specific requirements
-# module "enforce_tag_specification" {
-#   source = "..//modules/initiative"
-#   initiative_name         = "enforce_tag_specification"
-#   initiative_display_name = "Enforce tag according to specific requirements"
-#   initiative_description  = "Enforce tag according to specific requirements"
-#   initiative_category     = "Tag Governance"
-#   management_group_id     = var.intermediate_root_management_group_id
-#   member_definitions = [
+module "enforce_tag_specification_custom_policy_definitions" {
+  source              = "..//modules/definition"
+  for_each            = toset(fileset("${path.module}/../custom_policy/intermediate_root/", "enforce_tag_specification*.json"))
+  file_path           = "${path.module}/../custom_policy/intermediate_root/${each.value}"
+  management_group_id = var.intermediate_root_management_group_id
+}
 
-#   ]
-# }
+module "enforce_tag_specification" {
+  source = "..//modules/initiative"
+  initiative_name         = "enforce_tag_specification"
+  initiative_display_name = "Enforce tag according to specific requirements"
+  initiative_description  = "Enforce tag according to specific requirements"
+  initiative_category     = "Tags"
+  management_group_id     = var.intermediate_root_management_group_id
+  member_definitions = [
+    for policy in module.enforce_tag_specification_custom_policy_definitions : policy.definition
+  ]
+}
 
 # # This definition set for hardened image from trusted source
-# module "deny_sources_without_trusted_image" {
-#   source = "..//modules/initiative"
-#   initiative_name         = "deny_sources_without_trusted_image"
-#   initiative_display_name = "Enforce trusted image from trusted source"
-#   initiative_description  = "Enforce trusted image from trusted source"
-#   initiative_category     = "Image"
-#   management_group_id     = var.intermediate_root_management_group_id
-#   member_definitions = [
+module "deny_sources_without_trusted_image_custom_policy_definitions" {
+  source              = "..//modules/definition"
+  for_each            = toset(fileset("${path.module}/../custom_policy/intermediate_root/", "deny_sources_without_trusted_image*.json"))
+  file_path           = "${path.module}/../custom_policy/intermediate_root/${each.value}"
+  management_group_id = var.intermediate_root_management_group_id
+}
 
-#   ]
-# }
+data "azurerm_policy_definition" "k8s_allowed_images_policy_definitions" {
+  name     = "febd0533-8e55-448f-b837-bd0e06f16469"
+}
+
+module "deny_sources_without_trusted_image" {
+  source = "..//modules/initiative"
+  initiative_name         = "deny_sources_without_trusted_image"
+  initiative_display_name = "Enforce trusted image from trusted source"
+  initiative_description  = "Enforce trusted image from trusted source"
+  initiative_category     = "Image"
+  management_group_id     = var.intermediate_root_management_group_id
+  member_definitions = concat(
+    [for policy in module.deny_sources_without_trusted_image_custom_policy_definitions : policy.definition],
+    [data.azurerm_policy_definition.k8s_allowed_images_policy_definitions]
+  )
+}
 
 # https://www.azadvertizer.net/azpolicyadvertizer/Deny-PublicIP.html
 module "deny_public_ip" {

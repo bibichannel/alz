@@ -1,6 +1,0 @@
-dine_mdfc_config
-audit_encryption_cmk
-dine_alert_lz_02
-audit_public_paas_endpoints
-dine_alert_management
-deny_dine_append_tls_ssl
