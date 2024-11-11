@@ -1,28 +1,19 @@
 {
     "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-definition-schema.json",
-    "name": "Deny-PublicIP",
+    "name": "deny_subscription_creation",
     "properties": {
         "policyType": "Custom",
-        "mode": "Indexed",
-        "displayName": "Deny the creation of public IP",
-        "description": "This policy denies creation of Public IPs under the assigned scope. Superseded by https://www.azadvertizer.net/azpolicyadvertizer/6c112d4e-5bc7-47ae-a041-ea2d9dccd749.html using appropriate assignment parameters.",
+        "mode": "All",
+        "displayName": "Deny Subscription Creation",
+        "description": "This policy denies the creation of new subscriptions.",
         "metadata": {
-            "deprecated": true,
-            "supersededBy": "6c112d4e-5bc7-47ae-a041-ea2d9dccd749",
             "version": "1.0.0",
-            "category": "Network",
-            "source": "https://github.com/Azure/Enterprise-Scale/",
-            "alzCloudEnvironments": [
-                "AzureCloud",
-                "AzureChinaCloud",
-                "AzureUSGovernment"
-            ]
+            "category": "Network"
         },
         "parameters": {
             "effect": {
                 "type": "String",
                 "allowedValues": [
-                    "Audit",
                     "Deny",
                     "Disabled"
                 ],
@@ -36,7 +27,7 @@
         "policyRule": {
             "if": {
                 "field": "type",
-                "equals": "Microsoft.Network/publicIPAddresses"
+                "equals": "Microsoft.Resources/subscriptions"
             },
             "then": {
                 "effect": "[parameters('effect')]"
