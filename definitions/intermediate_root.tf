@@ -194,7 +194,6 @@ module "audit_deny_tag_for_resources" {
 }
 
 # audit_denyaction_log_analytics_workspace_presence
-
 module "audit_denyaction_log_analytics_workspace_policy_definitions" {
   source              = "..//modules/definition"
   for_each            = toset(fileset("${path.module}/../custom_policy/intermediate_root/", "audit_denyaction_law*.json"))

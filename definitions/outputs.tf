@@ -90,3 +90,19 @@ output "audit_public_paas_endpoints" {
 output "dine_private_dns_zones" {
   value = keys(module.dine_private_dns_zones.parameters)
 }
+
+output "audit_denyaction_log_analytics_workspace" {
+  value = keys(module.audit_denyaction_log_analytics_workspace.parameters)
+}
+
+output "audit_deny_tag_for_resources" {
+  value = keys(module.audit_deny_tag_for_resources.parameters)
+}
+
+output "deny_sources_without_trusted_image" {
+  value = keys(module.deny_sources_without_trusted_image.parameters)
+}
+
+output "enforce_tag_specification" {
+  value = keys(module.enforce_tag_specification.parameters)
+}
