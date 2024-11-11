@@ -1,0 +1,65 @@
+{
+    "definition_location": "testing_mg",
+    "assignment_scope_id": "/providers/Microsoft.Management/managementGroups/identity",
+    "builtin_definitions": [
+        {
+            "definition": "98d0b9f8-fd90-49c9-88e2-d3baf3b0dd86",
+            "assignment_effect": "AuditIfNotExists",
+            "assignment_parameters": {
+                "exclusionTagName": "",
+                "exclusionTagValue": []
+            }
+        }
+    ],
+    "custom_definitions": [
+        {
+            "definition": "deny_public_ip",
+            "assignment_effect": "Deny"
+        },
+        {
+            "definition": "deny_subnet_without_nsg",
+            "assignment_effect": "Deny",
+            "assignment_parameters": {
+                "excludedSubnets": [
+                    "GatewaySubnet",
+                    "AzureFirewallSubnet",
+                    "AzureFirewallManagementSubnet"
+                ]
+            }
+        }
+    ],
+    "builtin_defnition_sets": [],
+    "custom_defnition_sets": [
+        {
+            "initiative": "dine_alert_identity",
+            "assignment_effect": "deployIfNotExists",
+            "assignment_parameters": {
+                "MonitorDisableTagName": "MonitorDisable",
+                "MonitorDisableTagValues": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                    ],
+                "alertResourceGroupLocation": "",
+                "alertResourceGroupName": "",
+                "alertResourceGroupTags": "",
+                "autoMitigate": "",
+                "enabled": "",
+                "evaluationFrequency": "",
+                "severity": "",
+                "threshold": "",
+                "windowSize": ""
+            }
+        },
+        {
+            "initiative": "deny_sources_without_trusted_image",
+            "assignment_parameters": {
+                "checkAlwaysOnSoftDeleteOnly": true,
+                "checkLockedImmutabilityOnly": true,
+                "checkLockedImmutabiltyOnly": true,
+                "effect": "Disabled"
+            }
+        }
+    ]
+}

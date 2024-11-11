@@ -45,7 +45,6 @@ module "audit_guardrails_for_azure_Key_Vault" {
   initiative_description  = "Enforce recommended guardrails for Azure Key Vault"
   initiative_category     = "Key Vault"
   management_group_id     = var.intermediate_root_management_group_id
-  merge_effects           = true
   merge_parameters        = false
   initiative_version      = "1.0.0"
   member_definitions = [
@@ -77,6 +76,7 @@ module "audit_backup_and_recovery" {
   initiative_description  = "Enforce enhanced recovery and backup policies on assigned scopes."
   initiative_category     = "Backup"
   management_group_id     = var.intermediate_root_management_group_id
+  merge_parameters        = false
   initiative_version      = "1.0.0"
   member_definitions = [
     for definition in data.azurerm_policy_definition.audit_backup_and_recovery_policy_definitions : definition
@@ -102,6 +102,7 @@ module "modify_aum_check_updates" {
   initiative_display_name = "Configure periodic checking for missing system updates on azure virtual machines and Arc-enabled virtual machines"
   initiative_description  = "Configure auto-assessment (every 24 hours) for OS updates. You can control the scope of assignment according to machine subscription, resource group, location or tag. Learn more about this for Windows: https://aka.ms/computevm-windowspatchassessmentmode, for Linux: https://aka.ms/computevm-linuxpatchassessmentmode."
   initiative_category     = "Security Center"
+  merge_parameters        = false
   management_group_id     = var.intermediate_root_management_group_id
   initiative_version      = "1.0.0"
   member_definitions = [
@@ -251,6 +252,7 @@ module "dine_private_dns_zones" {
   initiative_display_name = "Configure Azure PaaS services to use private DNS zones"
   initiative_description  = "This policy initiative is a group of policies that ensures private endpoints to Azure PaaS services are integrated with Azure Private DNS zones"
   initiative_category     = "Network"
+  merge_parameters        = false
   management_group_id     = var.intermediate_root_management_group_id
   initiative_version      = "1.0.0"
   member_definitions = [
@@ -272,6 +274,8 @@ module "enforce_tag_specification" {
   initiative_display_name = "Enforce tag according to specific requirements"
   initiative_description  = "Enforce tag according to specific requirements"
   initiative_category     = "Tags"
+  merge_parameters        = false
+  initiative_version      = "1.0.0"
   management_group_id     = var.intermediate_root_management_group_id
   member_definitions = [
     for policy in module.enforce_tag_specification_custom_policy_definitions : policy.definition
@@ -297,6 +301,8 @@ module "deny_sources_without_trusted_image" {
   initiative_description  = "Enforce trusted image from trusted source"
   initiative_category     = "Image"
   management_group_id     = var.intermediate_root_management_group_id
+  merge_parameters        = false
+  initiative_version = "1.0.0"
   member_definitions = concat(
     [for policy in module.deny_sources_without_trusted_image_custom_policy_definitions : policy.definition],
     [data.azurerm_policy_definition.k8s_allowed_images_policy_definitions]

@@ -24,6 +24,7 @@ module "deny_alz_sandbox" {
   initiative_description  = "Enforce policies in the Sandbox Landing Zone."
   initiative_category     = "Sandbox"
   management_group_id     = var.sandbox_management_group_id
+  merge_parameters        = false
   initiative_version      = "1.0.0"
   member_definitions = concat(
     [for definition in data.azurerm_policy_definition.deny_alz_sandbox_policy_definitions : definition],

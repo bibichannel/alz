@@ -13,6 +13,7 @@ module "dine_azure_monitor_baseline_alerts_for_identity" {
   initiative_description  = "Initiative to deploy AMBA alerts relevant to the ALZ Identity management group"
   initiative_category     = "Monitoring"
   management_group_id     = var.identity_management_group_id
+  merge_parameters        = false
   initiative_version      = "1.0.0"
   member_definitions = [
     for policy in module.dine_alert_identity_custom_policy_definitions : policy.definition
