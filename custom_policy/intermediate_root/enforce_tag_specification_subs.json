@@ -1,14 +1,14 @@
 {
     "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-definition-schema.json",
-    "name": "require_tags_specification_at_resource_groups_01",
+    "name": "require_tags_specification_at_subscriptions_01",
     "properties": {
-        "displayName": "Require tags specification at Resources Group",
-        "description": "This policy ensures that all resources groups have tags defined.",
+        "displayName": "Require tags specification at subscriptions",
+        "description": "This policy ensures that all subscriptions have tags defined.",
         "metadata": {
             "category": "Tags",
             "version": "1.0.0"
         },
-        "mode": "All",
+        "mode": "Indexed",
         "parameters": {
             "effect": {
                 "type": "String",
@@ -46,36 +46,21 @@
                         "equals": "Microsoft.Resources/subscriptions"
                     },
                     {
-                        "anyOf": [
+                        "allOf": [
                             {
                                 "field": "[concat('tags[', parameters('ExpirationDate'), ']')]",
-                                "exists": "true"
+                                "exists": "false"
                             },
                             {
                                 "field": "[concat('tags[', parameters('Security'), ']')]",
-                                "exists": "true"
+                                "exists": "false"
                             }
                         ]
                     }
                 ]
             },
             "then": {
-                "effect": "[parameters('effect')]",
-                "details": {
-                    "type": "Microsoft.Resources/subscriptions/resourceGroups",
-                    "existenceCondition": {
-                        "anyOf": [
-                            {
-                                "field": "[concat('tags[', parameters('ExpirationDate'), ']')]",
-                                "exists": "false"
-                            },
-                            {
-                                "field": "[concat('tags[', parameters('Security'), ']')]",
-                                "exists": "false"
-                            }
-                        ]
-                    }
-                }
+                "effect": "[parameters('effect')]"
             }
         }
     }

@@ -1,14 +1,14 @@
 {
     "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-definition-schema.json",
-    "name": "require_tags_at_resources",
+    "name": "require_tags_at_resource_groups_01",
     "properties": {
-        "displayName": "Tag governance for resources",
-        "description": "This policy ensures that all resources have tags",
+        "displayName": "Tag governance for Resources Group",
+        "description": "This policy ensures that all resources groups have tags",
         "metadata": {
             "category": "Tags",
             "version": "1.0.0"
         },
-        "mode": "Indexed",
+        "mode": "All",
         "parameters": {
             "effect": {
                 "type": "String",
@@ -23,32 +23,67 @@
                 ],
                 "defaultValue": "Audit"
             },
-            "tagName1": {
+            "org": {
                 "type": "String",
                 "metadata": {
-                    "displayName": "First Tag Name",
-                    "description": "Name of the tag, such as 'environment'"
+                    "displayName": "Org",
+                    "description": "Name of the tag, such as 'Consoto'"
                 }
             },
-            "tagName2": {
+            "Description": {
                 "type": "String",
                 "metadata": {
-                    "displayName": "Second Tag Name",
-                    "description": "Name of the tag, such as 'environment'"
+                    "displayName": "Description",
+                    "description": "Name of the tag, such as 'Description'"
                 }
             },
-            "tagName3": {
+            "OpsTeam": {
                 "type": "String",
                 "metadata": {
-                    "displayName": "Third Tag Name",
-                    "description": "Name of the tag, such as 'environment'"
+                    "displayName": "OpsTeam",
+                    "description": "Name of the tag, such as 'OpsTeam'"
                 }
             },
-            "tagName4": {
+            "LeadOpsTeamAccount": {
                 "type": "String",
                 "metadata": {
-                    "displayName": "Forth Tag Name",
-                    "description": "Name of the tag, such as 'environment'"
+                    "displayName": "OpsTeam",
+                    "description": "Name of the tag, such as 'OpsTeam'"
+                }
+            },
+            "Bu": {
+                "type": "String",
+                "metadata": {
+                    "displayName": "Bu",
+                    "description": "Name of the tag, such as 'Bu'"
+                }
+            },
+            "ProjectCode": {
+                "type": "String",
+                "metadata": {
+                    "displayName": "ProjectCode",
+                    "description": "Name of the tag, such as 'ProjectCode'"
+                }
+            },
+            "TicketID": {
+                "type": "String",
+                "metadata": {
+                    "displayName": "TicketID",
+                    "description": "Name of the tag, such as 'TicketID'"
+                }
+            },
+            "Environment": {
+                "type": "String",
+                "metadata": {
+                    "displayName": "Environment",
+                    "description": "Name of the tag, such as 'Environment'"
+                }
+            },
+            "OwnerAccount": {
+                "type": "String",
+                "metadata": {
+                    "displayName": "OwnerAccount",
+                    "description": "Name of the tag, such as 'OwnerAccount'"
                 }
             }
         },
@@ -57,24 +92,44 @@
                 "allOf": [
                     {
                         "field": "type",
-                        "equals": "Microsoft.Resources/resourceGroups"
+                        "equals": "Microsoft.Resources/subscriptions/resourceGroups"
                     },
                     {
                         "anyOf": [
                             {
-                                "field": "[concat('tags[', parameters('tagName1'), ']')]",
+                                "field": "[concat('tags[', parameters('org'), ']')]",
                                 "exists": "false"
                             },
                             {
-                                "field": "[concat('tags[', parameters('tagName2'), ']')]",
+                                "field": "[concat('tags[', parameters('Description'), ']')]",
                                 "exists": "false"
                             },
                             {
-                                "field": "[concat('tags[', parameters('tagName3'), ']')]",
+                                "field": "[concat('tags[', parameters('OpsTeam'), ']')]",
                                 "exists": "false"
                             },
                             {
-                                "field": "[concat('tags[', parameters('tagName4'), ']')]",
+                                "field": "[concat('tags[', parameters('LeadOpsTeamAccount'), ']')]",
+                                "exists": "false"
+                            },
+                            {
+                                "field": "[concat('tags[', parameters('Bu'), ']')]",
+                                "exists": "false"
+                            },
+                            {
+                                "field": "[concat('tags[', parameters('ProjectCode'), ']')]",
+                                "exists": "false"
+                            },
+                            {
+                                "field": "[concat('tags[', parameters('TicketID'), ']')]",
+                                "exists": "false"
+                            },
+                            {
+                                "field": "[concat('tags[', parameters('Environment'), ']')]",
+                                "exists": "false"
+                            },
+                            {
+                                "field": "[concat('tags[', parameters('OwnerAccount'), ']')]",
                                 "exists": "false"
                             }
                         ]
