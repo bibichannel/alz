@@ -21,6 +21,7 @@
     "custom_defnition_sets": [
         {
             "initiative": "dine_alert_management",
+            "assignment_display_name": "DINE Azure Monitor Baseline Alerts for Management",
             "role_definition_ids": [
                 "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
             ],
@@ -32,7 +33,104 @@
                 "effect_DeployLAWorkspaceDailyCapLimitReachedAlertAtManagement": "deployIfNotExists",
                 "effect_DeployRecoveryVaultASRHealthMonitorAlertAtManagement": "modify",
                 "effect_DeployRecoveryVaultBackupHealthMonitorAlertAtManagement": "modify",
-                "effect_DeployStorageAccountAvailabilityAlertAtManagement": "deployIfNotExists"
+                "effect_DeployStorageAccountAvailabilityAlertAtManagement": "deployIfNotExists",
+                "MonitorDisableTagName_DeployAATotalJobAlertAtManagement": "MonitorDisable",
+                "MonitorDisableTagName_DeployActivitylogLAWorkspaceDeleteAtManagement": "MonitorDisable",
+                "MonitorDisableTagName_DeployActivitylogLAWorkspaceKeyRegenAtManagement": "MonitorDisable",
+                "MonitorDisableTagName_DeployActivitylogStorageAccountDeleteAtManagement": "MonitorDisable",
+                "MonitorDisableTagName_DeployLAWorkspaceDailyCapLimitReachedAlertAtManagement": "MonitorDisable",
+                "MonitorDisableTagName_DeployRecoveryVaultASRHealthMonitorAlertAtManagement": "MonitorDisable",
+                "MonitorDisableTagName_DeployRecoveryVaultBackupHealthMonitorAlertAtManagement": "MonitorDisable",
+                "MonitorDisableTagName_DeployStorageAccountAvailabilityAlertAtManagement": "MonitorDisable",
+                "MonitorDisableTagValues_DeployAATotalJobAlertAtManagement": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployActivitylogLAWorkspaceDeleteAtManagement": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployActivitylogLAWorkspaceKeyRegenAtManagement": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployActivitylogStorageAccountDeleteAtManagement": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployLAWorkspaceDailyCapLimitReachedAlertAtManagement": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployRecoveryVaultASRHealthMonitorAlertAtManagement": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployRecoveryVaultBackupHealthMonitorAlertAtManagement": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployStorageAccountAvailabilityAlertAtManagement": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "UAMIResourceId_DeployLAWorkspaceDailyCapLimitReachedAlertAtManagement": "",
+                "alertResourceGroupLocation_DeployActivitylogLAWorkspaceDeleteAtManagement": "centralus",
+                "alertResourceGroupLocation_DeployActivitylogLAWorkspaceKeyRegenAtManagement": "centralus",
+                "alertResourceGroupLocation_DeployActivitylogStorageAccountDeleteAtManagement": "centralus",
+                "alertResourceGroupName_DeployActivitylogLAWorkspaceDeleteAtManagement": "",
+                "alertResourceGroupName_DeployActivitylogLAWorkspaceKeyRegenAtManagement": "",
+                "alertResourceGroupName_DeployActivitylogStorageAccountDeleteAtManagement": "",
+                "alertResourceGroupTags_DeployActivitylogLAWorkspaceDeleteAtManagement": {
+                    "_deployed_by_alz_monitor": true
+                },
+                "alertResourceGroupTags_DeployActivitylogLAWorkspaceKeyRegenAtManagement": {
+                    "_deployed_by_alz_monitor": true
+                },
+                "alertResourceGroupTags_DeployActivitylogStorageAccountDeleteAtManagement": {
+                    "_deployed_by_alz_monitor": true
+                },
+                "autoMitigate_DeployAATotalJobAlertAtManagement": "true",
+                "autoMitigate_DeployLAWorkspaceDailyCapLimitReachedAlertAtManagement": "true",
+                "autoMitigate_DeployStorageAccountAvailabilityAlertAtManagement": "true",
+                "enabled_DeployAATotalJobAlertAtManagement": "true",
+                "enabled_DeployActivitylogLAWorkspaceDeleteAtManagement": "true",
+                "enabled_DeployActivitylogLAWorkspaceKeyRegenAtManagement": "true",
+                "enabled_DeployActivitylogStorageAccountDeleteAtManagement": "true",
+                "enabled_DeployLAWorkspaceDailyCapLimitReachedAlertAtManagement": "true",
+                "enabled_DeployStorageAccountAvailabilityAlertAtManagement": "true",
+                "evaluationFrequency_DeployAATotalJobAlertAtManagement": "PT5M",
+                "evaluationFrequency_DeployLAWorkspaceDailyCapLimitReachedAlertAtManagement": "PT5M",
+                "evaluationFrequency_DeployStorageAccountAvailabilityAlertAtManagement": "PT5M",
+                "evaluationPeriods_DeployLAWorkspaceDailyCapLimitReachedAlertAtManagement": "1",
+                "failingPeriods_DeployLAWorkspaceDailyCapLimitReachedAlertAtManagement": "1",
+                "operator_DeployLAWorkspaceDailyCapLimitReachedAlertAtManagement": "GreaterThan",
+                "severity_DeployAATotalJobAlertAtManagement": "3",
+                "severity_DeployLAWorkspaceDailyCapLimitReachedAlertAtManagement": "3",
+                "severity_DeployStorageAccountAvailabilityAlertAtManagement": "3",
+                "threshold_DeployAATotalJobAlertAtManagement": "20",
+                "threshold_DeployLAWorkspaceDailyCapLimitReachedAlertAtManagement": "20",
+                "threshold_DeployStorageAccountAvailabilityAlertAtManagement": "20",
+                "timeAggregation_DeployLAWorkspaceDailyCapLimitReachedAlertAtManagement": "Count",
+                "windowSize_DeployAATotalJobAlertAtManagement": "PT5M",
+                "windowSize_DeployLAWorkspaceDailyCapLimitReachedAlertAtManagement": "PT5M",
+                "windowSize_DeployStorageAccountAvailabilityAlertAtManagement": "PT5M"
             }
         }
     ]
