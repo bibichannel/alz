@@ -1,0 +1,1440 @@
+{
+    "definition_location": "testing_mg",
+    "assignment_scope_id": "/providers/Microsoft.Management/managementGroups/landing_zones",
+    "builtin_definitions": [
+        {
+            "definition": "88c0b9da-ce96-4b03-9635-f29a937e2900",
+            "assignment_display_name": "Network interfaces should disable IP forwarding"
+        },
+        {
+            "definition": "404c3081-a854-4457-ae30-26a93ef643f9",
+            "assignment_display_name": "Secure transfer to storage accounts should be enabled",
+            "assignment_effect": "Audit"
+        },
+        {
+            "definition": "a8eff44f-8c92-45c3-a3fb-9880802d67a7",
+            "assignment_display_name": "Deploy Azure Policy Add-on to Azure Kubernetes Service clusters",
+            "role_definition_ids": [
+                "/providers/Microsoft.Authorization/roleDefinitions/ed7f3fbd-7b88-4dd4-9017-9adb7ce333f8",
+                "/providers/Microsoft.Authorization/roleDefinitions/18ed5180-3e48-46fd-8541-4ea054d57064"
+            ],
+            "assignment_effect": "DeployIfNotExists"
+        },
+        {
+            "definition": "25da7dfb-0666-4a15-a8f5-402127efd8bb",
+            "assignment_display_name": "Configure SQL servers to have auditing enabled to Log Analytics workspace",
+            "role_definition_ids": [
+                "/providers/Microsoft.Authorization/roleDefinitions/92aaf0da-9dab-42b6-94a3-d43ce8d16293",
+                "/providers/Microsoft.Authorization/roleDefinitions/056cd41c-7e88-42e1-933e-88ba6a50c9c3"
+            ],
+            "assignment_effect": "DeployIfNotExists",
+            "assignment_parameters": {
+                "logAnalyticsWorkspaceId": ""
+            }
+        },
+        {
+            "definition": "36d49e87-48c4-4f2e-beed-ba4ed02b71f5",
+            "assignment_display_name": "Configure Azure Defender to be enabled on SQL servers",
+            "role_definition_ids": [
+                "/providers/Microsoft.Authorization/roleDefinitions/056cd41c-7e88-42e1-933e-88ba6a50c9c3"
+            ]
+        },
+        {
+            "definition": "86a912f6-9a06-4e26-b447-11b16ba8659f",
+            "assignment_display_name": "DINE SQL DB transparent data encryption",
+            "role_definition_ids": [
+                "/providers/Microsoft.Authorization/roleDefinitions/9b7fa17d-e63e-47b0-bb0a-15c516ac86ec"
+            ],
+            "assignment_effect": "DeployIfNotExists"
+        },
+        {
+            "definition": "94de2ad3-e0c1-4caf-ad78-5d47bbc83d3d",
+            "assignment_display_name": "Modify DDoS protection virtual network",
+            "assignment_effect": "Modify",
+            "assignment_parameters": {
+                "ddosPlan": ""
+            }
+        },
+        {
+            "definition": "95edb821-ddaf-4404-9732-666045e056b4",
+            "assignment_display_name": "DINE AKS privileged",
+            "assignment_effect": "Deny",
+            "assignment_parameters": {
+                "source": "Original",
+                "warn": false,
+                "excludedNamespaces": [
+                    "kube-system",
+                    "gatekeeper-system",
+                    "azure-arc",
+                    "azure-extensions-usage-system"
+                ],
+                "namespaces": [],
+                "labelSelector": {},
+                "excludedContainers": [],
+                "excludedImages": []
+            }
+        },
+        {
+            "definition": "1c6e92c9-99f0-4e55-9cf2-0c234dc48f99",
+            "assignment_display_name": "Audit AKS privileged escalation",
+            "assignment_effect": "Audit",
+            "assignment_parameters": {
+                "source": "Original",
+                "warn": false,
+                "excludedNamespaces": [
+                    "kube-system",
+                    "gatekeeper-system",
+                    "azure-arc",
+                    "azure-extensions-usage-system"
+                ],
+                "namespaces": [],
+                "labelSelector": {},
+                "excludedContainers": [],
+                "excludedImages": []
+            }
+        },
+        {
+            "definition": "1a5b4dca-0b6f-4cf5-907c-56316bc1bf3d",
+            "assignment_display_name": "DINE AKS without HTTPS",
+            "assignment_effect": "Deny",
+            "assignment_parameters": {
+                "source": "Original",
+                "warn": false,
+                "excludedNamespaces": [
+                    "kube-system",
+                    "gatekeeper-system",
+                    "azure-arc",
+                    "azure-extensions-usage-system"
+                ],
+                "namespaces": [],
+                "labelSelector": {}
+            }
+        },
+        {
+            "definition": "564feb30-bf6a-4854-b4bb-0d2d2d1e6c66",
+            "assignment_display_name": "Audit Application Gateway WAF",
+            "assignment_effect": "Audit"
+        },
+        {
+            "definition": "98d0b9f8-fd90-49c9-88e2-d3baf3b0dd86",
+            "assignment_display_name": "DINE Virtual Machines Backup",
+            "assignment_effect": "DeployIfNotExists",
+            "role_definition_ids": [
+                "/providers/Microsoft.Authorization/roleDefinitions/9980e02c-c2be-4d73-94e8-173b1dc7cf3c",
+                "/providers/Microsoft.Authorization/roleDefinitions/5e467623-bb1f-42f4-a55d-6e525e11384b"
+            ],
+            "assignment_parameters": {
+                "exclusionTagName": "",
+                "exclusionTagValue": []
+            }
+        },
+        {
+            "definition": "7bca8353-aa3b-429b-904a-9229c4385837",
+            "assignment_display_name": "Audit subnets private",
+            "assignment_effect": "Audit"
+        },
+        {
+            "definition": "e56962a6-4747-49cd-b67b-bf8b01975c4c",
+            "assignment_display_name": "Allowed locations",
+            "assignment_parameters": {
+                "listOfAllowedLocations": []
+            }
+        }
+    ],
+    "custom_definitions": [
+        {
+            "definition": "Deny-MgmtPorts-From-Internet",
+            "assignment_effect": "Deny",
+            "assignment_display_name": "Deny management ports from internet",
+            "assignment_parameters": {
+                "ports": [
+                    "22",
+                    "3389"
+                ]
+            }
+        },
+        {
+            "definition": "Deny-Subnet-Without-Nsg",
+            "assignment_display_name": "Deny Subnet without NSG",
+            "assignment_effect": "Deny",
+            "assignment_parameters": {
+                "excludedSubnets": [
+                    "GatewaySubnet",
+                    "AzureFirewallSubnet",
+                    "AzureFirewallManagementSubnet"
+                ]
+            }
+        }
+    ],
+    "builtin_defnition_sets": [
+        {
+            "initiative": "924bfe3a-762f-40e7-86dd-5c8b95eb09e6",
+            "assignment_display_name": "Enable Azure Monitor for VMs with Azure Monitoring Agent(AMA)",
+            "assignment_effect": "Disabled",
+            "role_definition_ids": [
+                "/providers/Microsoft.Authorization/roleDefinitions/18d7d88d-d35e-4fb5-a5c3-7773c20a72d9",
+                "/providers/Microsoft.Authorization/roleDefinitions/92aaf0da-9dab-42b6-94a3-d43ce8d16293",
+                "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
+                "/providers/Microsoft.Authorization/roleDefinitions/749f88d5-cbae-40b8-bcfc-e573ddc772fa",
+                "/providers/Microsoft.Authorization/roleDefinitions/9980e02c-c2be-4d73-94e8-173b1dc7cf3c"
+            ],
+            "assignment_parameters": {
+                "enableProcessesAndDependencies": true,
+                "bringYourOwnUserAssignedManagedIdentity": true,
+                "restrictBringYourOwnUserAssignedIdentityToSubscription": true,
+                "userAssignedIdentityResourceId": "",
+                "userAssignedManagedIdentityName": "",
+                "userAssignedManagedIdentityResourceGroup": "",
+                "scopeToSupportedImages": true,
+                "dcrResourceId": "",
+                "listOfImageIdToInclude_linux": [],
+                "listOfImageIdToInclude_windows": []
+            }
+        },
+        {
+            "initiative": "f5bf694c-cca7-4033-b883-3a23327d5485",
+            "assignment_display_name": "Enable Azure Monitor for VMSS with Azure Monitoring Agent(AMA)",
+            "assignment_effect": "Disabled",
+            "role_definition_ids": [
+                "/providers/Microsoft.Authorization/roleDefinitions/18d7d88d-d35e-4fb5-a5c3-7773c20a72d9",
+                "/providers/Microsoft.Authorization/roleDefinitions/92aaf0da-9dab-42b6-94a3-d43ce8d16293",
+                "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
+                "/providers/Microsoft.Authorization/roleDefinitions/749f88d5-cbae-40b8-bcfc-e573ddc772fa",
+                "/providers/Microsoft.Authorization/roleDefinitions/9980e02c-c2be-4d73-94e8-173b1dc7cf3c"
+            ],
+            "assignment_parameters": {
+                "enableProcessesAndDependencies": false,
+                "bringYourOwnUserAssignedManagedIdentity": false,
+                "restrictBringYourOwnUserAssignedIdentityToSubscription": true,
+                "userAssignedIdentityResourceId": "",
+                "userAssignedManagedIdentityName": "",
+                "userAssignedManagedIdentityResourceGroup": "",
+                "listOfImageIdToInclude_windows": [],
+                "listOfImageIdToInclude_linux": [],
+                "scopeToSupportedImages": true,
+                "dcrResourceId": ""
+            }
+        },
+        {
+            "initiative": "2b00397d-c309-49c4-aa5a-f0b2c5bc6321",
+            "assignment_display_name": "Enable Azure Monitor for Hybrid VMs with AMA",
+            "assignment_effect": "Disabled",
+            "role_definition_ids": [
+                "/providers/Microsoft.Authorization/roleDefinitions/cd570a14-e51a-42ad-bac8-bafd67325302",
+                "/providers/Microsoft.Authorization/roleDefinitions/92aaf0da-9dab-42b6-94a3-d43ce8d16293",
+                "/providers/Microsoft.Authorization/roleDefinitions/749f88d5-cbae-40b8-bcfc-e573ddc772fa"
+            ],
+            "assignment_parameters": {
+                "enableProcessesAndDependencies": false,
+                "dcrResourceId": ""
+            }
+        },
+        {
+            "initiative": "92a36f05-ebc9-4bba-9128-b47ad2ea3354",
+            "assignment_display_name": "Enable ChangeTracking and Inventory for virtual machines",
+            "assignment_effect": "Disabled",
+            "role_definition_ids": [
+                "/providers/Microsoft.Authorization/roleDefinitions/18d7d88d-d35e-4fb5-a5c3-7773c20a72d9",
+                "/providers/Microsoft.Authorization/roleDefinitions/92aaf0da-9dab-42b6-94a3-d43ce8d16293",
+                "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
+                "/providers/Microsoft.Authorization/roleDefinitions/749f88d5-cbae-40b8-bcfc-e573ddc772fa",
+                "/providers/Microsoft.Authorization/roleDefinitions/9980e02c-c2be-4d73-94e8-173b1dc7cf3c"
+            ],
+            "assignment_parameters": {
+                "bringYourOwnUserAssignedManagedIdentity": false,
+                "restrictBringYourOwnUserAssignedIdentityToSubscription": true,
+                "userAssignedIdentityResourceId": "",
+                "userAssignedManagedIdentityName": "",
+                "userAssignedManagedIdentityResourceGroup": "",
+                "dcrResourceId": "",
+                "listOfApplicableLocations": [
+                    "australiasoutheast",
+                    "australiaeast",
+                    "brazilsouth",
+                    "canadacentral",
+                    "centralindia",
+                    "centralus",
+                    "eastasia",
+                    "eastus2euap",
+                    "eastus",
+                    "eastus2",
+                    "francecentral",
+                    "japaneast",
+                    "koreacentral",
+                    "northcentralus",
+                    "northeurope",
+                    "norwayeast",
+                    "southcentralus",
+                    "southeastasia",
+                    "switzerlandnorth",
+                    "uaenorth",
+                    "uksouth",
+                    "westcentralus",
+                    "westeurope",
+                    "westus",
+                    "westus2"
+                ]
+            }
+        },
+        {
+            "initiative": "c4a70814-96be-461c-889f-2b27429120dc",
+            "assignment_display_name": "Enable ChangeTracking and Inventory for virtual machine scale sets",
+            "assignment_effect": "Disabled",
+            "role_definition_ids": [
+                "/providers/Microsoft.Authorization/roleDefinitions/18d7d88d-d35e-4fb5-a5c3-7773c20a72d9",
+                "/providers/Microsoft.Authorization/roleDefinitions/92aaf0da-9dab-42b6-94a3-d43ce8d16293",
+                "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
+                "/providers/Microsoft.Authorization/roleDefinitions/749f88d5-cbae-40b8-bcfc-e573ddc772fa",
+                "/providers/Microsoft.Authorization/roleDefinitions/9980e02c-c2be-4d73-94e8-173b1dc7cf3c"
+            ],
+            "assignment_parameters": {
+                "bringYourOwnUserAssignedManagedIdentity": false,
+                "restrictBringYourOwnUserAssignedIdentityToSubscription": true,
+                "userAssignedIdentityResourceId": "",
+                "userAssignedManagedIdentityName": "",
+                "userAssignedManagedIdentityResourceGroup": "",
+                "dcrResourceId": "",
+                "listOfApplicableLocations": [
+                    "australiasoutheast",
+                    "australiaeast",
+                    "brazilsouth",
+                    "canadacentral",
+                    "centralindia",
+                    "centralus",
+                    "eastasia",
+                    "eastus2euap",
+                    "eastus",
+                    "eastus2",
+                    "francecentral",
+                    "japaneast",
+                    "koreacentral",
+                    "northcentralus",
+                    "northeurope",
+                    "norwayeast",
+                    "southcentralus",
+                    "southeastasia",
+                    "switzerlandnorth",
+                    "uaenorth",
+                    "uksouth",
+                    "westcentralus",
+                    "westeurope",
+                    "westus",
+                    "westus2"
+                ]
+            }
+        },
+        {
+            "initiative": "53448c70-089b-4f52-8f38-89196d7f2de1",
+            "assignment_display_name": "Enable ChangeTracking and Inventory for Arc-enabled virtual machines",
+            "assignment_effect": "Disabled",
+            "role_definition_ids": [
+                "/providers/Microsoft.Authorization/roleDefinitions/cd570a14-e51a-42ad-bac8-bafd67325302",
+                "/providers/Microsoft.Authorization/roleDefinitions/92aaf0da-9dab-42b6-94a3-d43ce8d16293",
+                "/providers/Microsoft.Authorization/roleDefinitions/749f88d5-cbae-40b8-bcfc-e573ddc772fa"
+            ],
+            "assignment_parameters": {
+                "dcrResourceId": "",
+                "listOfApplicableLocations": [
+                    "australiasoutheast",
+                    "australiaeast",
+                    "brazilsouth",
+                    "canadacentral",
+                    "centralindia",
+                    "centralus",
+                    "eastasia",
+                    "eastus2euap",
+                    "eastus",
+                    "eastus2",
+                    "francecentral",
+                    "japaneast",
+                    "koreacentral",
+                    "northcentralus",
+                    "northeurope",
+                    "norwayeast",
+                    "southcentralus",
+                    "southeastasia",
+                    "switzerlandnorth",
+                    "uaenorth",
+                    "uksouth",
+                    "westcentralus",
+                    "westeurope",
+                    "westus",
+                    "westus2"
+                ]
+            }
+        },
+        {
+            "initiative": "de01d381-bae9-4670-8870-786f89f49e26",
+            "assignment_display_name": "Configure SQL VMs and Arc-enabled SQL Servers to install Microsoft Defender for SQL and AMA with a user-defined LA workspace",
+            "role_definition_ids": [
+                "/providers/Microsoft.Authorization/roleDefinitions/cd570a14-e51a-42ad-bac8-bafd67325302",
+                "/providers/Microsoft.Authorization/roleDefinitions/92aaf0da-9dab-42b6-94a3-d43ce8d16293",
+                "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
+                "/providers/Microsoft.Authorization/roleDefinitions/749f88d5-cbae-40b8-bcfc-e573ddc772fa",
+                "/providers/Microsoft.Authorization/roleDefinitions/9980e02c-c2be-4d73-94e8-173b1dc7cf3c"
+            ],
+            "assignment_parameters": {
+                "userWorkspaceResourceId": "",
+                "workspaceRegion": "",
+                "userWorkspaceId": "",
+                "enableCollectionOfSqlQueriesForSecurityResearch": false,
+                "builtInIdentityResourceGroupLocation": "eastus",
+                "bringYourOwnUserAssignedManagedIdentity": false,
+                "userAssignedIdentityResourceId": "",
+                "bringYourOwnDcr": false,
+                "dcrResourceId": ""
+            }
+        }
+    ],
+    "custom_defnition_sets": [
+        {
+            "initiative": "deny_dine_append_tls_ssl",
+            "assignment_display_name": "Deny or Deploy and append TLS requirements and SSL enforcement on resources without Encryption in transit",
+            "role_definition_ids": [
+                "/providers/Microsoft.Authorization/roleDefinitions/de139f84-1756-47ae-9be6-808fbbe84772",
+                "/providers/Microsoft.Authorization/roleDefinitions/17d1049b-9a84-46fb-8f53-869881c3d3ab",
+                "/providers/Microsoft.Authorization/roleDefinitions/6d8ee4ec-f05a-4a1d-8b00-a9b17e38b437",
+                "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
+                "/providers/Microsoft.Authorization/roleDefinitions/4939a1f6-9ae0-4e48-a1e0-f2cbe897382d"
+            ],
+            "assignment_parameters": {
+                "effect_0e80e26943a44ae9B5bc178126b8a5cb": "Deny",
+                "effect_1a5b4dca0b6f4cf5907c56316bc1bf3d": "Deny",
+                "effect_AppendAppServiceHttpsonly": "Append",
+                "effect_AppendAppServiceLatestTLS": "Append",
+                "effect_AppendRedisDisableNonSslPort": "Append",
+                "effect_AppendRedisSslEnforcement": "Append",
+                "effect_DenyAppServiceApiAppHttp": "Deny",
+                "effect_DenyAppServiceFunctionAppHttp": "Deny",
+                "effect_DenyAppServiceWebAppHttp": "Deny",
+                "effect_DenyMySqlHttp": "Deny",
+                "effect_DenyPostgreSqlHttp": "Deny",
+                "effect_DenyRedisHttp": "Deny",
+                "effect_DenySqlMiMinTLS": "Deny",
+                "effect_DenySqlMinTLS": "Deny",
+                "effect_DeployMySQLSslEnforcement": "DeployIfNotExists",
+                "effect_DeployPostgreSQLSslEnforcement": "DeployIfNotExists",
+                "effect_DeploySQLMinTLS": "DeployIfNotExists",
+                "effect_DeploySqlMiMinTLS": "DeployIfNotExists",
+                "effect_DeployStorageSslEnforcement": "DeployIfNotExists",
+                "effect_F0e6e85b9b9f4a4bB67bF730d42f1b0b": "AuditIfNotExists",
+                "effect_F9d614c5C1734d5695a7B4437057d193": "AuditIfNotExists",
+                "effect_Fe83a0ebA853422dAac21bffd182c5d0": "Deny",
+                "excludedNamespaces_1a5b4dca0b6f4cf5907c56316bc1bf3d": [
+                    "kube-system",
+                    "gatekeeper-system",
+                    "azure-arc",
+                    "azure-extensions-usage-system"
+                ],
+                "labelSelector_1a5b4dca0b6f4cf5907c56316bc1bf3d": {},
+                "minTlsVersion_AppendAppServiceLatestTLS": "1.2",
+                "minimalTlsVersion_DenyMySqlHttp": "TLS1_2",
+                "minimalTlsVersion_DenyPostgreSqlHttp": "TLS1_2",
+                "minimalTlsVersion_DenySqlMiMinTLS": "1.2",
+                "minimalTlsVersion_DenySqlMinTLS": "1.2",
+                "minimalTlsVersion_DeployMySQLSslEnforcement": "TLS1_2",
+                "minimalTlsVersion_DeployPostgreSQLSslEnforcement": "TLS1_2",
+                "minimalTlsVersion_DeploySQLMinTLS": "1.2",
+                "minimalTlsVersion_DeploySqlMiMinTLS": "1.2",
+                "minimumTlsVersion_AppendRedisSslEnforcement": "1.2",
+                "minimumTlsVersion_DenyRedisHttp": "1.2",
+                "minimumTlsVersion_DeployStorageSslEnforcement": "TLS1_2",
+                "minimumTlsVersion_Fe83a0ebA853422dAac21bffd182c5d0": "TLS1_2",
+                "namespaces_1a5b4dca0b6f4cf5907c56316bc1bf3d": [],
+                "source_1a5b4dca0b6f4cf5907c56316bc1bf3d": "Original",
+                "warn_1a5b4dca0b6f4cf5907c56316bc1bf3d": false
+            }
+        },
+        {
+            "initiative": "audit_guardrails_az_kv",
+            "assignment_display_name": "Enforce recommended guardrails for Azure Key Vault",
+            "assignment_parameters": {
+                "effect_0a0758684c2642ef914c5bc007359560": "Audit",
+                "effect_0b60c0b22dc24e1cB5c9Abbed971de53": "Audit",
+                "effect_1151cede290b4ba08b380ad145ac888f": "Audit",
+                "effect_12d4fa5e1f9f4c2197a9B99b3c6611b5": "Audit",
+                "effect_12ef42cb99034e399c26422d29570417": "Audit",
+                "effect_152b15f78e1f4c1fAb718c010ba5dbc0": "Audit",
+                "effect_1d478a7421ba4b9f9d8f8e6fced0eec5": "Audit",
+                "effect_1e66c121A66a4b1f9b830fd99bf0fc2d": "Audit",
+                "effect_342e8053E12e4c44Be01C3c2f318400f": "Audit",
+                "effect_49a22571D2044c91A7b609b1a586fbc9": "Audit",
+                "effect_55615ac9Af464a59874e391cc3dfb490": "Audit",
+                "effect_5ff38825C5d847c5B70e069a21955146": "Audit",
+                "effect_75262d3eBa4a4f4385f89f72c090e5e3": "Audit",
+                "effect_75c4f823D65c4f29A73301d0077fdbcb": "Audit",
+                "effect_82067dbbE53b4e06B631546d197452d9": "Audit",
+                "effect_86810a988e914a448386Ec66d0de5d57": "Audit",
+                "effect_8e826246C97648f6B03e619bb92b3d82": "Audit",
+                "effect_98728c9032c740498429847dc0f4fe37": "Audit",
+                "effect_A22f4a4001d34c7d8071Da157eeff341": "Audit",
+                "effect_Ad27588c01984c8481ef08efd0274653": "Audit",
+                "effect_B0eb591a5e704534A8bf04b9c489584a": "Audit",
+                "effect_Bd78111f495343679fd57e08808b54bf": "Audit",
+                "effect_C26e4b24Cf984c67B48b5a25c4c69eb9": "Audit",
+                "effect_C39ba22d44284149B98170acb31fc383": "Audit",
+                "effect_Cee51871E5724576855c047c820360f0": "Audit",
+                "effect_E58fd0c1Feac4d1292db0a7e9421f53e": "Audit",
+                "effect_E8d998358a0645aeA8e087a91941ccfe": "Audit",
+                "effect_F772fb648e4040ad87bc7706e1949427": "Audit",
+                "effect_Ff25f3c8B73945389d073d6d25cfb255": "Audit",
+                "allowedCAs_8e826246C97648f6B03e619bb92b3d82": [
+                    "DigiCert",
+                    "GlobalSign"
+                ],
+                "allowedECNames_Bd78111f495343679fd57e08808b54bf": [
+                    "P-256",
+                    "P-256K",
+                    "P-384",
+                    "P-521"
+                ],
+                "allowedECNames_E58fd0c1Feac4d1292db0a7e9421f53e": [
+                    "P-256",
+                    "P-256K",
+                    "P-384",
+                    "P-521"
+                ],
+                "allowedECNames_Ff25f3c8B73945389d073d6d25cfb255": [
+                    "P-256",
+                    "P-256K",
+                    "P-384",
+                    "P-521"
+                ],
+                "allowedIPAddresses_55615ac9Af464a59874e391cc3dfb490": [],
+                "allowedKeyTypes_1151cede290b4ba08b380ad145ac888f": [
+                    "RSA",
+                    "RSA-HSM"
+                ],
+                "allowedKeyTypes_75c4f823D65c4f29A73301d0077fdbcb": [
+                    "RSA",
+                    "RSA-HSM",
+                    "EC",
+                    "EC-HSM"
+                ],
+                "caCommonName_A22f4a4001d34c7d8071Da157eeff341": "",
+                "daysToExpire_F772fb648e4040ad87bc7706e1949427": 30,
+                "forbiddenIPAddresses_55615ac9Af464a59874e391cc3dfb490": [],
+                "maximumPercentageLife_12ef42cb99034e399c26422d29570417": 80,
+                "maximumValidityInDays_342e8053E12e4c44Be01C3c2f318400f": 90,
+                "maximumValidityInDays_49a22571D2044c91A7b609b1a586fbc9": 90,
+                "maximumValidityInDays_C26e4b24Cf984c67B48b5a25c4c69eb9": 90,
+                "maximumValidityInDays_E8d998358a0645aeA8e087a91941ccfe": 90,
+                "maximumValidityInMonths_0a0758684c2642ef914c5bc007359560": 12,
+                "minimumDaysBeforeExpiration_5ff38825C5d847c5B70e069a21955146": 90,
+                "minimumDaysBeforeExpiration_Ad27588c01984c8481ef08efd0274653": 90,
+                "minimumDaysBeforeExpiration_B0eb591a5e704534A8bf04b9c489584a": 90,
+                "minimumDaysBeforeExpiry_12ef42cb99034e399c26422d29570417": 90,
+                "minimumRSAKeySize_82067dbbE53b4e06B631546d197452d9": 2048,
+                "minimumRSAKeySize_86810a988e914a448386Ec66d0de5d57": 2048,
+                "minimumRSAKeySize_Cee51871E5724576855c047c820360f0": 2048,
+                "restrictIPAddresses_55615ac9Af464a59874e391cc3dfb490": "No"
+            }
+        },
+        {
+            "initiative": "audit_backup_and_recovery",
+            "assignment_display_name": "Enforce enhanced recovery and backup policies",
+            "assignment_parameters": {
+                "effect_2514263bBc0d4b06Ac3eF262c0979018": "Audit",
+                "effect_31b8092a36b8434b9af75ec844364148": "Audit",
+                "effect_9798d31d60284dee864346102185c016": "Audit",
+                "effect_C58e083e79824e24AfdcBe14d312389e": "Audit",
+                "effect_C7031eab0fc04cd9Acd04497bd66d91a": "Audit",
+                "effect_D6f6f56014b749a49fc8D2c3a9807868": "Audit",
+                "checkAlwaysOnSoftDeleteOnly_31b8092a36b8434b9af75ec844364148": true,
+                "checkAlwaysOnSoftDeleteOnly_9798d31d60284dee864346102185c016": true,
+                "checkLockedImmutabilityOnly_D6f6f56014b749a49fc8D2c3a9807868": true,
+                "checkLockedImmutabiltyOnly_2514263bBc0d4b06Ac3eF262c0979018": true
+            }
+        },
+        {
+            "initiative": "dine_alert_lz_01",
+            "assignment_name": "dine_alert_lz_01",
+            "assignment_display_name": "eploy Azure Monitor Baseline Alerts for Landing Zone part 1",
+            "role_definition_ids": [
+                "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+            ],
+            "assignment_parameters": {
+                "effect_DeployAGApplicationGatewayTotalTimeAlert": "deployIfNotExists",
+                "effect_DeployAGBackendLastByteResponseTimeAlert": "deployIfNotExists",
+                "effect_DeployAGCPUUtilizationAlert": "deployIfNotExists",
+                "effect_DeployAGCapacityUnitsAlert": "deployIfNotExists",
+                "effect_DeployAGComputeUnitsAlert": "deployIfNotExists",
+                "effect_DeployAGFailedRequestsAlert": "deployIfNotExists",
+                "effect_DeployAGResponseStatusAlert": "deployIfNotExists",
+                "effect_DeployAGUnhealthyHostCountAlert": "deployIfNotExists",
+                "effect_DeployALBDataPathAvailabilityAlert": "deployIfNotExists",
+                "effect_DeployALBGlobalBackendAvailabilityAlert": "deployIfNotExists",
+                "effect_DeployALBHealthProbeStatusAlert": "deployIfNotExists",
+                "effect_DeployALBUsedSNATPortsAlert": "deployIfNotExists",
+                "effect_DeployActivitylogKeyVaultDeleteAtLz": "deployIfNotExists",
+                "effect_DeployActivitylogNSGDeleteAtLz": "deployIfNotExists",
+                "effect_DeployActivitylogRouteTableUpdateAtLz": "deployIfNotExists",
+                "effect_DeployActivitylogStorageAccountDeleteAtLz": "deployIfNotExists",
+                "effect_DeployFDBackendHealthAlert": "deployIfNotExists",
+                "effect_DeployFDBackendRequestLatencyAlert": "deployIfNotExists",
+                "effect_DeployFrontDoorCDNOriginHealthPercentageAlert": "deployIfNotExists",
+                "effect_DeployFrontDoorCDNOriginLatencyAlert": "deployIfNotExists",
+                "effect_DeployFrontDoorCDNPercentage4XXAlert": "deployIfNotExists",
+                "effect_DeployFrontDoorCDNPercentage5XXAlert": "deployIfNotExists",
+                "MonitorDisableTagName_DeployAGApplicationGatewayTotalTimeAlert": "MonitorDisable",
+                "MonitorDisableTagName_DeployAGBackendLastByteResponseTimeAlert": "MonitorDisable",
+                "MonitorDisableTagName_DeployAGCPUUtilizationAlert": "MonitorDisable",
+                "MonitorDisableTagName_DeployAGCapacityUnitsAlert": "MonitorDisable",
+                "MonitorDisableTagName_DeployAGComputeUnitsAlert": "MonitorDisable",
+                "MonitorDisableTagName_DeployAGFailedRequestsAlert": "MonitorDisable",
+                "MonitorDisableTagName_DeployAGResponseStatusAlert": "MonitorDisable",
+                "MonitorDisableTagName_DeployAGUnhealthyHostCountAlert": "MonitorDisable",
+                "MonitorDisableTagName_DeployALBDataPathAvailabilityAlert": "MonitorDisable",
+                "MonitorDisableTagName_DeployALBGlobalBackendAvailabilityAlert": "MonitorDisable",
+                "MonitorDisableTagName_DeployALBHealthProbeStatusAlert": "MonitorDisable",
+                "MonitorDisableTagName_DeployALBUsedSNATPortsAlert": "MonitorDisable",
+                "MonitorDisableTagName_DeployActivitylogKeyVaultDeleteAtLz": "MonitorDisable",
+                "MonitorDisableTagName_DeployActivitylogNSGDeleteAtLz": "MonitorDisable",
+                "MonitorDisableTagName_DeployActivitylogRouteTableUpdateAtLz": "MonitorDisable",
+                "MonitorDisableTagName_DeployActivitylogStorageAccountDeleteAtLz": "MonitorDisable",
+                "MonitorDisableTagName_DeployFDBackendHealthAlert": "MonitorDisable",
+                "MonitorDisableTagName_DeployFDBackendRequestLatencyAlert": "MonitorDisable",
+                "MonitorDisableTagName_DeployFrontDoorCDNOriginHealthPercentageAlert": "MonitorDisable",
+                "MonitorDisableTagName_DeployFrontDoorCDNOriginLatencyAlert": "MonitorDisable",
+                "MonitorDisableTagName_DeployFrontDoorCDNPercentage4XXAlert": "MonitorDisable",
+                "MonitorDisableTagName_DeployFrontDoorCDNPercentage5XXAlert": "MonitorDisable",
+                "MonitorDisableTagValues_DeployAGApplicationGatewayTotalTimeAlert": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployAGBackendLastByteResponseTimeAlert": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployAGCPUUtilizationAlert": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployAGCapacityUnitsAlert": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployAGComputeUnitsAlert": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployAGFailedRequestsAlert": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployAGResponseStatusAlert": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployAGUnhealthyHostCountAlert": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployALBDataPathAvailabilityAlert": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployALBGlobalBackendAvailabilityAlert": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployALBHealthProbeStatusAlert": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployALBUsedSNATPortsAlert": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployActivitylogKeyVaultDeleteAtLz": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployActivitylogNSGDeleteAtLz": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployActivitylogRouteTableUpdateAtLz": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployActivitylogStorageAccountDeleteAtLz": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployFDBackendHealthAlert": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployFDBackendRequestLatencyAlert": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployFrontDoorCDNOriginHealthPercentageAlert": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployFrontDoorCDNOriginLatencyAlert": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployFrontDoorCDNPercentage4XXAlert": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployFrontDoorCDNPercentage5XXAlert": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "alertResourceGroupLocation_DeployActivitylogKeyVaultDeleteAtLz": "",
+                "alertResourceGroupLocation_DeployActivitylogNSGDeleteAtLz": "",
+                "alertResourceGroupLocation_DeployActivitylogRouteTableUpdateAtLz": "",
+                "alertResourceGroupLocation_DeployActivitylogStorageAccountDeleteAtLz": "",
+                "alertResourceGroupName_DeployActivitylogKeyVaultDeleteAtLz": "",
+                "alertResourceGroupName_DeployActivitylogNSGDeleteAtLz": "",
+                "alertResourceGroupName_DeployActivitylogRouteTableUpdateAtLz": "",
+                "alertResourceGroupName_DeployActivitylogStorageAccountDeleteAtLz": "",
+                "alertResourceGroupTags_DeployActivitylogKeyVaultDeleteAtLz": {
+                    "_deployed_by_alz_monitor": true
+                },
+                "alertResourceGroupTags_DeployActivitylogNSGDeleteAtLz": {
+                    "_deployed_by_alz_monitor": true
+                },
+                "alertResourceGroupTags_DeployActivitylogRouteTableUpdateAtLz": {
+                    "_deployed_by_alz_monitor": true
+                },
+                "alertResourceGroupTags_DeployActivitylogStorageAccountDeleteAtLz": {
+                    "_deployed_by_alz_monitor": true
+                },
+                "alertSensitivity_DeployAGApplicationGatewayTotalTimeAlert": "Medium",
+                "alertSensitivity_DeployAGBackendLastByteResponseTimeAlert": "Medium",
+                "alertSensitivity_DeployAGFailedRequestsAlert": "Medium",
+                "alertSensitivity_DeployAGResponseStatusAlert": "Medium",
+                "autoMitigate_DeployAGApplicationGatewayTotalTimeAlert": "true",
+                "autoMitigate_DeployAGBackendLastByteResponseTimeAlert": "true",
+                "autoMitigate_DeployAGCPUUtilizationAlert": "true",
+                "autoMitigate_DeployAGCapacityUnitsAlert": "true",
+                "autoMitigate_DeployAGComputeUnitsAlert": "true",
+                "autoMitigate_DeployAGFailedRequestsAlert": "true",
+                "autoMitigate_DeployAGResponseStatusAlert": "true",
+                "autoMitigate_DeployAGUnhealthyHostCountAlert": "true",
+                "autoMitigate_DeployALBDataPathAvailabilityAlert": "true",
+                "autoMitigate_DeployALBGlobalBackendAvailabilityAlert": "true",
+                "autoMitigate_DeployALBHealthProbeStatusAlert": "true",
+                "autoMitigate_DeployALBUsedSNATPortsAlert": "true",
+                "autoMitigate_DeployFDBackendHealthAlert": "true",
+                "autoMitigate_DeployFDBackendRequestLatencyAlert": "true",
+                "autoMitigate_DeployFrontDoorCDNOriginHealthPercentageAlert": "true",
+                "autoMitigate_DeployFrontDoorCDNOriginLatencyAlert": "true",
+                "autoMitigate_DeployFrontDoorCDNPercentage4XXAlert": "true",
+                "autoMitigate_DeployFrontDoorCDNPercentage5XXAlert": "true",
+                "enabled_DeployAGApplicationGatewayTotalTimeAlert": "true",
+                "enabled_DeployAGBackendLastByteResponseTimeAlert": "true",
+                "enabled_DeployAGCPUUtilizationAlert": "true",
+                "enabled_DeployAGCapacityUnitsAlert": "true",
+                "enabled_DeployAGComputeUnitsAlert": "true",
+                "enabled_DeployAGFailedRequestsAlert": "true",
+                "enabled_DeployAGResponseStatusAlert": "true",
+                "enabled_DeployAGUnhealthyHostCountAlert": "true",
+                "enabled_DeployALBDataPathAvailabilityAlert": "true",
+                "enabled_DeployALBGlobalBackendAvailabilityAlert": "true",
+                "enabled_DeployALBHealthProbeStatusAlert": "true",
+                "enabled_DeployALBUsedSNATPortsAlert": "true",
+                "enabled_DeployActivitylogKeyVaultDeleteAtLz": "true",
+                "enabled_DeployActivitylogNSGDeleteAtLz": "true",
+                "enabled_DeployActivitylogRouteTableUpdateAtLz": "true",
+                "enabled_DeployActivitylogStorageAccountDeleteAtLz": "true",
+                "enabled_DeployFDBackendHealthAlert": "true",
+                "enabled_DeployFDBackendRequestLatencyAlert": "true",
+                "enabled_DeployFrontDoorCDNOriginHealthPercentageAlert": "true",
+                "enabled_DeployFrontDoorCDNOriginLatencyAlert": "true",
+                "enabled_DeployFrontDoorCDNPercentage4XXAlert": "true",
+                "enabled_DeployFrontDoorCDNPercentage5XXAlert": "true",
+                "evaluationFrequency_DeployAGApplicationGatewayTotalTimeAlert": "PT5M",
+                "evaluationFrequency_DeployAGBackendLastByteResponseTimeAlert": "PT5M",
+                "evaluationFrequency_DeployAGCPUUtilizationAlert": "PT5M",
+                "evaluationFrequency_DeployAGCapacityUnitsAlert": "PT5M",
+                "evaluationFrequency_DeployAGComputeUnitsAlert": "PT5M",
+                "evaluationFrequency_DeployAGFailedRequestsAlert": "PT5M",
+                "evaluationFrequency_DeployAGResponseStatusAlert": "PT5M",
+                "evaluationFrequency_DeployAGUnhealthyHostCountAlert": "PT5M",
+                "evaluationFrequency_DeployALBDataPathAvailabilityAlert": "PT5M",
+                "evaluationFrequency_DeployALBGlobalBackendAvailabilityAlert": "PT5M",
+                "evaluationFrequency_DeployALBHealthProbeStatusAlert": "PT5M",
+                "evaluationFrequency_DeployALBUsedSNATPortsAlert": "PT5M",
+                "evaluationFrequency_DeployFDBackendHealthAlert": "PT5M",
+                "evaluationFrequency_DeployFDBackendRequestLatencyAlert": "PT5M",
+                "evaluationFrequency_DeployFrontDoorCDNOriginHealthPercentageAlert": "PT5M",
+                "evaluationFrequency_DeployFrontDoorCDNOriginLatencyAlert": "PT5M",
+                "evaluationFrequency_DeployFrontDoorCDNPercentage4XXAlert": "PT5M",
+                "evaluationFrequency_DeployFrontDoorCDNPercentage5XXAlert": "PT5M",
+                "evaluationPeriods_DeployAGApplicationGatewayTotalTimeAlert": "1",
+                "evaluationPeriods_DeployAGBackendLastByteResponseTimeAlert": "1",
+                "evaluationPeriods_DeployAGFailedRequestsAlert": "1",
+                "evaluationPeriods_DeployAGResponseStatusAlert": "1",
+                "evaluationPeriods_DeployFrontDoorCDNOriginLatencyAlert": "1",
+                "evaluationPeriods_DeployFrontDoorCDNPercentage4XXAlert": "1",
+                "evaluationPeriods_DeployFrontDoorCDNPercentage5XXAlert": "1",
+                "failingPeriods_DeployAGApplicationGatewayTotalTimeAlert": "1",
+                "failingPeriods_DeployAGBackendLastByteResponseTimeAlert": "1",
+                "failingPeriods_DeployAGFailedRequestsAlert": "1",
+                "failingPeriods_DeployAGResponseStatusAlert": "1",
+                "failingPeriods_DeployFrontDoorCDNOriginLatencyAlert": "1",
+                "failingPeriods_DeployFrontDoorCDNPercentage4XXAlert": "1",
+                "failingPeriods_DeployFrontDoorCDNPercentage5XXAlert": "1",
+                "severity_DeployAGApplicationGatewayTotalTimeAlert": "3",
+                "severity_DeployAGBackendLastByteResponseTimeAlert": "3",
+                "severity_DeployAGCPUUtilizationAlert": "3",
+                "severity_DeployAGCapacityUnitsAlert": "3",
+                "severity_DeployAGComputeUnitsAlert": "3",
+                "severity_DeployAGFailedRequestsAlert": "3",
+                "severity_DeployAGResponseStatusAlert": "3",
+                "severity_DeployAGUnhealthyHostCountAlert": "3",
+                "severity_DeployALBDataPathAvailabilityAlert": "3",
+                "severity_DeployALBGlobalBackendAvailabilityAlert": "3",
+                "severity_DeployALBHealthProbeStatusAlert": "3",
+                "severity_DeployALBUsedSNATPortsAlert": "3",
+                "severity_DeployFDBackendHealthAlert": "3",
+                "severity_DeployFDBackendRequestLatencyAlert": "3",
+                "severity_DeployFrontDoorCDNOriginHealthPercentageAlert": "3",
+                "severity_DeployFrontDoorCDNOriginLatencyAlert": "3",
+                "severity_DeployFrontDoorCDNPercentage4XXAlert": "3",
+                "severity_DeployFrontDoorCDNPercentage5XXAlert": "3",
+                "threshold_DeployAGCPUUtilizationAlert": "30",
+                "threshold_DeployAGCapacityUnitsAlert": "30",
+                "threshold_DeployAGComputeUnitsAlert": "30",
+                "threshold_DeployAGUnhealthyHostCountAlert": "30",
+                "threshold_DeployALBDataPathAvailabilityAlert": "30",
+                "threshold_DeployALBGlobalBackendAvailabilityAlert": "30",
+                "threshold_DeployALBHealthProbeStatusAlert": "30",
+                "threshold_DeployALBUsedSNATPortsAlert": "30",
+                "threshold_DeployFDBackendHealthAlert": "30",
+                "threshold_DeployFrontDoorCDNOriginHealthPercentageAlert": "30",
+                "windowSize_DeployAGApplicationGatewayTotalTimeAlert": "PT5M",
+                "windowSize_DeployAGBackendLastByteResponseTimeAlert": "PT5M",
+                "windowSize_DeployAGCPUUtilizationAlert": "PT5M",
+                "windowSize_DeployAGCapacityUnitsAlert": "PT5M",
+                "windowSize_DeployAGComputeUnitsAlert": "PT5M",
+                "windowSize_DeployAGFailedRequestsAlert": "PT5M",
+                "windowSize_DeployAGResponseStatusAlert": "PT5M",
+                "windowSize_DeployAGUnhealthyHostCountAlert": "PT5M",
+                "windowSize_DeployALBDataPathAvailabilityAlert": "PT5M",
+                "windowSize_DeployALBGlobalBackendAvailabilityAlert": "PT5M",
+                "windowSize_DeployALBHealthProbeStatusAlert": "PT5M",
+                "windowSize_DeployALBUsedSNATPortsAlert": "PT5M",
+                "windowSize_DeployFDBackendHealthAlert": "PT5M",
+                "windowSize_DeployFDBackendRequestLatencyAlert": "PT5M",
+                "windowSize_DeployFrontDoorCDNOriginHealthPercentageAlert": "PT5M",
+                "windowSize_DeployFrontDoorCDNOriginLatencyAlert": "PT5M",
+                "windowSize_DeployFrontDoorCDNPercentage4XXAlert": "PT5M",
+                "windowSize_DeployFrontDoorCDNPercentage5XXAlert": "PT5M"
+            }
+        },
+        {
+            "initiative": "dine_alert_lz_02",
+            "assignment_name": "dine_alert_lz_02",
+            "assignment_display_name": "eploy Azure Monitor Baseline Alerts for Landing Zone part 2",
+            "role_definition_ids": [
+                "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+            ],
+            "assignment_parameters": {
+                "MonitorDisableTagName_DeployKeyVaultAvailabilityAlertAtLZ": "MonitorDisable",
+                "MonitorDisableTagName_DeployKeyVaultCapacityAlertAtLZ": "MonitorDisable",
+                "MonitorDisableTagName_DeployKeyVaultLatencyAlertAtLZ": "MonitorDisable",
+                "MonitorDisableTagName_DeployKeyVaultRequestsAlertAtLZ": "MonitorDisable",
+                "MonitorDisableTagName_DeployPublicIpBytesInDDoSAttackAlert": "MonitorDisable",
+                "MonitorDisableTagName_DeployPublicIpDDoSAttackAlert": "MonitorDisable",
+                "MonitorDisableTagName_DeployPublicIpPacketsInDDoSAttackAlert": "MonitorDisable",
+                "MonitorDisableTagName_DeployPublicIpVIPAvailabilityAlert": "MonitorDisable",
+                "MonitorDisableTagName_DeployRecoveryVaultBackupHealthMonitorAlert": "MonitorDisable",
+                "MonitorDisableTagName_DeployStorageAccountAvailabilityAlert": "MonitorDisable",
+                "MonitorDisableTagName_DeployTMEndpointHealthAlert": "MonitorDisable",
+                "MonitorDisableTagName_DeployVMCPUAlert": "MonitorDisable",
+                "MonitorDisableTagName_DeployVMDataDiskReadLatencyAlert": "MonitorDisable",
+                "MonitorDisableTagName_DeployVMDataDiskSpaceAlert": "MonitorDisable",
+                "MonitorDisableTagName_DeployVMDataDiskWriteLatencyAlert": "MonitorDisable",
+                "MonitorDisableTagName_DeployVMHeartBeatAlert": "MonitorDisable",
+                "MonitorDisableTagName_DeployVMMemoryAlert": "MonitorDisable",
+                "MonitorDisableTagName_DeployVMNetworkInAlert": "MonitorDisable",
+                "MonitorDisableTagName_DeployVMNetworkOutAlert": "MonitorDisable",
+                "MonitorDisableTagName_DeployVMOSDiskSpaceAlert": "MonitorDisable",
+                "MonitorDisableTagName_DeployVMOSDiskreadLatencyAlert": "MonitorDisable",
+                "MonitorDisableTagName_DeployVMOSDiskwriteLatencyAlert": "MonitorDisable",
+                "MonitorDisableTagName_DeployVNETDDoSAttackAlert": "MonitorDisable",
+                "MonitorDisableTagName_DeployWSFCPUPercentageAlert": "MonitorDisable",
+                "MonitorDisableTagName_DeployWSFDiskQueueLengthAlert": "MonitorDisable",
+                "MonitorDisableTagName_DeployWSFHttpQueueLengthAlert": "MonitorDisable",
+                "MonitorDisableTagName_DeployWSFMemoryPercentageAlert": "MonitorDisable",
+                "MonitorDisableTagValues_DeployKeyVaultAvailabilityAlertAtLZ": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployKeyVaultCapacityAlertAtLZ": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployKeyVaultLatencyAlertAtLZ": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployKeyVaultRequestsAlertAtLZ": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployPublicIpBytesInDDoSAttackAlert": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployPublicIpDDoSAttackAlert": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployPublicIpPacketsInDDoSAttackAlert": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployPublicIpVIPAvailabilityAlert": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployRecoveryVaultBackupHealthMonitorAlert": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployStorageAccountAvailabilityAlert": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployTMEndpointHealthAlert": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployVMCPUAlert": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployVMDataDiskReadLatencyAlert": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployVMDataDiskSpaceAlert": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployVMDataDiskWriteLatencyAlert": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployVMHeartBeatAlert": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployVMMemoryAlert": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployVMNetworkInAlert": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployVMNetworkOutAlert": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployVMOSDiskSpaceAlert": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployVMOSDiskreadLatencyAlert": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployVMOSDiskwriteLatencyAlert": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployVNETDDoSAttackAlert": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployWSFCPUPercentageAlert": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployWSFDiskQueueLengthAlert": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployWSFHttpQueueLengthAlert": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployWSFMemoryPercentageAlert": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "UAMIResourceId_DeployVMCPUAlert": "",
+                "UAMIResourceId_DeployVMDataDiskReadLatencyAlert": "",
+                "UAMIResourceId_DeployVMDataDiskSpaceAlert": "",
+                "UAMIResourceId_DeployVMDataDiskWriteLatencyAlert": "",
+                "UAMIResourceId_DeployVMHeartBeatAlert": "",
+                "UAMIResourceId_DeployVMMemoryAlert": "",
+                "UAMIResourceId_DeployVMNetworkInAlert": "",
+                "UAMIResourceId_DeployVMNetworkOutAlert": "",
+                "UAMIResourceId_DeployVMOSDiskSpaceAlert": "",
+                "UAMIResourceId_DeployVMOSDiskreadLatencyAlert": "",
+                "UAMIResourceId_DeployVMOSDiskwriteLatencyAlert": "",
+                "alertResourceGroupLocation_DeployVMCPUAlert": "",
+                "alertResourceGroupLocation_DeployVMDataDiskReadLatencyAlert": "",
+                "alertResourceGroupLocation_DeployVMDataDiskSpaceAlert": "",
+                "alertResourceGroupLocation_DeployVMDataDiskWriteLatencyAlert": "",
+                "alertResourceGroupLocation_DeployVMHeartBeatAlert": "",
+                "alertResourceGroupLocation_DeployVMMemoryAlert": "",
+                "alertResourceGroupLocation_DeployVMNetworkInAlert": "",
+                "alertResourceGroupLocation_DeployVMNetworkOutAlert": "",
+                "alertResourceGroupLocation_DeployVMOSDiskSpaceAlert": "",
+                "alertResourceGroupLocation_DeployVMOSDiskreadLatencyAlert": "",
+                "alertResourceGroupLocation_DeployVMOSDiskwriteLatencyAlert": "",
+                "alertResourceGroupName_DeployVMCPUAlert": "",
+                "alertResourceGroupName_DeployVMDataDiskReadLatencyAlert": "",
+                "alertResourceGroupName_DeployVMDataDiskSpaceAlert": "",
+                "alertResourceGroupName_DeployVMDataDiskWriteLatencyAlert": "",
+                "alertResourceGroupName_DeployVMHeartBeatAlert": "",
+                "alertResourceGroupName_DeployVMMemoryAlert": "",
+                "alertResourceGroupName_DeployVMNetworkInAlert": "",
+                "alertResourceGroupName_DeployVMNetworkOutAlert": "",
+                "alertResourceGroupName_DeployVMOSDiskSpaceAlert": "",
+                "alertResourceGroupName_DeployVMOSDiskreadLatencyAlert": "",
+                "alertResourceGroupName_DeployVMOSDiskwriteLatencyAlert": "",
+                "alertResourceGroupTags_DeployVMCPUAlert": {
+                    "_deployed_by_alz_monitor": true
+                },
+                "alertResourceGroupTags_DeployVMDataDiskReadLatencyAlert": {
+                    "_deployed_by_alz_monitor": true
+                },
+                "alertResourceGroupTags_DeployVMDataDiskSpaceAlert": {
+                    "_deployed_by_alz_monitor": true
+                },
+                "alertResourceGroupTags_DeployVMDataDiskWriteLatencyAlert": {
+                    "_deployed_by_alz_monitor": true
+                },
+                "alertResourceGroupTags_DeployVMHeartBeatAlert": {
+                    "_deployed_by_alz_monitor": true
+                },
+                "alertResourceGroupTags_DeployVMMemoryAlert": {
+                    "_deployed_by_alz_monitor": true
+                },
+                "alertResourceGroupTags_DeployVMNetworkInAlert": {
+                    "_deployed_by_alz_monitor": true
+                },
+                "alertResourceGroupTags_DeployVMNetworkOutAlert": {
+                    "_deployed_by_alz_monitor": true
+                },
+                "alertResourceGroupTags_DeployVMOSDiskSpaceAlert": {
+                    "_deployed_by_alz_monitor": true
+                },
+                "alertResourceGroupTags_DeployVMOSDiskreadLatencyAlert": {
+                    "_deployed_by_alz_monitor": true
+                },
+                "alertResourceGroupTags_DeployVMOSDiskwriteLatencyAlert": {
+                    "_deployed_by_alz_monitor": true
+                },
+                "autoMitigate_DeployKeyVaultAvailabilityAlertAtLZ": "true",
+                "autoMitigate_DeployKeyVaultCapacityAlertAtLZ": "true",
+                "autoMitigate_DeployKeyVaultLatencyAlertAtLZ": "true",
+                "autoMitigate_DeployKeyVaultRequestsAlertAtLZ": "true",
+                "autoMitigate_DeployPublicIpBytesInDDoSAttackAlert": "true",
+                "autoMitigate_DeployPublicIpDDoSAttackAlert": "true",
+                "autoMitigate_DeployPublicIpPacketsInDDoSAttackAlert": "true",
+                "autoMitigate_DeployPublicIpVIPAvailabilityAlert": "true",
+                "autoMitigate_DeployStorageAccountAvailabilityAlert": "true",
+                "autoMitigate_DeployTMEndpointHealthAlert": "true",
+                "autoMitigate_DeployVMCPUAlert": "true",
+                "autoMitigate_DeployVMDataDiskReadLatencyAlert": "true",
+                "autoMitigate_DeployVMDataDiskSpaceAlert": "true",
+                "autoMitigate_DeployVMDataDiskWriteLatencyAlert": "true",
+                "autoMitigate_DeployVMHeartBeatAlert": "true",
+                "autoMitigate_DeployVMMemoryAlert": "true",
+                "autoMitigate_DeployVMNetworkInAlert": "true",
+                "autoMitigate_DeployVMNetworkOutAlert": "true",
+                "autoMitigate_DeployVMOSDiskSpaceAlert": "true",
+                "autoMitigate_DeployVMOSDiskreadLatencyAlert": "true",
+                "autoMitigate_DeployVMOSDiskwriteLatencyAlert": "true",
+                "autoMitigate_DeployVNETDDoSAttackAlert": "true",
+                "autoMitigate_DeployWSFCPUPercentageAlert": "true",
+                "autoMitigate_DeployWSFDiskQueueLengthAlert": "true",
+                "autoMitigate_DeployWSFHttpQueueLengthAlert": "true",
+                "autoMitigate_DeployWSFMemoryPercentageAlert": "true",
+                "autoResolveTime_DeployVMCPUAlert": "00:10:00",
+                "autoResolveTime_DeployVMDataDiskReadLatencyAlert": "00:10:00",
+                "autoResolveTime_DeployVMDataDiskSpaceAlert": "00:10:00",
+                "autoResolveTime_DeployVMDataDiskWriteLatencyAlert": "00:10:00",
+                "autoResolveTime_DeployVMHeartBeatAlert": "00:10:00",
+                "autoResolveTime_DeployVMMemoryAlert": "00:10:00",
+                "autoResolveTime_DeployVMNetworkInAlert": "00:10:00",
+                "autoResolveTime_DeployVMNetworkOutAlert": "00:10:00",
+                "autoResolveTime_DeployVMOSDiskSpaceAlert": "00:10:00",
+                "autoResolveTime_DeployVMOSDiskreadLatencyAlert": "00:10:00",
+                "autoResolveTime_DeployVMOSDiskwriteLatencyAlert": "00:10:00",
+                "autoResolve_DeployVMCPUAlert": "true",
+                "autoResolve_DeployVMDataDiskReadLatencyAlert": "true",
+                "autoResolve_DeployVMDataDiskSpaceAlert": "true",
+                "autoResolve_DeployVMDataDiskWriteLatencyAlert": "true",
+                "autoResolve_DeployVMHeartBeatAlert": "true",
+                "autoResolve_DeployVMMemoryAlert": "true",
+                "autoResolve_DeployVMNetworkInAlert": "true",
+                "autoResolve_DeployVMNetworkOutAlert": "true",
+                "autoResolve_DeployVMOSDiskSpaceAlert": "true",
+                "autoResolve_DeployVMOSDiskreadLatencyAlert": "true",
+                "autoResolve_DeployVMOSDiskwriteLatencyAlert": "true",
+                "computersToInclude_DeployVMDataDiskReadLatencyAlert": [
+                    "*"
+                ],
+                "computersToInclude_DeployVMDataDiskSpaceAlert": [
+                    "*"
+                ],
+                "computersToInclude_DeployVMDataDiskWriteLatencyAlert": [
+                    "*"
+                ],
+                "computersToInclude_DeployVMHeartBeatAlert": [
+                    "*"
+                ],
+                "computersToInclude_DeployVMNetworkInAlert": [
+                    "*"
+                ],
+                "computersToInclude_DeployVMNetworkOutAlert": [
+                    "*"
+                ],
+                "computersToInclude_DeployVMOSDiskSpaceAlert": [
+                    "*"
+                ],
+                "computersToInclude_DeployVMOSDiskreadLatencyAlert": [
+                    "*"
+                ],
+                "computersToInclude_DeployVMOSDiskwriteLatencyAlert": [
+                    "*"
+                ],
+                "effect_DeployKeyVaultAvailabilityAlertAtLZ": "deployIfNotExists",
+                "effect_DeployKeyVaultCapacityAlertAtLZ": "deployIfNotExists",
+                "effect_DeployKeyVaultLatencyAlertAtLZ": "deployIfNotExists",
+                "effect_DeployKeyVaultRequestsAlertAtLZ": "deployIfNotExists",
+                "effect_DeployPublicIpBytesInDDoSAttackAlert": "deployIfNotExists",
+                "effect_DeployPublicIpDDoSAttackAlert": "deployIfNotExists",
+                "effect_DeployPublicIpPacketsInDDoSAttackAlert": "deployIfNotExists",
+                "effect_DeployPublicIpVIPAvailabilityAlert": "deployIfNotExists",
+                "effect_DeployRecoveryVaultBackupHealthMonitorAlert": "modify",
+                "effect_DeployStorageAccountAvailabilityAlert": "deployIfNotExists",
+                "effect_DeployTMEndpointHealthAlert": "deployIfNotExists",
+                "effect_DeployVMCPUAlert": "deployIfNotExists",
+                "effect_DeployVMDataDiskReadLatencyAlert": "deployIfNotExists",
+                "effect_DeployVMDataDiskSpaceAlert": "deployIfNotExists",
+                "effect_DeployVMDataDiskWriteLatencyAlert": "deployIfNotExists",
+                "effect_DeployVMHeartBeatAlert": "deployIfNotExists",
+                "effect_DeployVMMemoryAlert": "deployIfNotExists",
+                "effect_DeployVMNetworkInAlert": "deployIfNotExists",
+                "effect_DeployVMNetworkOutAlert": "deployIfNotExists",
+                "effect_DeployVMOSDiskSpaceAlert": "deployIfNotExists",
+                "effect_DeployVMOSDiskreadLatencyAlert": "deployIfNotExists",
+                "effect_DeployVMOSDiskwriteLatencyAlert": "deployIfNotExists",
+                "effect_DeployVNETDDoSAttackAlert": "deployIfNotExists",
+                "effect_DeployWSFCPUPercentageAlert": "deployIfNotExists",
+                "effect_DeployWSFDiskQueueLengthAlert": "deployIfNotExists",
+                "effect_DeployWSFHttpQueueLengthAlert": "deployIfNotExists",
+                "effect_DeployWSFMemoryPercentageAlert": "deployIfNotExists",
+                "enabled_DeployKeyVaultAvailabilityAlertAtLZ": "true",
+                "enabled_DeployKeyVaultCapacityAlertAtLZ": "true",
+                "enabled_DeployKeyVaultLatencyAlertAtLZ": "true",
+                "enabled_DeployKeyVaultRequestsAlertAtLZ": "true",
+                "enabled_DeployPublicIpBytesInDDoSAttackAlert": "true",
+                "enabled_DeployPublicIpDDoSAttackAlert": "true",
+                "enabled_DeployPublicIpPacketsInDDoSAttackAlert": "true",
+                "enabled_DeployPublicIpVIPAvailabilityAlert": "true",
+                "enabled_DeployStorageAccountAvailabilityAlert": "true",
+                "enabled_DeployTMEndpointHealthAlert": "true",
+                "enabled_DeployVMCPUAlert": "true",
+                "enabled_DeployVMDataDiskReadLatencyAlert": "true",
+                "enabled_DeployVMDataDiskSpaceAlert": "true",
+                "enabled_DeployVMDataDiskWriteLatencyAlert": "true",
+                "enabled_DeployVMHeartBeatAlert": "true",
+                "enabled_DeployVMMemoryAlert": "true",
+                "enabled_DeployVMNetworkInAlert": "true",
+                "enabled_DeployVMNetworkOutAlert": "true",
+                "enabled_DeployVMOSDiskSpaceAlert": "true",
+                "enabled_DeployVMOSDiskreadLatencyAlert": "true",
+                "enabled_DeployVMOSDiskwriteLatencyAlert": "true",
+                "enabled_DeployVNETDDoSAttackAlert": "true",
+                "enabled_DeployWSFCPUPercentageAlert": "true",
+                "enabled_DeployWSFDiskQueueLengthAlert": "true",
+                "enabled_DeployWSFHttpQueueLengthAlert": "true",
+                "enabled_DeployWSFMemoryPercentageAlert": "true",
+                "evaluationFrequency_DeployKeyVaultAvailabilityAlertAtLZ": "PT5M",
+                "evaluationFrequency_DeployKeyVaultCapacityAlertAtLZ": "PT5M",
+                "evaluationFrequency_DeployKeyVaultLatencyAlertAtLZ": "PT5M",
+                "evaluationFrequency_DeployKeyVaultRequestsAlertAtLZ": "PT5M",
+                "evaluationFrequency_DeployPublicIpBytesInDDoSAttackAlert": "PT5M",
+                "evaluationFrequency_DeployPublicIpDDoSAttackAlert": "PT5M",
+                "evaluationFrequency_DeployPublicIpPacketsInDDoSAttackAlert": "PT5M",
+                "evaluationFrequency_DeployPublicIpVIPAvailabilityAlert": "PT5M",
+                "evaluationFrequency_DeployStorageAccountAvailabilityAlert": "PT5M",
+                "evaluationFrequency_DeployTMEndpointHealthAlert": "PT5M",
+                "evaluationFrequency_DeployVMCPUAlert": "PT5M",
+                "evaluationFrequency_DeployVMDataDiskReadLatencyAlert": "PT5M",
+                "evaluationFrequency_DeployVMDataDiskSpaceAlert": "PT5M",
+                "evaluationFrequency_DeployVMDataDiskWriteLatencyAlert": "PT5M",
+                "evaluationFrequency_DeployVMHeartBeatAlert": "PT5M",
+                "evaluationFrequency_DeployVMMemoryAlert": "PT5M",
+                "evaluationFrequency_DeployVMNetworkInAlert": "PT5M",
+                "evaluationFrequency_DeployVMNetworkOutAlert": "PT5M",
+                "evaluationFrequency_DeployVMOSDiskSpaceAlert": "PT5M",
+                "evaluationFrequency_DeployVMOSDiskreadLatencyAlert": "PT5M",
+                "evaluationFrequency_DeployVMOSDiskwriteLatencyAlert": "PT5M",
+                "evaluationFrequency_DeployVNETDDoSAttackAlert": "PT5M",
+                "evaluationFrequency_DeployWSFCPUPercentageAlert": "PT5M",
+                "evaluationFrequency_DeployWSFDiskQueueLengthAlert": "PT5M",
+                "evaluationFrequency_DeployWSFHttpQueueLengthAlert": "PT5M",
+                "evaluationFrequency_DeployWSFMemoryPercentageAlert": "PT5M",
+                "evaluationPeriods_DeployVMCPUAlert": "1",
+                "evaluationPeriods_DeployVMDataDiskReadLatencyAlert": "1",
+                "evaluationPeriods_DeployVMDataDiskSpaceAlert": "1",
+                "evaluationPeriods_DeployVMDataDiskWriteLatencyAlert": "1",
+                "evaluationPeriods_DeployVMHeartBeatAlert": "1",
+                "evaluationPeriods_DeployVMMemoryAlert": "1",
+                "evaluationPeriods_DeployVMNetworkInAlert": "1",
+                "evaluationPeriods_DeployVMNetworkOutAlert": "1",
+                "evaluationPeriods_DeployVMOSDiskSpaceAlert": "1",
+                "evaluationPeriods_DeployVMOSDiskreadLatencyAlert": "1",
+                "evaluationPeriods_DeployVMOSDiskwriteLatencyAlert": "1",
+                "evaluationPeriods_DeployWSFDiskQueueLengthAlert": "1",
+                "evaluationPeriods_DeployWSFHttpQueueLengthAlert": "1",
+                "failingPeriods_DeployVMCPUAlert": "1",
+                "failingPeriods_DeployVMDataDiskReadLatencyAlert": "1",
+                "failingPeriods_DeployVMDataDiskSpaceAlert": "1",
+                "failingPeriods_DeployVMDataDiskWriteLatencyAlert": "1",
+                "failingPeriods_DeployVMHeartBeatAlert": "1",
+                "failingPeriods_DeployVMMemoryAlert": "1",
+                "failingPeriods_DeployVMNetworkInAlert": "1",
+                "failingPeriods_DeployVMNetworkOutAlert": "1",
+                "failingPeriods_DeployVMOSDiskSpaceAlert": "1",
+                "failingPeriods_DeployVMOSDiskreadLatencyAlert": "1",
+                "failingPeriods_DeployVMOSDiskwriteLatencyAlert": "1",
+                "failingPeriods_DeployWSFDiskQueueLengthAlert": "1",
+                "failingPeriods_DeployWSFHttpQueueLengthAlert": "1",
+                "operator_DeployVMCPUAlert": "GreaterThan",
+                "operator_DeployVMDataDiskReadLatencyAlert": "GreaterThan",
+                "operator_DeployVMDataDiskSpaceAlert": "GreaterThan",
+                "operator_DeployVMDataDiskWriteLatencyAlert": "GreaterThan",
+                "operator_DeployVMHeartBeatAlert": "GreaterThan",
+                "operator_DeployVMMemoryAlert": "GreaterThan",
+                "operator_DeployVMNetworkInAlert": "GreaterThan",
+                "operator_DeployVMNetworkOutAlert": "GreaterThan",
+                "operator_DeployVMOSDiskSpaceAlert": "GreaterThan",
+                "operator_DeployVMOSDiskreadLatencyAlert": "GreaterThan",
+                "operator_DeployVMOSDiskwriteLatencyAlert": "GreaterThan",
+                "severity_DeployKeyVaultAvailabilityAlertAtLZ": "3",
+                "severity_DeployKeyVaultCapacityAlertAtLZ": "3",
+                "severity_DeployKeyVaultLatencyAlertAtLZ": "3",
+                "severity_DeployKeyVaultRequestsAlertAtLZ": "3",
+                "severity_DeployPublicIpBytesInDDoSAttackAlert": "3",
+                "severity_DeployPublicIpDDoSAttackAlert": "3",
+                "severity_DeployPublicIpPacketsInDDoSAttackAlert": "3",
+                "severity_DeployPublicIpVIPAvailabilityAlert": "3",
+                "severity_DeployStorageAccountAvailabilityAlert": "3",
+                "severity_DeployTMEndpointHealthAlert": "3",
+                "severity_DeployVMCPUAlert": "3",
+                "severity_DeployVMDataDiskReadLatencyAlert": "3",
+                "severity_DeployVMDataDiskSpaceAlert": "3",
+                "severity_DeployVMDataDiskWriteLatencyAlert": "3",
+                "severity_DeployVMHeartBeatAlert": "3",
+                "severity_DeployVMMemoryAlert": "3",
+                "severity_DeployVMNetworkInAlert": "3",
+                "severity_DeployVMNetworkOutAlert": "3",
+                "severity_DeployVMOSDiskSpaceAlert": "3",
+                "severity_DeployVMOSDiskreadLatencyAlert": "3",
+                "severity_DeployVMOSDiskwriteLatencyAlert": "3",
+                "severity_DeployVNETDDoSAttackAlert": "3",
+                "severity_DeployWSFCPUPercentageAlert": "3",
+                "severity_DeployWSFDiskQueueLengthAlert": "3",
+                "severity_DeployWSFHttpQueueLengthAlert": "3",
+                "severity_DeployWSFMemoryPercentageAlert": "3",
+                "threshold_DeployKeyVaultAvailabilityAlertAtLZ": "30",
+                "threshold_DeployKeyVaultCapacityAlertAtLZ": "30",
+                "threshold_DeployKeyVaultLatencyAlertAtLZ": "30",
+                "threshold_DeployPublicIpBytesInDDoSAttackAlert": "30",
+                "threshold_DeployPublicIpDDoSAttackAlert": "30",
+                "threshold_DeployPublicIpPacketsInDDoSAttackAlert": "30",
+                "threshold_DeployPublicIpVIPAvailabilityAlert": "30",
+                "threshold_DeployStorageAccountAvailabilityAlert": "30",
+                "threshold_DeployTMEndpointHealthAlert": "30",
+                "threshold_DeployVMCPUAlert": "30",
+                "threshold_DeployVMDataDiskReadLatencyAlert": "30",
+                "threshold_DeployVMDataDiskSpaceAlert": "30",
+                "threshold_DeployVMDataDiskWriteLatencyAlert": "30",
+                "threshold_DeployVMHeartBeatAlert": "30",
+                "threshold_DeployVMMemoryAlert": "30",
+                "threshold_DeployVMNetworkInAlert": "30",
+                "threshold_DeployVMNetworkOutAlert": "30",
+                "threshold_DeployVMOSDiskSpaceAlert": "30",
+                "threshold_DeployVMOSDiskreadLatencyAlert": "30",
+                "threshold_DeployVMOSDiskwriteLatencyAlert": "30",
+                "threshold_DeployVNETDDoSAttackAlert": "30",
+                "threshold_DeployWSFCPUPercentageAlert": "30",
+                "threshold_DeployWSFMemoryPercentageAlert": "30",
+                "timeAggregation_DeployVMCPUAlert": "Count",
+                "timeAggregation_DeployVMDataDiskReadLatencyAlert": "Count",
+                "timeAggregation_DeployVMDataDiskSpaceAlert": "Count",
+                "timeAggregation_DeployVMDataDiskWriteLatencyAlert": "Count",
+                "timeAggregation_DeployVMHeartBeatAlert": "Count",
+                "timeAggregation_DeployVMMemoryAlert": "Count",
+                "timeAggregation_DeployVMNetworkInAlert": "Count",
+                "timeAggregation_DeployVMNetworkOutAlert": "Count",
+                "timeAggregation_DeployVMOSDiskSpaceAlert": "Count",
+                "timeAggregation_DeployVMOSDiskreadLatencyAlert": "Count",
+                "timeAggregation_DeployVMOSDiskwriteLatencyAlert": "Count",
+                "windowSize_DeployKeyVaultAvailabilityAlertAtLZ": "PT5M",
+                "windowSize_DeployKeyVaultCapacityAlertAtLZ": "PT5M",
+                "windowSize_DeployKeyVaultLatencyAlertAtLZ": "PT5M",
+                "windowSize_DeployKeyVaultRequestsAlertAtLZ": "PT5M",
+                "windowSize_DeployPublicIpBytesInDDoSAttackAlert": "PT5M",
+                "windowSize_DeployPublicIpDDoSAttackAlert": "PT5M",
+                "windowSize_DeployPublicIpPacketsInDDoSAttackAlert": "PT5M",
+                "windowSize_DeployPublicIpVIPAvailabilityAlert": "PT5M",
+                "windowSize_DeployStorageAccountAvailabilityAlert": "PT5M",
+                "windowSize_DeployTMEndpointHealthAlert": "PT5M",
+                "windowSize_DeployVMCPUAlert": "PT5M",
+                "windowSize_DeployVMDataDiskReadLatencyAlert": "PT5M",
+                "windowSize_DeployVMDataDiskSpaceAlert": "PT5M",
+                "windowSize_DeployVMDataDiskWriteLatencyAlert": "PT5M",
+                "windowSize_DeployVMHeartBeatAlert": "PT5M",
+                "windowSize_DeployVMMemoryAlert": "PT5M",
+                "windowSize_DeployVMNetworkInAlert": "PT5M",
+                "windowSize_DeployVMNetworkOutAlert": "PT5M",
+                "windowSize_DeployVMOSDiskSpaceAlert": "PT5M",
+                "windowSize_DeployVMOSDiskreadLatencyAlert": "PT5M",
+                "windowSize_DeployVMOSDiskwriteLatencyAlert": "PT5M",
+                "windowSize_DeployVNETDDoSAttackAlert": "PT5M",
+                "windowSize_DeployWSFCPUPercentageAlert": "PT5M",
+                "windowSize_DeployWSFDiskQueueLengthAlert": "PT5M",
+                "windowSize_DeployWSFHttpQueueLengthAlert": "PT5M",
+                "windowSize_DeployWSFMemoryPercentageAlert": "PT5M"
+            }
+        },
+        {
+            "initiative": "modify_aum_check_updates",
+            "assignment_display_name": "Configure periodic checking for missing system updates on azure virtual machines and Arc-enabled virtual machines",
+            "role_definition_ids": [
+                "/providers/Microsoft.Authorization/roleDefinitions/cd570a14-e51a-42ad-bac8-bafd67325302",
+                "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+            ],
+            "assignment_parameters": {
+                "assessmentMode_59efceea0c96497eA4a14eb2290dac15": "AutomaticByPlatform",
+                "assessmentMode_Bfea026e043f4ff49d1bBf301ca7ff46": "AutomaticByPlatform",
+                "locations_59efceea0c96497eA4a14eb2290dac15": [],
+                "locations_Bfea026e043f4ff49d1bBf301ca7ff46": [],
+                "osType_59efceea0c96497eA4a14eb2290dac15": "Windows",
+                "osType_Bfea026e043f4ff49d1bBf301ca7ff46": "Windows",
+                "tagOperator_59efceea0c96497eA4a14eb2290dac15": "Any",
+                "tagOperator_Bfea026e043f4ff49d1bBf301ca7ff46": "Any",
+                "tagValues_59efceea0c96497eA4a14eb2290dac15": {},
+                "tagValues_Bfea026e043f4ff49d1bBf301ca7ff46": {}
+            }
+        }
+    ]
+}

@@ -173,7 +173,7 @@ deny_create_resources_temporary
 ### Definition sets custom
 ```
 dine_alert_connectivity_01              dine_azure_monitor_baseline_alerts_for_connectivity_01
-dine_alert_connectivity_01              dine_azure_monitor_baseline_alerts_for_connectivity_01
+dine_alert_connectivity_02              dine_azure_monitor_baseline_alerts_for_connectivity_02
 deny_sources_without_trusted_image      deny_sources_without_trusted_image
 ```
 

@@ -5,6 +5,10 @@
         {
             "definition": "98d0b9f8-fd90-49c9-88e2-d3baf3b0dd86",
             "assignment_effect": "AuditIfNotExists",
+            "role_definition_ids": [
+                "/providers/Microsoft.Authorization/roleDefinitions/9980e02c-c2be-4d73-94e8-173b1dc7cf3c",
+                "/providers/Microsoft.Authorization/roleDefinitions/5e467623-bb1f-42f4-a55d-6e525e11384b"
+            ],
             "assignment_parameters": {
                 "exclusionTagName": "",
                 "exclusionTagValue": []
@@ -13,11 +17,13 @@
     ],
     "custom_definitions": [
         {
-            "definition": "deny_public_ip",
+            "definition": "Deny-PublicIP",
+            "assigment_display_name": "Deny Public IP",
             "assignment_effect": "Deny"
         },
         {
-            "definition": "deny_subnet_without_nsg",
+            "definition": "Deny-Subnet-Without-Nsg",
+            "assignment_display_name": "Deny Subnet without NSG",
             "assignment_effect": "Deny",
             "assignment_parameters": {
                 "excludedSubnets": [
@@ -32,90 +38,147 @@
     "custom_defnition_sets": [
         {
             "initiative": "dine_alert_identity",
-            "assignment_effect": "deployIfNotExists",
+            "assignment_display_name": "Deploy Azure Monitor Baseline Alerts for Identity",
+            "role_definition_ids": [
+                "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+            ],
             "assignment_parameters": {
-                "effect_DeployActivityLogManagedHSMsDelete": "",
-                "effect_DeployActivitylogKeyVaultDeleteAtIdentity": "",
-                "effect_DeployKeyVaultAvailabilityAlertAtIdentity": "",
-                "effect_DeployKeyVaultCapacityAlertAtIdentity": "",
-                "effect_DeployKeyVaultLatencyAlertAtIdentity": "",
-                "effect_DeployKeyVaultRequestsAlertAtIdentity": "",
-                "effect_DeployManagedHSMsAvailabilityAlert": "",
-                "effect_DeployManagedHSMsLatencyAlert": "",
-                "MonitorDisableTagName_DeployActivityLogManagedHSMsDelete": "",
-                "MonitorDisableTagName_DeployActivitylogKeyVaultDeleteAtIdentity": "",
-                "MonitorDisableTagName_DeployKeyVaultAvailabilityAlertAtIdentity": "",
-                "MonitorDisableTagName_DeployKeyVaultCapacityAlertAtIdentity": "",
-                "MonitorDisableTagName_DeployKeyVaultLatencyAlertAtIdentity": "",
-                "MonitorDisableTagName_DeployKeyVaultRequestsAlertAtIdentity": "",
-                "MonitorDisableTagName_DeployManagedHSMsAvailabilityAlert": "",
-                "MonitorDisableTagName_DeployManagedHSMsLatencyAlert": "",
-                "MonitorDisableTagValues_DeployActivityLogManagedHSMsDelete": "",
-                "MonitorDisableTagValues_DeployActivitylogKeyVaultDeleteAtIdentity": "",
-                "MonitorDisableTagValues_DeployKeyVaultAvailabilityAlertAtIdentity": "",
-                "MonitorDisableTagValues_DeployKeyVaultCapacityAlertAtIdentity": "",
-                "MonitorDisableTagValues_DeployKeyVaultLatencyAlertAtIdentity": "",
-                "MonitorDisableTagValues_DeployKeyVaultRequestsAlertAtIdentity": "",
-                "MonitorDisableTagValues_DeployManagedHSMsAvailabilityAlert": "",
-                "MonitorDisableTagValues_DeployManagedHSMsLatencyAlert": "",
-                "alertResourceGroupLocation_DeployActivityLogManagedHSMsDelete": "",
-                "alertResourceGroupLocation_DeployActivitylogKeyVaultDeleteAtIdentity": "",
+                "effect_DeployActivityLogManagedHSMsDelete": "deployIfNotExists",
+                "effect_DeployActivitylogKeyVaultDeleteAtIdentity": "deployIfNotExists",
+                "effect_DeployKeyVaultAvailabilityAlertAtIdentity": "deployIfNotExists",
+                "effect_DeployKeyVaultCapacityAlertAtIdentity": "deployIfNotExists",
+                "effect_DeployKeyVaultLatencyAlertAtIdentity": "deployIfNotExists",
+                "effect_DeployKeyVaultRequestsAlertAtIdentity": "deployIfNotExists",
+                "effect_DeployManagedHSMsAvailabilityAlert": "deployIfNotExists",
+                "effect_DeployManagedHSMsLatencyAlert": "deployIfNotExists",
+                "MonitorDisableTagName_DeployActivityLogManagedHSMsDelete": "MonitorDisable",
+                "MonitorDisableTagName_DeployActivitylogKeyVaultDeleteAtIdentity": "MonitorDisable",
+                "MonitorDisableTagName_DeployKeyVaultAvailabilityAlertAtIdentity": "MonitorDisable",
+                "MonitorDisableTagName_DeployKeyVaultCapacityAlertAtIdentity": "MonitorDisable",
+                "MonitorDisableTagName_DeployKeyVaultLatencyAlertAtIdentity": "MonitorDisable",
+                "MonitorDisableTagName_DeployKeyVaultRequestsAlertAtIdentity": "MonitorDisable",
+                "MonitorDisableTagName_DeployManagedHSMsAvailabilityAlert": "MonitorDisable",
+                "MonitorDisableTagName_DeployManagedHSMsLatencyAlert": "MonitorDisable",
+                "MonitorDisableTagValues_DeployActivityLogManagedHSMsDelete": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployActivitylogKeyVaultDeleteAtIdentity": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployKeyVaultAvailabilityAlertAtIdentity": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployKeyVaultCapacityAlertAtIdentity": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployKeyVaultLatencyAlertAtIdentity": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployKeyVaultRequestsAlertAtIdentity": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployManagedHSMsAvailabilityAlert": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "MonitorDisableTagValues_DeployManagedHSMsLatencyAlert": [
+                    "true",
+                    "Test",
+                    "Dev",
+                    "Sandbox"
+                ],
+                "alertResourceGroupLocation_DeployActivityLogManagedHSMsDelete": "centralus",
+                "alertResourceGroupLocation_DeployActivitylogKeyVaultDeleteAtIdentity": "centralus",
                 "alertResourceGroupName_DeployActivityLogManagedHSMsDelete": "",
                 "alertResourceGroupName_DeployActivitylogKeyVaultDeleteAtIdentity": "",
-                "alertResourceGroupTags_DeployActivityLogManagedHSMsDelete": "",
-                "alertResourceGroupTags_DeployActivitylogKeyVaultDeleteAtIdentity": "",
-                "autoMitigate_DeployKeyVaultAvailabilityAlertAtIdentity": "",
-                "autoMitigate_DeployKeyVaultCapacityAlertAtIdentity": "",
-                "autoMitigate_DeployKeyVaultLatencyAlertAtIdentity": "",
-                "autoMitigate_DeployKeyVaultRequestsAlertAtIdentity": "",
-                "autoMitigate_DeployManagedHSMsAvailabilityAlert": "",
-                "autoMitigate_DeployManagedHSMsLatencyAlert": "",
-                "enabled_DeployActivityLogManagedHSMsDelete": "",
-                "enabled_DeployActivitylogKeyVaultDeleteAtIdentity": "",
-                "enabled_DeployKeyVaultAvailabilityAlertAtIdentity": "",
-                "enabled_DeployKeyVaultCapacityAlertAtIdentity": "",
-                "enabled_DeployKeyVaultLatencyAlertAtIdentity": "",
-                "enabled_DeployKeyVaultRequestsAlertAtIdentity": "",
-                "enabled_DeployManagedHSMsAvailabilityAlert": "",
-                "enabled_DeployManagedHSMsLatencyAlert": "",
-                "evaluationFrequency_DeployKeyVaultAvailabilityAlertAtIdentity": "",
-                "evaluationFrequency_DeployKeyVaultCapacityAlertAtIdentity": "",
-                "evaluationFrequency_DeployKeyVaultLatencyAlertAtIdentity": "",
-                "evaluationFrequency_DeployKeyVaultRequestsAlertAtIdentity": "",
-                "evaluationFrequency_DeployManagedHSMsAvailabilityAlert": "",
-                "evaluationFrequency_DeployManagedHSMsLatencyAlert": "",
-                "severity_DeployKeyVaultAvailabilityAlertAtIdentity": "",
-                "severity_DeployKeyVaultCapacityAlertAtIdentity": "",
-                "severity_DeployKeyVaultLatencyAlertAtIdentity": "",
-                "severity_DeployKeyVaultRequestsAlertAtIdentity": "",
-                "severity_DeployManagedHSMsAvailabilityAlert": "",
-                "severity_DeployManagedHSMsLatencyAlert": "",
-                "threshold_DeployKeyVaultAvailabilityAlertAtIdentity": "",
-                "threshold_DeployKeyVaultCapacityAlertAtIdentity": "",
-                "threshold_DeployKeyVaultLatencyAlertAtIdentity": "",
-                "threshold_DeployManagedHSMsAvailabilityAlert": "",
-                "threshold_DeployManagedHSMsLatencyAlert": "",
-                "windowSize_DeployKeyVaultAvailabilityAlertAtIdentity": "",
-                "windowSize_DeployKeyVaultCapacityAlertAtIdentity": "",
-                "windowSize_DeployKeyVaultLatencyAlertAtIdentity": "",
-                "windowSize_DeployKeyVaultRequestsAlertAtIdentity": "",
-                "windowSize_DeployManagedHSMsAvailabilityAlert": "",
-                "windowSize_DeployManagedHSMsLatencyAlert": ""
+                "alertResourceGroupTags_DeployActivityLogManagedHSMsDelete": {
+                    "_deployed_by_amba": true
+                },
+                "alertResourceGroupTags_DeployActivitylogKeyVaultDeleteAtIdentity": {
+                    "_deployed_by_amba": true
+                },
+                "autoMitigate_DeployKeyVaultAvailabilityAlertAtIdentity": "true",
+                "autoMitigate_DeployKeyVaultCapacityAlertAtIdentity": "true",
+                "autoMitigate_DeployKeyVaultLatencyAlertAtIdentity": "true",
+                "autoMitigate_DeployKeyVaultRequestsAlertAtIdentity": "true",
+                "autoMitigate_DeployManagedHSMsAvailabilityAlert": "true",
+                "autoMitigate_DeployManagedHSMsLatencyAlert": "true",
+                "enabled_DeployActivityLogManagedHSMsDelete": "true",
+                "enabled_DeployActivitylogKeyVaultDeleteAtIdentity": "true",
+                "enabled_DeployKeyVaultAvailabilityAlertAtIdentity": "true",
+                "enabled_DeployKeyVaultCapacityAlertAtIdentity": "true",
+                "enabled_DeployKeyVaultLatencyAlertAtIdentity": "true",
+                "enabled_DeployKeyVaultRequestsAlertAtIdentity": "true",
+                "enabled_DeployManagedHSMsAvailabilityAlert": "true",
+                "enabled_DeployManagedHSMsLatencyAlert": "true",
+                "evaluationFrequency_DeployKeyVaultAvailabilityAlertAtIdentity": "PT1M",
+                "evaluationFrequency_DeployKeyVaultCapacityAlertAtIdentity": "PT1M",
+                "evaluationFrequency_DeployKeyVaultLatencyAlertAtIdentity": "PT1M",
+                "evaluationFrequency_DeployKeyVaultRequestsAlertAtIdentity": "PT1M",
+                "evaluationFrequency_DeployManagedHSMsAvailabilityAlert": "PT1M",
+                "evaluationFrequency_DeployManagedHSMsLatencyAlert": "PT1M",
+                "severity_DeployKeyVaultAvailabilityAlertAtIdentity": "3",
+                "severity_DeployKeyVaultCapacityAlertAtIdentity": "3",
+                "severity_DeployKeyVaultLatencyAlertAtIdentity": "3",
+                "severity_DeployKeyVaultRequestsAlertAtIdentity": "3",
+                "severity_DeployManagedHSMsAvailabilityAlert": "3",
+                "severity_DeployManagedHSMsLatencyAlert": "3",
+                "threshold_DeployKeyVaultAvailabilityAlertAtIdentity": "20",
+                "threshold_DeployKeyVaultCapacityAlertAtIdentity": "75",
+                "threshold_DeployKeyVaultLatencyAlertAtIdentity": "1000",
+                "threshold_DeployManagedHSMsAvailabilityAlert": "20",
+                "threshold_DeployManagedHSMsLatencyAlert": "1000",
+                "windowSize_DeployKeyVaultAvailabilityAlertAtIdentity": "PT5M",
+                "windowSize_DeployKeyVaultCapacityAlertAtIdentity": "PT5M",
+                "windowSize_DeployKeyVaultLatencyAlertAtIdentity": "PT5M",
+                "windowSize_DeployKeyVaultRequestsAlertAtIdentity": "PT5M",
+                "windowSize_DeployManagedHSMsAvailabilityAlert": "PT5M",
+                "windowSize_DeployManagedHSMsLatencyAlert": "PT5M"
             }
         },
         {
             "initiative": "deny_sources_without_trusted_image",
+            "assignment_display_name": "Enforce trusted image from trusted source",
             "assignment_parameters": {
-                "allowedContainerImagesRegex_Febd05338e55448fB837Bd0e06f16469": "",
                 "effect_DenyVmVmssWithoutTrustedSources": "Deny",
                 "effect_Febd05338e55448fB837Bd0e06f16469": "Deny",
-                "excludedContainers_Febd05338e55448fB837Bd0e06f16469": "",
-                "excludedNamespaces_Febd05338e55448fB837Bd0e06f16469": "",
-                "labelSelector_Febd05338e55448fB837Bd0e06f16469": "",
-                "namespaces_Febd05338e55448fB837Bd0e06f16469": "",
-                "publishersToExcludeFromPolicy_DenyVmVmssWithoutTrustedSources": "",
-                "source_Febd05338e55448fB837Bd0e06f16469": "",
-                "warn_Febd05338e55448fB837Bd0e06f16469": ""
+                "allowedContainerImagesRegex_Febd05338e55448fB837Bd0e06f16469": "",
+                "excludedContainers_Febd05338e55448fB837Bd0e06f16469": [],
+                "excludedNamespaces_Febd05338e55448fB837Bd0e06f16469": [
+                    "kube-system",
+                    "gatekeeper-system",
+                    "azure-arc",
+                    "azure-extensions-usage-system"
+                ],
+                "labelSelector_Febd05338e55448fB837Bd0e06f16469": {},
+                "namespaces_Febd05338e55448fB837Bd0e06f16469": [],
+                "publishersToExcludeFromPolicy_DenyVmVmssWithoutTrustedSources": [
+                    "microsoft-ads",
+                    "AzureDatabricks",
+                    "microsoft-aks"
+                ],
+                "source_Febd05338e55448fB837Bd0e06f16469": "Original",
+                "warn_Febd05338e55448fB837Bd0e06f16469": false
             }
         }
     ]

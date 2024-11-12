@@ -242,7 +242,6 @@
                 "bringYourOwnDcr": false,
                 "dcrResourceId": ""
             }
- 
         }
     ],
     "custom_defnition_sets": [
@@ -250,10 +249,16 @@
             "initiative": "audit_backup_and_recovery",
             "assignment_display_name": "Enforce enhanced recovery and backup policies",
             "assignment_parameters": {
-                "checkAlwaysOnSoftDeleteOnly": true,
-                "checkLockedImmutabilityOnly": true,
-                "checkLockedImmutabiltyOnly": true,
-                "effect": "Audit"
+                "effect_2514263bBc0d4b06Ac3eF262c0979018": "Audit",
+                "effect_31b8092a36b8434b9af75ec844364148": "Audit",
+                "effect_9798d31d60284dee864346102185c016": "Audit",
+                "effect_C58e083e79824e24AfdcBe14d312389e": "Audit",
+                "effect_C7031eab0fc04cd9Acd04497bd66d91a": "Audit",
+                "effect_D6f6f56014b749a49fc8D2c3a9807868": "Audit",
+                "checkAlwaysOnSoftDeleteOnly_31b8092a36b8434b9af75ec844364148": true,
+                "checkAlwaysOnSoftDeleteOnly_9798d31d60284dee864346102185c016": true,
+                "checkLockedImmutabilityOnly_D6f6f56014b749a49fc8D2c3a9807868": true,
+                "checkLockedImmutabiltyOnly_2514263bBc0d4b06Ac3eF262c0979018": true
             }
         },
         {
@@ -264,10 +269,113 @@
                 "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
             ],
             "assignment_parameters": {
-                "assessmentMode": "AutomaticByPlatform",
-                "locations": [],
-                "tagOperator": "Any",
-                "tagValues": {}
+                "assessmentMode_59efceea0c96497eA4a14eb2290dac15": "AutomaticByPlatform",
+                "assessmentMode_Bfea026e043f4ff49d1bBf301ca7ff46": "AutomaticByPlatform",
+                "locations_59efceea0c96497eA4a14eb2290dac15": [],
+                "locations_Bfea026e043f4ff49d1bBf301ca7ff46": [],
+                "osType_59efceea0c96497eA4a14eb2290dac15": "Windows",
+                "osType_Bfea026e043f4ff49d1bBf301ca7ff46": "Windows",
+                "tagOperator_59efceea0c96497eA4a14eb2290dac15": "Any",
+                "tagOperator_Bfea026e043f4ff49d1bBf301ca7ff46": "Any",
+                "tagValues_59efceea0c96497eA4a14eb2290dac15": {},
+                "tagValues_Bfea026e043f4ff49d1bBf301ca7ff46": {}
+            }
+        },
+        {
+            "initiative": "audit_guardrails_az_kv",
+            "assignment_display_name": "Enforce recommended guardrails for Azure Key Vault",
+            "assignment_parameters": {
+                "effect_0a0758684c2642ef914c5bc007359560": "Audit",
+                "effect_0b60c0b22dc24e1cB5c9Abbed971de53": "Audit",
+                "effect_1151cede290b4ba08b380ad145ac888f": "Audit",
+                "effect_12d4fa5e1f9f4c2197a9B99b3c6611b5": "Audit",
+                "effect_12ef42cb99034e399c26422d29570417": "Audit",
+                "effect_152b15f78e1f4c1fAb718c010ba5dbc0": "Audit",
+                "effect_1d478a7421ba4b9f9d8f8e6fced0eec5": "Audit",
+                "effect_1e66c121A66a4b1f9b830fd99bf0fc2d": "Audit",
+                "effect_342e8053E12e4c44Be01C3c2f318400f": "Audit",
+                "effect_49a22571D2044c91A7b609b1a586fbc9": "Audit",
+                "effect_55615ac9Af464a59874e391cc3dfb490": "Audit",
+                "effect_5ff38825C5d847c5B70e069a21955146": "Audit",
+                "effect_75262d3eBa4a4f4385f89f72c090e5e3": "Audit",
+                "effect_75c4f823D65c4f29A73301d0077fdbcb": "Audit",
+                "effect_82067dbbE53b4e06B631546d197452d9": "Audit",
+                "effect_86810a988e914a448386Ec66d0de5d57": "Audit",
+                "effect_8e826246C97648f6B03e619bb92b3d82": "Audit",
+                "effect_98728c9032c740498429847dc0f4fe37": "Audit",
+                "effect_A22f4a4001d34c7d8071Da157eeff341": "Audit",
+                "effect_Ad27588c01984c8481ef08efd0274653": "Audit",
+                "effect_B0eb591a5e704534A8bf04b9c489584a": "Audit",
+                "effect_Bd78111f495343679fd57e08808b54bf": "Audit",
+                "effect_C26e4b24Cf984c67B48b5a25c4c69eb9": "Audit",
+                "effect_C39ba22d44284149B98170acb31fc383": "Audit",
+                "effect_Cee51871E5724576855c047c820360f0": "Audit",
+                "effect_E58fd0c1Feac4d1292db0a7e9421f53e": "Audit",
+                "effect_E8d998358a0645aeA8e087a91941ccfe": "Audit",
+                "effect_F772fb648e4040ad87bc7706e1949427": "Audit",
+                "effect_Ff25f3c8B73945389d073d6d25cfb255": "Audit",
+                "allowedCAs_8e826246C97648f6B03e619bb92b3d82": [
+                    "DigiCert",
+                    "GlobalSign"
+                ],
+                "allowedECNames_Bd78111f495343679fd57e08808b54bf": [
+                    "P-256",
+                    "P-256K",
+                    "P-384",
+                    "P-521"
+                ],
+                "allowedECNames_E58fd0c1Feac4d1292db0a7e9421f53e": [
+                    "P-256",
+                    "P-256K",
+                    "P-384",
+                    "P-521"
+                ],
+                "allowedECNames_Ff25f3c8B73945389d073d6d25cfb255": [
+                    "P-256",
+                    "P-256K",
+                    "P-384",
+                    "P-521"
+                ],
+                "allowedIPAddresses_55615ac9Af464a59874e391cc3dfb490": [],
+                "allowedKeyTypes_1151cede290b4ba08b380ad145ac888f": [
+                    "RSA",
+                    "RSA-HSM"
+                ],
+                "allowedKeyTypes_75c4f823D65c4f29A73301d0077fdbcb": [
+                    "RSA",
+                    "RSA-HSM",
+                    "EC",
+                    "EC-HSM"
+                ],
+                "caCommonName_A22f4a4001d34c7d8071Da157eeff341": "",
+                "daysToExpire_F772fb648e4040ad87bc7706e1949427": 30,
+                "forbiddenIPAddresses_55615ac9Af464a59874e391cc3dfb490": [],
+                "maximumPercentageLife_12ef42cb99034e399c26422d29570417": 80,
+                "maximumValidityInDays_342e8053E12e4c44Be01C3c2f318400f":  90,
+                "maximumValidityInDays_49a22571D2044c91A7b609b1a586fbc9":  90,
+                "maximumValidityInDays_C26e4b24Cf984c67B48b5a25c4c69eb9":  90,
+                "maximumValidityInDays_E8d998358a0645aeA8e087a91941ccfe":  90,
+                "maximumValidityInMonths_0a0758684c2642ef914c5bc007359560": 12,
+                "minimumDaysBeforeExpiration_5ff38825C5d847c5B70e069a21955146": 90,
+                "minimumDaysBeforeExpiration_Ad27588c01984c8481ef08efd0274653": 90,
+                "minimumDaysBeforeExpiration_B0eb591a5e704534A8bf04b9c489584a": 90,
+                "minimumDaysBeforeExpiry_12ef42cb99034e399c26422d29570417": 90,
+                "minimumRSAKeySize_82067dbbE53b4e06B631546d197452d9": 2048,
+                "minimumRSAKeySize_86810a988e914a448386Ec66d0de5d57": 2048,
+                "minimumRSAKeySize_Cee51871E5724576855c047c820360f0": 2048,
+                "restrictIPAddresses_55615ac9Af464a59874e391cc3dfb490": "No"
+            }
+        },
+        {
+            "initiative": "enforce_tag_specification",
+            "assignment_display_name": "Enforce tag specification",
+            "assignment_parameters": {
+                "effect_RequireTagsSpecificationAtResourceGroups01": "Deny",
+                "effect_RequireTagsSpecificationAtSubscriptions01": "Deny",
+                "ExpirationDate_RequireTagsSpecificationAtResourceGroups01": "ExpirationDate",
+                "ExpirationDate_RequireTagsSpecificationAtSubscriptions01": "ExpirationDate",
+                "Security_RequireTagsSpecificationAtResourceGroups01": "Security",
+                "Security_RequireTagsSpecificationAtSubscriptions01": "Security"
             }
         }
     ]

@@ -1,0 +1,39 @@
+{
+    "definition_location": "testing_mg",
+    "assignment_scope_id": "/providers/Microsoft.Management/managementGroups/testing_mg",
+    "builtin_definitions": [
+        {
+            "definition": "8e3e61b3-0b32-22d5-4edf-55f87fdb5955",
+            "assignment_effect": "DeployIfNotExists",
+            "assignment_parameters": {
+                "rgName": "CentralRG",
+                "workspaceName": "CentralWorkspace",
+                "workspaceRegion": "",
+                "sku": "pergb2018",
+                "dataRetention": "30",
+                "automationAccountName": "",
+                "automationRegion": ""
+            }
+        }
+    ],
+    "custom_definitions": [],
+    "builtin_defnition_sets": [],
+    "custom_defnition_sets": [
+        {
+            "initiative": "dine_alert_management",
+            "role_definition_ids": [
+                "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+            ],
+            "assignment_parameters": {
+                "effect_DeployAATotalJobAlertAtManagement": "deployIfNotExists",
+                "effect_DeployActivitylogLAWorkspaceDeleteAtManagement": "deployIfNotExists",
+                "effect_DeployActivitylogLAWorkspaceKeyRegenAtManagement": "deployIfNotExists",
+                "effect_DeployActivitylogStorageAccountDeleteAtManagement": "deployIfNotExists",
+                "effect_DeployLAWorkspaceDailyCapLimitReachedAlertAtManagement": "deployIfNotExists",
+                "effect_DeployRecoveryVaultASRHealthMonitorAlertAtManagement": "modify",
+                "effect_DeployRecoveryVaultBackupHealthMonitorAlertAtManagement": "modify",
+                "effect_DeployStorageAccountAvailabilityAlertAtManagement": "deployIfNotExists"
+            }
+        }
+    ]
+}

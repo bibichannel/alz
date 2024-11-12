@@ -14,3 +14,7 @@ module "definitions" {
   decommissioned_management_group_id    = data.azurerm_management_group.contoso.id
   sandbox_management_group_id           = data.azurerm_management_group.contoso.id
 }
+
+output "path_module" {
+  value = module.definitions.path_module
+}

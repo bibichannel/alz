@@ -1,6 +1,6 @@
 {
     "$schema": "https://raw.githubusercontent.com/Azure/enterprise-azure-policy-as-code/main/Schemas/policy-definition-schema.json",
-    "name": "125e78be-b7cd-4fa9-a269-729e6ef27d49",
+    "name": "audit_nsg_rule_inbound_from_internet",
     "properties": {
         "displayName": "Deny NSG rule inbound from internet - Network Security Group",
         "description": "This Policy will detect if an NSG rule would allow a port or set of ports to be accessed from outside of an IP whitelist. This will check Service Tags as well as Port Ranges. Example, if you specify port 22 in the parameter for this Policy, and only allow communications from 10.0.0.0/8, and someone creates a rule that allows ports 20-30 inbound from 20.x.x.x, this would be denied as 22 falls within that port range and 20.x.x.x is not on the IP whitelist. This Policy is part of a set of policies. Both must b",

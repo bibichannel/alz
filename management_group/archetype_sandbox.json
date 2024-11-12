@@ -1,0 +1,85 @@
+{
+    "definition_location": "testing_mg",
+    "assignment_scope_id": "/providers/Microsoft.Management/managementGroups/testing_mg",
+    "builtin_definitions": [
+        {
+            "definition": "6c112d4e-5bc7-47ae-a041-ea2d9dccd749",
+            "assignment_display_name": "Denies deployment of vWAN/ER/VPN gateway resources in the Corp landing zone.",
+            "assignment_parameters": {
+                "listOfResourceTypesNotAllowed": [
+                    "microsoft.network/expressroutecircuits",
+                    "microsoft.network/expressroutegateways",
+                    "microsoft.network/expressrouteports",
+                    "microsoft.network/virtualwans",
+                    "microsoft.network/virtualhubs",
+                    "microsoft.network/vpngateways",
+                    "microsoft.network/p2svpngateways",
+                    "microsoft.network/vpnsites",
+                    "microsoft.network/virtualnetworkgateways"
+                ]
+            }
+        },
+        {
+            "definition": "e56962a6-4747-49cd-b67b-bf8b01975c4c",
+            "assignment_display_name": "Allowed locations",
+            "assignment_parameters": {
+                "listOfAllowedLocations": []
+            }
+        }
+    ],
+    "custom_definitions": [
+        {
+            "definition": "Deny-PublicIP",
+            "assignment_effect": "Deny"
+        },
+        {
+            "definition": "Deny-MgmtPorts-From-Internet",
+            "assignment_effect": "Deny",
+            "assignment_display_name": "Deny management ports from internet",
+            "assignment_parameters": {
+                "ports": [
+                    "22",
+                    "3389"
+                ]
+            }
+        },
+        {
+            "definition": "audit_nsg_rule_inbound_from_internet",
+            "assignment_effect": "Deny",
+            "assignment_display_name": "Audit NSG rule inbound from internet",
+            "assignment_parameters": {
+                "destinationPort":[],
+                "allowedIPRanges": []
+            }
+        }
+    ],
+    "builtin_defnition_sets": [],
+    "custom_defnition_sets": [
+        {
+            "initiative": "audit_unused_resources",
+            "assignment_display_name": "Unused resources driving cost should be avoided",
+            "assignment_parameters": {
+                "effect_AuditAzureHybridBenefit": "Audit",
+                "effect_AuditDisksUnusedResourcesCostOptimization": "Audit",
+                "effect_AuditPublicIpAddressesUnusedResourcesCostOptimization": "Audit",
+                "effect_AuditServerFarmsUnusedResourcesCostOptimization": "Audit"
+            }
+        },
+        {
+            "initiative": "audit_backup_and_recovery",
+            "assignment_display_name": "Enforce enhanced recovery and backup policies",
+            "assignment_parameters": {
+                "effect_2514263bBc0d4b06Ac3eF262c0979018": "Audit",
+                "effect_31b8092a36b8434b9af75ec844364148": "Audit",
+                "effect_9798d31d60284dee864346102185c016": "Audit",
+                "effect_C58e083e79824e24AfdcBe14d312389e": "Audit",
+                "effect_C7031eab0fc04cd9Acd04497bd66d91a": "Audit",
+                "effect_D6f6f56014b749a49fc8D2c3a9807868": "Audit",
+                "checkAlwaysOnSoftDeleteOnly_31b8092a36b8434b9af75ec844364148": true,
+                "checkAlwaysOnSoftDeleteOnly_9798d31d60284dee864346102185c016": true,
+                "checkLockedImmutabilityOnly_D6f6f56014b749a49fc8D2c3a9807868": true,
+                "checkLockedImmutabiltyOnly_2514263bBc0d4b06Ac3eF262c0979018": true
+            }
+        }
+    ]
+}

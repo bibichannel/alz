@@ -1,0 +1,78 @@
+{
+    "definition_location": "testing_mg",
+    "assignment_scope_id": "/providers/Microsoft.Management/managementGroups/security",
+    "builtin_definitions": [
+        {
+            "definition": "78460a36-508a-49a4-b2b2-2f5ec564f4bb",
+            "assignment_display_name": "Do not allow deletion of resource types",
+            "assignment_effect": "DenyAction",
+            "assignment_parameters": {
+                "listOfResourceTypesDisallowedForDeletion": []
+            }
+        }
+    ],
+    "custom_definitions": [],
+    "builtin_defnition_sets": [],
+    "custom_defnition_sets": [
+        {
+            "initiative": "audit_encryption_cmk",
+            "assignment_parameters": {
+                "effect_051cba44242945b9964946cec11c7119": "Audit",
+                "effect_0961003e5a0a4549AbdeAf6a37f2724d": "Audit",
+                "effect_0a370ff36cab4e858995295fd854c5b8": "Audit",
+                "effect_0aa61e000a014a3c9945E93cffedf0e6": "Audit",
+                "effect_18adea5eF4164d0f8aa8D24321e3e274": "Audit",
+                "effect_1f905d992ab7462cA6b0F709acca6c8f": "Audit",
+                "effect_295fc8b1Dc9f4f539c613f313ceab40a": "Audit",
+                "effect_2e94d99a8a364563Bc77810d8893b671": "Audit",
+                "effect_4ec52d6dBeb740c49a9eFe753254690e": "Audit",
+                "effect_51522a960869479182f3981000c2c67f": "Audit",
+                "effect_56a5ee182ae6481086f718e39ce5629b": "Audit",
+                "effect_5b9159ae17014a6f9a7aAa9c8ddd0580": "Audit",
+                "effect_67121cc7Ff394ab8B7e395b84dab487d": "Audit",
+                "effect_6fac406b40ca413bBf8e0bf964659c25": "Audit",
+                "effect_702dd4207fcc42c5Afe84026edd20fe0": "Audit",
+                "effect_76a564619dc040f082f52453283afa2f": "Audit",
+                "effect_7c322315E26d4174A99eF49d351b4688": "Audit",
+                "effect_7d7be79c23ba403384dd45e2a5ccdd67": "Audit",
+                "effect_81e74cea30fd40d5802fD72103c2aaaa": "Audit",
+                "effect_83cef61dDbd14b20A4fc5fbc7da10833": "Audit",
+                "effect_86efb1608de7451dBc085d475b0aadae": "Audit",
+                "effect_87ba29ef1ab34d82B76387fcd4f531f7": "Audit",
+                "effect_99e9ccd83db94592B0d114b1715a4d8a": "Audit",
+                "effect_A1ad735aE96f45d2A7b29a4932cab7ec": "Audit",
+                "effect_Ac01ad6510e546dfBdd96b0cad13e1d2": "Audit",
+                "effect_AuditEHPremiumCMK": "Audit",
+                "effect_B5ec538cDaa04006859635468b9148e8": "Audit",
+                "effect_Ba769a63B8cc4b2dAbf6Ac33c7204be8": "Audit",
+                "effect_F0e5abd025544736B7c04ffef23475ef": "Audit",
+                "effect_F7d52b2dE1614dfaA82b55e564167385": "Audit"
+            }
+        },
+        {
+            "initiative": "deny_sources_without_trusted_image",
+            "assignment_display_name": "Enforce trusted image from trusted source",
+            "assignment_parameters": {
+                "effect_DenyVmVmssWithoutTrustedSources": "Deny",
+                "effect_Febd05338e55448fB837Bd0e06f16469": "Deny",
+                "allowedContainerImagesRegex_Febd05338e55448fB837Bd0e06f16469": "",
+                "excludedContainers_Febd05338e55448fB837Bd0e06f16469": [],
+                "excludedNamespaces_Febd05338e55448fB837Bd0e06f16469": [
+                    "kube-system",
+                    "gatekeeper-system",
+                    "azure-arc",
+                    "azure-extensions-usage-system"
+                ],
+                "labelSelector_Febd05338e55448fB837Bd0e06f16469": {},
+                "namespaces_Febd05338e55448fB837Bd0e06f16469": [],
+                "publishersToExcludeFromPolicy_DenyVmVmssWithoutTrustedSources": [
+                    "microsoft-ads",
+                    "AzureDatabricks",
+                    "microsoft-aks"
+                ],
+                "source_Febd05338e55448fB837Bd0e06f16469": "Original",
+                "warn_Febd05338e55448fB837Bd0e06f16469": false
+            }
+        }
+    ]
+}
