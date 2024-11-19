@@ -60,6 +60,7 @@ locals {
   ]
 }
 
+
 output "builtin_definitions_updated" {
   value = local.builtin_definitions_updated
 }

@@ -9,20 +9,20 @@ locals {
   archetype_landing_zones = jsondecode(file("${path.module}/archetype_landing_zones.json"))
 }
 
-module "assignment" {
-  source                      = "..//assignment"
-  architype = local.architype_intermediate_root
-}
-
-# module "assignment_01" {
+# module "assignment" {
 #   source                      = "..//assignment"
-#   architype = local.archetype_foundations
+#   architype = local.architype_intermediate_root
 # }
 
-module "assignment_management" {
-  source = "..//assignment"
-  architype = local.archetype_management
+module "assignment_01" {
+  source                      = "..//assignment"
+  architype = local.archetype_foundations
 }
+
+# module "assignment_management" {
+#   source = "..//assignment"
+#   architype = local.archetype_management
+# }
 
 # module "assignment_shared_services" {
 #   source = "..//assignment"
@@ -44,10 +44,10 @@ module "assignment_management" {
 #   architype = local.architype_connectivity  
 # }
 
-# module "archetype_landing_zones" {
-#   source = "..//assignment"
-#   architype = local.archetype_landing_zones  
-# }
+module "archetype_landing_zones" {
+  source = "..//assignment"
+  architype = local.archetype_landing_zones  
+}
 
 # output "builtin_definitions_updated" {
 #   value = module.assignment.builtin_definitions_updated

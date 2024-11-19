@@ -699,7 +699,7 @@
             "assignment_display_name": "Configure Azure Defender to be enabled on SQL Servers and SQL Managed Instances",
             "assignment_effect": "DeployIfNotExists",
             "role_definition_ids": [
-                "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+                "/providers/Microsoft.Authorization/roleDefinitions/056cd41c-7e88-42e1-933e-88ba6a50c9c3"
             ]
         },
         {
@@ -927,16 +927,21 @@
             "assignment_display_name": "Deploy Microsoft Defender for Cloud configuration",
             "assignment_description": "This initiative focuses on enforcing security best practices by enabling Microsoft Defender and configuring security measures across multiple Azure services",
             "role_definition_ids": [
-                "/providers/Microsoft.Authorization/roleDefinitions/5e93ba01-8f92-4c7a-b12a-801e3df23824"
+                "/providers/Microsoft.Authorization/roleDefinitions/5e93ba01-8f92-4c7a-b12a-801e3df23824",
+                "/providers/Microsoft.Authorization/roleDefinitions/18ed5180-3e48-46fd-8541-4ea054d57064",
+                "/providers/Microsoft.Authorization/roleDefinitions/fb1c8493-542b-48eb-b624-b4c8fea62acd",
+                "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
+                "/providers/Microsoft.Authorization/roleDefinitions/ed7f3fbd-7b88-4dd4-9017-9adb7ce333f8",
+                "/providers/Microsoft.Authorization/roleDefinitions/8e3af657-a8ff-443c-a75c-2fe8c4bcb635",
+                "/providers/Microsoft.Authorization/roleDefinitions/8bb6f106-b146-4ee6-a3f9-b9c5a96e0ae5"
             ],
             "assignment_parameters": {
                 "effect_13ce01678ca640488e6bF996402e3c1b": "DeployIfNotExists",
-
                 "effect_1f72589101c0420a90594fa46cb770b7": "DeployIfNotExists",
                 "effect_44433aa37ec2400293ea65c65ff0310a": "DeployIfNotExists",
                 "effect_50ea72657d8c429e9a7dCa1f410191c3": "DeployIfNotExists",
                 "effect_64def556Fbad4622930e72d1d5589bf5": "DeployIfNotExists",
-                "effect_72f8cee72937403d84a1A4e3e57f3c21": "Disabled",
+                "effect_72f8cee72937403d84a1A4e3e57f3c21": "DeployIfNotExists",
                 "effect_766e621dBa954e43A6f2E945db3d7888": "DeployIfNotExists",
                 "effect_82bf5b87728b4a74Ba4d6123845cf542": "DeployIfNotExists",
                 "effect_8e86a5b6B9bd49d18e214bb8a0862222": "DeployIfNotExists",
@@ -945,7 +950,7 @@
                 "effect_B7021b2b08fd4dc09de73c6ece09faf9": "DeployIfNotExists",
                 "effect_B99b73e7074b40899395B7236f094491": "DeployIfNotExists",
                 "effect_C9ddb292B2034738Aead18e2716e858f": "DeployIfNotExists",
-                "effect_Cfdc597275b344188ae17f5c36839390": "Disabled",
+                "effect_Cfdc597275b344188ae17f5c36839390": "DeployIfNotExists",
                 "effect_DeployASCSecurityContacts": "DeployIfNotExists",
                 "alertSeverities_Ffb6f4167bd24488882856585fef2be9": [
                     "High",

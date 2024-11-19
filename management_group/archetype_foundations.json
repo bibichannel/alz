@@ -28,9 +28,8 @@
         {
             "initiative": "924bfe3a-762f-40e7-86dd-5c8b95eb09e6",
             "assignment_display_name": "Enable Azure Monitor for VMs with Azure Monitoring Agent(AMA)",
-            "assignment_effect": "Disabled",
+            "assignment_effect": "DeployIfNotExists",
             "role_definition_ids": [
-                "/providers/Microsoft.Authorization/roleDefinitions/18d7d88d-d35e-4fb5-a5c3-7773c20a72d9",
                 "/providers/Microsoft.Authorization/roleDefinitions/92aaf0da-9dab-42b6-94a3-d43ce8d16293",
                 "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
                 "/providers/Microsoft.Authorization/roleDefinitions/749f88d5-cbae-40b8-bcfc-e573ddc772fa",
@@ -47,14 +46,21 @@
                 "dcrResourceId": "",
                 "listOfImageIdToInclude_linux": [],
                 "listOfImageIdToInclude_windows": []
-            }
+            },
+            "overrides": [
+                {
+                    "effect" : "AuditIfNotExists",
+                    "selectors" : {
+                        "in" : ["AddUserAssignedManagedIdentity_VM"]
+                    }
+                }
+            ]
         },
         {
             "initiative": "f5bf694c-cca7-4033-b883-3a23327d5485",
             "assignment_display_name": "Enable Azure Monitor for VMSS with Azure Monitoring Agent(AMA)",
-            "assignment_effect": "Disabled",
+            "assignment_effect": "DeployIfNotExists",
             "role_definition_ids": [
-                "/providers/Microsoft.Authorization/roleDefinitions/18d7d88d-d35e-4fb5-a5c3-7773c20a72d9",
                 "/providers/Microsoft.Authorization/roleDefinitions/92aaf0da-9dab-42b6-94a3-d43ce8d16293",
                 "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
                 "/providers/Microsoft.Authorization/roleDefinitions/749f88d5-cbae-40b8-bcfc-e573ddc772fa",
@@ -71,12 +77,20 @@
                 "listOfImageIdToInclude_linux": [],
                 "scopeToSupportedImages": true,
                 "dcrResourceId": ""
-            }
+            },
+            "overrides": [
+                {
+                    "effect" : "AuditIfNotExists",
+                    "selectors" : {
+                        "in" : ["AddUserAssignedManagedIdentity_VMSS"]
+                    }
+                }
+            ]
         },
         {
             "initiative": "2b00397d-c309-49c4-aa5a-f0b2c5bc6321",
             "assignment_display_name": "Enable Azure Monitor for Hybrid VMs with AMA",
-            "assignment_effect": "Disabled",
+            "assignment_effect": "DeployIfNotExists",
             "role_definition_ids": [
                 "/providers/Microsoft.Authorization/roleDefinitions/cd570a14-e51a-42ad-bac8-bafd67325302",
                 "/providers/Microsoft.Authorization/roleDefinitions/92aaf0da-9dab-42b6-94a3-d43ce8d16293",
@@ -90,9 +104,8 @@
         {
             "initiative": "92a36f05-ebc9-4bba-9128-b47ad2ea3354",
             "assignment_display_name": "Enable ChangeTracking and Inventory for virtual machines",
-            "assignment_effect": "Disabled",
+            "assignment_effect": "DeployIfNotExists",
             "role_definition_ids": [
-                "/providers/Microsoft.Authorization/roleDefinitions/18d7d88d-d35e-4fb5-a5c3-7773c20a72d9",
                 "/providers/Microsoft.Authorization/roleDefinitions/92aaf0da-9dab-42b6-94a3-d43ce8d16293",
                 "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
                 "/providers/Microsoft.Authorization/roleDefinitions/749f88d5-cbae-40b8-bcfc-e573ddc772fa",
@@ -132,14 +145,21 @@
                     "westus",
                     "westus2"
                 ]
-            }
+            },
+            "overrides": [
+                {
+                    "effect" : "AuditIfNotExists",
+                    "selectors" : {
+                        "in" : ["AddUserAssignedManagedIdentity_VM"]
+                    }
+                }
+            ]
         },
         {
             "initiative": "c4a70814-96be-461c-889f-2b27429120dc",
             "assignment_display_name": "Enable ChangeTracking and Inventory for virtual machine scale sets",
-            "assignment_effect": "Disabled",
+            "assignment_effect": "DeployIfNotExists",
             "role_definition_ids": [
-                "/providers/Microsoft.Authorization/roleDefinitions/18d7d88d-d35e-4fb5-a5c3-7773c20a72d9",
                 "/providers/Microsoft.Authorization/roleDefinitions/92aaf0da-9dab-42b6-94a3-d43ce8d16293",
                 "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c",
                 "/providers/Microsoft.Authorization/roleDefinitions/749f88d5-cbae-40b8-bcfc-e573ddc772fa",
@@ -179,7 +199,15 @@
                     "westus",
                     "westus2"
                 ]
-            }
+            },
+            "overrides": [
+                {
+                    "effect" : "AuditIfNotExists",
+                    "selectors" : {
+                        "in" : ["AddUserAssignedManagedIdentity_VMSS"]
+                    }
+                }
+            ]
         },
         {
             "initiative": "53448c70-089b-4f52-8f38-89196d7f2de1",
