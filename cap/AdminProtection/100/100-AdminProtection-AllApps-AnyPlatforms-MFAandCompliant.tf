@@ -14,7 +14,7 @@ variable "excluded_groups" {
 }
 
 
-resource "azuread_conditional_access_policy" "admin_protection" {
+resource "azuread_conditional_access_policy" "admin_protection_any_platforms_mfa_and_compliant" {
   display_name = "100-AdminProtection-AllApps-AnyPlatforms-MFAandCompliant"
   state        = var.cap_state
 
@@ -23,7 +23,6 @@ resource "azuread_conditional_access_policy" "admin_protection" {
 
     applications {
       included_applications = ["All"]
-      excluded_applications = []
     }
 
     locations {
@@ -36,7 +35,7 @@ resource "azuread_conditional_access_policy" "admin_protection" {
 
     devices {
       filter {
-        mode = "exclude"
+        mode = "include"
         rule = "device.operatingSystem eq \"Doors\""
       }
     }
@@ -159,7 +158,7 @@ resource "azuread_conditional_access_policy" "admin_protection" {
 
   grant_controls {
     operator          = "AND"
-    built_in_controls = ["mfa", "compliantApplication", "compliantDevice"]
+    built_in_controls = ["mfa", "compliantDevice"]
   }
 
 }

@@ -1,38 +1,50 @@
-resource "azurerm_conditional_access_policy" "base_protection_register_security_info" {
-  name  = "201-BaseProtection-AllApps-AnyPlatforms-MFAorCompliant-RegisterSecurityInfo"
-  state = "enabledForReportingButNotEnforced"
+variable "cap_state" {
+  description = "The state of the policy"
+  type        = string
+}
 
-  grant_controls {
-    operator = "OR"
-    built_in_controls = [
-      "mfa",
-      "compliantDevice",
-      "domainJoinedDevice"
-    ]
-  }
+variable "included_groups" {
+  description = "The groups to include in the user block policy"
+  type        = list(string)
+}
+
+variable "excluded_groups" {
+  description = "The groups to exclude in the user block policy"
+  type        = list(string)
+}
+
+resource "azuread_conditional_access_policy" "base_protection_mfa_or_compliant_register_security_info" {
+  display_name  = "201-BaseProtection-AllApps-AnyPlatforms-MFAorCompliant-RegisterSecurityInfo"
+  state = var.cap_state
 
   conditions {
     client_app_types = ["browser", "mobileAppsAndDesktopClients"]
 
     applications {
-      include_user_actions = ["urn:user:registersecurityinfo"]
-      include_applications = []
-      exclude_applications = []
+      included_user_actions = ["urn:user:registersecurityinfo"]
+    }
+
+    platforms {
+      included_platforms = ["All"]
     }
 
     users {
-      include_users = ["All"]
-      exclude_users = ["GuestsOrExternalUsers"]
-      exclude_groups = [
-        "<ExclusionTempGroup>",
-        "<ExclusionPermGroup>",
-        "<EmergencyAccessAccountsGroup>"
-      ]
+      included_users  = ["All"]
+      excluded_users  = ["GuestsOrExternalUsers"]
+      included_groups = var.included_groups
+      excluded_groups = var.excluded_groups
     }
 
     locations {
-      include_locations = ["All"]
-      exclude_locations = ["AllTrusted"]
+      included_locations = ["All"]
     }
+  }
+
+  grant_controls {
+    operator = "OR"
+    built_in_controls = [
+      "mfa",
+      "compliantDevice"
+    ]
   }
 }

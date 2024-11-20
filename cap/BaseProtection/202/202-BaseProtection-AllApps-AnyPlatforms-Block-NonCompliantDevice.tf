@@ -1,33 +1,55 @@
-resource "azurerm_conditional_access_policy" "base_protection_block_non_compliant_device" {
-  name  = "202-BaseProtection-AllApps-AnyPlatforms-Block-NonCompliantDevice"
-  state = "enabledForReportingButNotEnforced"
+variable "cap_state" {
+  description = "The state of the policy"
+  type        = string
+}
 
-  grant_controls {
-    operator = "OR"
-    authentication_strength {
-      id = "00000000-0000-0000-0000-000000000004"
-    }
-  }
+variable "included_groups" {
+  description = "The groups to include in the user block policy"
+  type        = list(string)
+}
+
+variable "excluded_groups" {
+  description = "The groups to exclude in the user block policy"
+  type        = list(string)
+}
+
+resource "azuread_conditional_access_policy" "base_protection_block_non_compliant_device" {
+  display_name  = "202-BaseProtection-AllApps-AnyPlatforms-Block-NonCompliantDevice"
+  state = var.cap_state
 
   conditions {
-    sign_in_risk_levels = ["medium", "high"]
-
     client_app_types = ["browser", "mobileAppsAndDesktopClients"]
 
     applications {
-      include_applications = ["All"]
-      exclude_applications = []
-      include_user_actions = []
+      included_applications = ["All"]
+    }
+
+    locations {
+      included_locations = ["All"]
+    }
+
+    platforms {
+      included_platforms = ["All"]
+    }
+
+    devices {
+      filter {
+        mode = "exclude"
+        rule = "device.isCompliant -eq True"
+      }
     }
 
     users {
-      include_users = ["All"]
-      exclude_users = []
-      exclude_groups = [
-        "<ExclusionTempGroup>",
-        "<ExclusionPermGroup>",
-        "<EmergencyAccessAccountsGroup>"
-      ]
+      included_users  = ["All"]
+      included_groups = var.included_groups
+      excluded_groups = var.excluded_groups
     }
+  }
+
+  grant_controls {
+    operator = "OR"
+    built_in_controls = [
+      "block"
+    ]
   }
 }

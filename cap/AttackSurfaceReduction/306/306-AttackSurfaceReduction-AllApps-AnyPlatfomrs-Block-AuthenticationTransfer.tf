@@ -1,36 +1,53 @@
-resource "azurerm_conditional_access_policy" "attack_surface_reduction_block_auth_transfer" {
-  name  = "306-AttackSurfaceReduction-AllApps-AnyPlatforms-Block-AuthenticationTransfer"
-  state = "enabledForReportingButNotEnforced"
+variable "cap_state" {
+  description = "The state of the policy"
+  type        = string
+}
 
-  grant_controls {
-    operator         = "OR"
-    built_in_controls = ["block"]
-  }
+variable "included_groups" {
+  description = "The groups to include in the user block policy"
+  type        = list(string)
+}
+
+variable "excluded_groups" {
+  description = "The groups to exclude in the user block policy"
+  type        = list(string)
+}
+
+resource "azuread_conditional_access_policy" "attack_surface_reduction_block_auth_transfer" {
+  display_name  = "306-AttackSurfaceReduction-AllApps-AnyPlatforms-Block-AuthenticationTransfer"
+  state = var.cap_state
 
   conditions {
-    client_app_types = [
-      "browser",
-      "mobileAppsAndDesktopClients"
-    ]
+    client_app_types = ["exchangeActiveSync"]
 
     applications {
-      include_applications = ["All"]
-      exclude_applications = []
-      include_user_actions = []
+      included_applications = ["All"]
+      excluded_applications = []
+      included_user_actions = []
+    }
+    
+    locations {
+      included_locations = ["All"]
+    }
+
+    platforms {
+      included_platforms = ["All"]
     }
 
     users {
-      include_users = ["All"]
-      exclude_users = []
-      exclude_groups = [
-        "<ExclusionTempGroup>",
-        "<ExclusionPermGroup>",
-        "<EmergencyAccessAccountsGroup>"
-      ]
+      included_users  = ["All"]
+      excluded_users  = []
+      included_groups = var.included_groups
+      excluded_groups = var.excluded_groups
     }
 
     authentication_flows {
       transfer_methods = ["authenticationTransfer"]
     }
+  }
+
+  grant_controls {
+    operator          = "OR"
+    built_in_controls = ["block"]
   }
 }

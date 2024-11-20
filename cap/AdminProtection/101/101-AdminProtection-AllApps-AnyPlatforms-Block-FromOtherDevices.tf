@@ -1,27 +1,47 @@
-resource "azurerm_conditional_access_policy" "admin_protection_all_apps" {
-  name  = "101-AdminProtection-AllApps-AnyPlatforms-Block-FromOtherDevices"
-  state = "enabledForReportingButNotEnforced"
+variable "cap_state" {
+  description = "The state of the policy"
+  type        = string
+}
+
+variable "included_groups" {
+  description = "The groups to include in the user block policy"
+  type        = list(string)
+}
+
+variable "excluded_groups" {
+  description = "The groups to exclude in the user block policy"
+  type        = list(string)
+}
+
+resource "azuread_conditional_access_policy" "admin_protection_block_from_other_devices" {
+  display_name =  "101-AdminProtection-AllApps-AnyPlatforms-Block-FromOtherDevices"
+  state = var.cap_state
   conditions {
     client_app_types = ["browser", "mobileAppsAndDesktopClients"]
 
     applications {
-      include_applications = ["All"]
-      exclude_applications = []
+      included_applications = ["All"]
+    }
+
+    locations {
+      included_locations = ["All"]
+    }
+
+    platforms {
+      included_platforms = ["all"]
+    }
+    
+    devices {
+      filter {
+        mode = "exclude"
+        rule = "device.operatingSystem eq \"Doors\""
+      }
     }
 
     users {
-      include_users = []
-      exclude_users = []
-      include_groups = [
-        "<AdministratorGroup>"
-      ]
-      exclude_groups = [
-        "<ExclusionTempGroup>",
-        "<ExclusionPermGroup>",
-        "<EmergencyAccessAccountsGroup>",
-        "<SynchronizationServiceAccountsGroup>"
-      ]
-      include_roles = [
+      included_groups = var.included_groups
+      excluded_groups = var.excluded_groups
+      included_roles = [
         "62e90394-69f5-4237-9190-012177145e10",
         "10dae51f-b6af-4016-8d66-8c2a99b929b3",
         "2af84b1e-32c8-42b7-82bc-daa82404023b",
@@ -131,12 +151,11 @@ resource "azurerm_conditional_access_policy" "admin_protection_all_apps" {
         "1a7d78b6-429f-476b-b8eb-35fb715fffd4",
         "92ed04bf-c94a-4b82-9729-b799a7a4c178"
       ]
-      exclude_roles = []
     }
   }
 
   grant_controls {
     operator          = "OR"
-    built_in_controls = ["compliantDevice", "domainJoinedDevice"]
+    built_in_controls = ["block"]
   }
 }
