@@ -25,12 +25,11 @@ resource "azuread_conditional_access_policy" "base_protection_mfa_register_or_jo
     }
 
     platforms {
-      included_platforms = ["All"]
+      included_platforms = ["all"]
     }
 
     users {
       included_users  = ["All"]
-      excluded_users  = ["GuestsOrExternalUsers"]
       included_groups = var.included_groups
       excluded_groups = var.excluded_groups
     }

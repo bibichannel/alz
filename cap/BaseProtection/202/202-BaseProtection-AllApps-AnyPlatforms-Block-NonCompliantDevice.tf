@@ -29,7 +29,7 @@ resource "azuread_conditional_access_policy" "base_protection_block_non_complian
     }
 
     platforms {
-      included_platforms = ["All"]
+      included_platforms = ["all"]
     }
 
     devices {

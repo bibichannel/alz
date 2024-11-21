@@ -36,7 +36,7 @@ resource "azuread_conditional_access_policy" "admin_protection_any_platforms_mfa
     devices {
       filter {
         mode = "include"
-        rule = "device.operatingSystem eq \"Doors\""
+        rule = "device.displayName -contains \"PAW\""
       }
     }
 

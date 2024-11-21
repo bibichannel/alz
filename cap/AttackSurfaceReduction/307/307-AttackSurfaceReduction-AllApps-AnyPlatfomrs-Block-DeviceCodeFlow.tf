@@ -25,8 +25,6 @@ resource "azuread_conditional_access_policy" "attack_surface_reduction_block_dev
 
     applications {
       included_applications = ["All"]
-      excluded_applications = []
-      included_user_actions = []
     }
 
     platforms {
@@ -39,14 +37,13 @@ resource "azuread_conditional_access_policy" "attack_surface_reduction_block_dev
 
     users {
       included_users  = ["All"]
-      excluded_users  = []
       included_groups = var.included_groups
       excluded_groups = var.excluded_groups
     }
 
-    authentication_flows {
-      transfer_methods = ["deviceCodeFlow"]
-    }
+    # authentication_flows {
+    #   transfer_methods = ["deviceCodeFlow"]
+    # }
   }
 
   grant_controls {

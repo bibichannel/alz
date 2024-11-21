@@ -27,7 +27,7 @@ resource "azuread_conditional_access_policy" "base_protection_mfa_or_compliant" 
     }
 
     platforms {
-      included_platforms = ["All"]
+      included_platforms = ["all"]
     }
 
     users {

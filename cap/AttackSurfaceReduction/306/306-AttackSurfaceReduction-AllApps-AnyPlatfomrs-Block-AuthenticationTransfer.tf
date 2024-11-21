@@ -22,8 +22,6 @@ resource "azuread_conditional_access_policy" "attack_surface_reduction_block_aut
 
     applications {
       included_applications = ["All"]
-      excluded_applications = []
-      included_user_actions = []
     }
     
     locations {
@@ -31,19 +29,18 @@ resource "azuread_conditional_access_policy" "attack_surface_reduction_block_aut
     }
 
     platforms {
-      included_platforms = ["All"]
+      included_platforms = ["all"]
     }
 
     users {
       included_users  = ["All"]
-      excluded_users  = []
       included_groups = var.included_groups
       excluded_groups = var.excluded_groups
     }
 
-    authentication_flows {
-      transfer_methods = ["authenticationTransfer"]
-    }
+    # authentication_flows {
+    #   transfer_methods = ["authenticationTransfer"]
+    # }
   }
 
   grant_controls {

@@ -106,7 +106,3 @@ output "deny_sources_without_trusted_image" {
 output "enforce_tag_specification" {
   value = keys(module.enforce_tag_specification.parameters)
 }
-
-output "path_module" {
-  value = "${path.module}"
-}

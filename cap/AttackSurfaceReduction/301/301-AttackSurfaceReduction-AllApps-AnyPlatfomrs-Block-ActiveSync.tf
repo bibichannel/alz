@@ -29,12 +29,11 @@ resource "azuread_conditional_access_policy" "attack_surface_reduction_block_act
     }
 
     platforms {
-      included_platforms = ["All"]
+      included_platforms = ["all"]
     }
 
     users {
       included_users  = ["All"]
-      excluded_users  = []
       included_groups = var.included_groups
       excluded_groups = var.excluded_groups
     }

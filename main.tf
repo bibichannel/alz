@@ -15,11 +15,11 @@ module "definitions" {
   sandbox_management_group_id           = data.azurerm_management_group.contoso.id
 }
 
-output "path_module" {
-  value = module.definitions.path_module
+module "budget" {
+  source = "./budget"
 }
 
-module "caps" {
-  source = "./cap"
-}
+# module "caps" {
+#   source = "./cap"
+# }
 

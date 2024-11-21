@@ -34,7 +34,7 @@ resource "azuread_conditional_access_policy" "admin_protection_block_from_other_
     devices {
       filter {
         mode = "exclude"
-        rule = "device.operatingSystem eq \"Doors\""
+        rule = "device.displayName -contains \"PAW\""
       }
     }
 
