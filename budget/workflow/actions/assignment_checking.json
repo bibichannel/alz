@@ -1,0 +1,17 @@
+{
+    "type": "Http",
+    "inputs": {
+        "uri": "",
+        "method": "GET",
+        "authentication": {
+            "type": "ManagedServiceIdentity",
+            "identity": "[parameters('identity_id')]"
+        }
+    },
+    "runAfter": {},
+    "runtimeConfiguration": {
+        "contentTransfer": {
+            "transferMode": "Chunked"
+        }
+    }
+}

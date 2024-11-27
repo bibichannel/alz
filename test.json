@@ -1,0 +1,60 @@
+{
+  "type": "If",
+  "expression": {
+    "and": [
+      {
+        "equals": [
+          "@outputs('HTTP')?['statusCode']",
+          200
+        ]
+      }
+    ]
+  },
+  "actions": {},
+  "else": {
+    "actions": {
+      "HTTP_1": {
+        "type": "Http",
+        "inputs": {
+          "uri": "https://management.azure.com//subscriptions/bb35a463-4d55-482a-9c1d-e3434bdaa168/resourceGroups/testinggggg/providers/Microsoft.Authorization/policyAssignments/testingassignment?api-version=2023-04-01",
+          "method": "PUT",
+          "body": {
+            "properties": {
+              "displayName": "Assignment testing",
+              "description": "This is policy for testing",
+              "metadata": {
+                "assignedBy": "Logic app"
+              },
+              "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/a08ec900-254a-4555-9bf5-e42af04b5c5c",
+              "parameters": {
+                "listOfResourceTypesAllowed": {
+                  "value": []
+                }
+              },
+              "nonComplianceMessages": [
+                {
+                  "message": "The resources non-compliance."
+                }
+              ]
+            }
+          },
+          "authentication": {
+            "type": "ManagedServiceIdentity",
+            "identity": "[parameters('identity_id')]"
+          }
+        },
+        "runtimeConfiguration": {
+          "contentTransfer": {
+            "transferMode": "Chunked"
+          }
+        }
+      }
+    }
+  },
+  "runAfter": {
+    "HTTP": [
+      "SUCCEEDED",
+      "FAILED"
+    ]
+  }
+}

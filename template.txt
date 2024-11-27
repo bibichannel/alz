@@ -1,0 +1,11 @@
+// "definition": {
+//   "$schema": "<workflow-definition-language-schema-version>",
+//   "actions": { "<workflow-action-definitions>" },
+//   "contentVersion": "<workflow-definition-version-number>",
+//   "outputs": { "<workflow-output-definitions>" },
+//   "parameters": { "<workflow-parameter-definitions>" },
+//   "staticResults": { "<static-results-definitions>" },
+//   "triggers": { "<workflow-trigger-definitions>" }
+// }
+
+

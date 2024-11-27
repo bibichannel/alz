@@ -174,7 +174,7 @@ resource "azurerm_role_assignment" "rem_role" {
 ## remediation tasks ##
 resource "azurerm_management_group_policy_remediation" "rem" {
   count                = local.create_remediation + local.remediate.mg > 1 ? 1 : 0
-  name                 = lower("${var.definition.name}-${formatdate("DD-MM-YYYY-hh:mm:ss", timestamp())}")
+  name                 = lower("${var.definition.name}-${formatdate("DD-MM-YYYY-hh:mm:ss", timestamp())}-${substr(uuid(), 0, 5)}")
   management_group_id  = local.remediation_scope
   policy_assignment_id = local.assignment.id
   location_filters     = var.location_filters
@@ -185,7 +185,7 @@ resource "azurerm_management_group_policy_remediation" "rem" {
 
 resource "azurerm_subscription_policy_remediation" "rem" {
   count                   = local.create_remediation + local.remediate.sub > 1 ? 1 : 0
-  name                    = lower("${var.definition.name}-${formatdate("DD-MM-YYYY-hh:mm:ss", timestamp())}")
+  name                    = lower("${var.definition.name}-${formatdate("DD-MM-YYYY-hh:mm:ss", timestamp())}-${substr(uuid(), 0, 5)}")
   subscription_id         = local.remediation_scope
   policy_assignment_id    = local.assignment.id
   resource_discovery_mode = local.resource_discovery_mode
@@ -197,7 +197,7 @@ resource "azurerm_subscription_policy_remediation" "rem" {
 
 resource "azurerm_resource_group_policy_remediation" "rem" {
   count                   = local.create_remediation + local.remediate.rg > 1 ? 1 : 0
-  name                    = lower("${var.definition.name}-${formatdate("DD-MM-YYYY-hh:mm:ss", timestamp())}")
+  name                    = lower("${var.definition.name}-${formatdate("DD-MM-YYYY-hh:mm:ss", timestamp())}-${substr(uuid(), 0, 5)}")
   resource_group_id       = local.remediation_scope
   policy_assignment_id    = local.assignment.id
   resource_discovery_mode = local.resource_discovery_mode
@@ -209,7 +209,7 @@ resource "azurerm_resource_group_policy_remediation" "rem" {
 
 resource "azurerm_resource_policy_remediation" "rem" {
   count                   = local.create_remediation + local.remediate.resource > 1 ? 1 : 0
-  name                    = lower("${var.definition.name}-${formatdate("DD-MM-YYYY-hh:mm:ss", timestamp())}")
+  name                    = lower("${var.definition.name}-${formatdate("DD-MM-YYYY-hh:mm:ss", timestamp())}-${substr(uuid(), 0, 5)}")
   resource_id             = local.remediation_scope
   policy_assignment_id    = local.assignment.id
   resource_discovery_mode = local.resource_discovery_mode

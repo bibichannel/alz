@@ -9,58 +9,58 @@ locals {
   archetype_landing_zones = jsondecode(file("${path.module}/archetype_landing_zones.json"))
 }
 
-# module "assignment" {
-#   source                      = "..//assignment"
-#   architype = local.architype_intermediate_root
-# }
+module "assignment" {
+  source                      = "..//assignment"
+  architype = local.architype_intermediate_root
+}
 
 module "assignment_01" {
   source                      = "..//assignment"
   architype = local.archetype_foundations
 }
 
-# module "assignment_management" {
-#   source = "..//assignment"
-#   architype = local.archetype_management
-# }
+module "assignment_management" {
+  source = "..//assignment"
+  architype = local.archetype_management
+}
 
-# module "assignment_shared_services" {
-#   source = "..//assignment"
-#   architype = local.archetype_shared_services
-# }
+module "assignment_shared_services" {
+  source = "..//assignment"
+  architype = local.archetype_shared_services
+}
 
-# module "assignment_legacy" {
-#   source = "..//assignment"
-#   architype = local.architype_legacy
-# }
+module "assignment_legacy" {
+  source = "..//assignment"
+  architype = local.architype_legacy
+}
 
-# module "assignment_identity" {
-#   source = "..//assignment"
-#   architype = local.archetype_identity
-# }
+module "assignment_identity" {
+  source = "..//assignment"
+  architype = local.archetype_identity
+}
 
-# module "architype_connectivity" {
-#   source = "..//assignment"
-#   architype = local.architype_connectivity  
-# }
+module "architype_connectivity" {
+  source = "..//assignment"
+  architype = local.architype_connectivity  
+}
 
 module "archetype_landing_zones" {
   source = "..//assignment"
   architype = local.archetype_landing_zones  
 }
 
-# output "builtin_definitions_updated" {
-#   value = module.assignment.builtin_definitions_updated
-# }
+output "builtin_definitions_updated" {
+  value = module.assignment.builtin_definitions_updated
+}
 
-# output "custom_definitions_updated" {
-#   value = module.assignment.custom_definitions_updated
-# }
+output "custom_definitions_updated" {
+  value = module.assignment.custom_definitions_updated
+}
 
-# output "builtin_defnition_sets_updated" {
-#   value = module.assignment.builtin_defnition_sets_updated
-# }
+output "builtin_defnition_sets_updated" {
+  value = module.assignment.builtin_defnition_sets_updated
+}
 
-# output "custom_defnition_sets_updated" {
-#   value = module.assignment.custom_defnition_sets_updated
-# }
+output "custom_defnition_sets_updated" {
+  value = module.assignment.custom_defnition_sets_updated
+}
