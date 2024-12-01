@@ -1,29 +1,25 @@
-resource "azurerm_resource_group" "this" {
-  name     = "workflow-resources"
-  location = "East US"
-}
 
-resource "azurerm_logic_app_workflow" "budget-workflow" {
-  name                = "budget-workflow"
+resource "azurerm_logic_app_workflow" "assign_policy_assignemt_workflow" {
+  depends_on          = [azurerm_user_assigned_identity.this]
+  name                = "assign-policy-assignemt-workflow"
   location            = azurerm_resource_group.this.location
   resource_group_name = azurerm_resource_group.this.name
   identity {
     type         = "UserAssigned"
     identity_ids = [azurerm_user_assigned_identity.this.id]
   }
-  depends_on = [azurerm_user_assigned_identity.this]
 }
 
-resource "azurerm_logic_app_trigger_http_request" "trigger" {
-  name         = "workflow-trigger"
-  logic_app_id = azurerm_logic_app_workflow.budget-workflow.id
+resource "azurerm_logic_app_trigger_http_request" "budget_threshold_alert" {
+  name         = "budget-threshold-alert"
+  logic_app_id = azurerm_logic_app_workflow.assign_policy_assignemt_workflow.id
   schema       = data.local_file.trigger.content
 }
 
-resource "azurerm_logic_app_action_custom" "assignment_checking" {
-  name         = "assignment_checking"
-  logic_app_id = azurerm_logic_app_workflow.budget-workflow.id
-  body = <<BODY
+resource "azurerm_logic_app_action_custom" "policy_assignment_status" {
+  name         = "policy-assignment-status"
+  logic_app_id = azurerm_logic_app_workflow.assign_policy_assignemt_workflow.id
+  body         = <<BODY
   {
     "runAfter": {},
     "type": "Http",
@@ -44,13 +40,13 @@ resource "azurerm_logic_app_action_custom" "assignment_checking" {
   BODY
 }
 
-resource "azurerm_logic_app_action_custom" "conditions" {
-  name         = "conditions"
-  logic_app_id = azurerm_logic_app_workflow.budget-workflow.id
-  body = <<BODY
+resource "azurerm_logic_app_action_custom" "policy_assignment_status_conditions" {
+  name         = "policy-assignment-status-conditions"
+  logic_app_id = azurerm_logic_app_workflow.assign_policy_assignemt_workflow.id
+  body         = <<BODY
   {
     "runAfter": {
-      "${azurerm_logic_app_action_custom.assignment_checking.name}": [
+      "${azurerm_logic_app_action_custom.policy_assignment_status.name}": [
         "SUCCEEDED",
         "FAILED"
       ]
@@ -60,7 +56,7 @@ resource "azurerm_logic_app_action_custom" "conditions" {
       "and": [
         {
           "equals": [
-            "@outputs('${azurerm_logic_app_action_custom.assignment_checking.name}')?['statusCode']",
+            "@outputs('${azurerm_logic_app_action_custom.policy_assignment_status.name}')?['statusCode']",
             200
           ]
         }
@@ -111,20 +107,20 @@ resource "azurerm_logic_app_action_custom" "conditions" {
   BODY
 }
 
-# resource "azurerm_resource_group_template_deployment" "manage-budget" {
-#   resource_group_name = azurerm_resource_group.this.name
-#   deployment_mode     = "Incremental"
-#   name                = "logic-app-manage-budget"
+resource "azurerm_monitor_action_group" "budget_threshold_alerts_action" {
+  name                = "Budget Threshold Alerts Action"
+  resource_group_name = azurerm_resource_group.this.name
+  short_name          = "budget_ac"
 
-#   template_content = data.local_file.logic_app.content
+  email_receiver {
+    name          = "bibichannel"
+    email_address = "trung.khanh150901@gmail.com"
+  }
 
-#   parameters_content = jsonencode({
-#     "logic_app_name" = { value = azurerm_logic_app_workflow.budget-workflow.name }
-#     "location"       = { value = azurerm_logic_app_workflow.budget-workflow.location }
-#     "identity_id"    = { value = azurerm_user_assigned_identity.this.id }
-#   })
-
-#   depends_on = [azurerm_logic_app_workflow.budget-workflow]
-# }
-
-
+  logic_app_receiver {
+    name                    = "logicappaction"
+    resource_id             = azurerm_logic_app_workflow.assign_policy_assignemt_workflow.id
+    callback_url            = azurerm_logic_app_trigger_http_request.budget_threshold_alert.callback_url
+    use_common_alert_schema = true
+  }
+}

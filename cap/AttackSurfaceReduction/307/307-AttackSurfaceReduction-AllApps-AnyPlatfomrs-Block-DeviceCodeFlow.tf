@@ -14,8 +14,8 @@ variable "excluded_groups" {
 }
 
 resource "azuread_conditional_access_policy" "attack_surface_reduction_block_device_code_flow" {
-  display_name  = "307-AttackSurfaceReduction-AllApps-AnyPlatforms-Block-DeviceCodeFlow"
-  state = var.cap_state
+  display_name = "307-AttackSurfaceReduction-AllApps-AnyPlatforms-Block-DeviceCodeFlow"
+  state        = var.cap_state
 
   conditions {
     client_app_types = [

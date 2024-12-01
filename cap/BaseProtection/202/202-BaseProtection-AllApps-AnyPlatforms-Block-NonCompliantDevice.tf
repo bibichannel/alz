@@ -14,8 +14,8 @@ variable "excluded_groups" {
 }
 
 resource "azuread_conditional_access_policy" "base_protection_block_non_compliant_device" {
-  display_name  = "202-BaseProtection-AllApps-AnyPlatforms-Block-NonCompliantDevice"
-  state = var.cap_state
+  display_name = "202-BaseProtection-AllApps-AnyPlatforms-Block-NonCompliantDevice"
+  state        = var.cap_state
 
   conditions {
     client_app_types = ["browser", "mobileAppsAndDesktopClients"]

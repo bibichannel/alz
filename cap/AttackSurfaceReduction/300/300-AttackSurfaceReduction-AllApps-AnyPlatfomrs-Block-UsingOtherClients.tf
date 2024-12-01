@@ -14,8 +14,8 @@ variable "excluded_groups" {
 }
 
 resource "azuread_conditional_access_policy" "attack_surface_reduction_block_other_clients" {
-  display_name  = "300-AttackSurfaceReduction-AllApps-AnyPlatforms-Block-UsingOtherClients"
-  state = var.cap_state
+  display_name = "300-AttackSurfaceReduction-AllApps-AnyPlatforms-Block-UsingOtherClients"
+  state        = var.cap_state
 
   conditions {
 

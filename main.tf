@@ -15,14 +15,18 @@ data "azurerm_management_group" "contoso" {
 #   sandbox_management_group_id           = data.azurerm_management_group.contoso.id
 # }
 
-module "budget" {
-  source = "./budget"
-}
-
 # module "caps" {
 #   source = "./cap"  
 # }
 
-output "callback_url" {
-  value = module.budget.logic_app_callback_url
+module "budget" {
+  source = "./budget"
+}
+
+output "resource_group_name" {
+  value = module.budget.resource_group_name
+}
+
+output "resource_group_location" {
+  value = module.budget.resource_group_location
 }

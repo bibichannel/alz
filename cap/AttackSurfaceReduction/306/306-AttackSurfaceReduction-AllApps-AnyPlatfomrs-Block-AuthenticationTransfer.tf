@@ -14,8 +14,8 @@ variable "excluded_groups" {
 }
 
 resource "azuread_conditional_access_policy" "attack_surface_reduction_block_auth_transfer" {
-  display_name  = "306-AttackSurfaceReduction-AllApps-AnyPlatforms-Block-AuthenticationTransfer"
-  state = var.cap_state
+  display_name = "306-AttackSurfaceReduction-AllApps-AnyPlatforms-Block-AuthenticationTransfer"
+  state        = var.cap_state
 
   conditions {
     client_app_types = ["exchangeActiveSync"]
@@ -23,7 +23,7 @@ resource "azuread_conditional_access_policy" "attack_surface_reduction_block_aut
     applications {
       included_applications = ["All"]
     }
-    
+
     locations {
       included_locations = ["All"]
     }

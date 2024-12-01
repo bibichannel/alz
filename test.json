@@ -1,60 +1,39 @@
 {
-  "type": "If",
-  "expression": {
-    "and": [
-      {
-        "equals": [
-          "@outputs('HTTP')?['statusCode']",
-          200
-        ]
-      }
-    ]
-  },
-  "actions": {},
-  "else": {
-    "actions": {
-      "HTTP_1": {
-        "type": "Http",
-        "inputs": {
-          "uri": "https://management.azure.com//subscriptions/bb35a463-4d55-482a-9c1d-e3434bdaa168/resourceGroups/testinggggg/providers/Microsoft.Authorization/policyAssignments/testingassignment?api-version=2023-04-01",
-          "method": "PUT",
-          "body": {
-            "properties": {
-              "displayName": "Assignment testing",
-              "description": "This is policy for testing",
-              "metadata": {
-                "assignedBy": "Logic app"
-              },
-              "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/a08ec900-254a-4555-9bf5-e42af04b5c5c",
-              "parameters": {
-                "listOfResourceTypesAllowed": {
-                  "value": []
-                }
-              },
-              "nonComplianceMessages": [
-                {
-                  "message": "The resources non-compliance."
-                }
-              ]
-            }
-          },
-          "authentication": {
-            "type": "ManagedServiceIdentity",
-            "identity": "[parameters('identity_id')]"
-          }
-        },
-        "runtimeConfiguration": {
-          "contentTransfer": {
-            "transferMode": "Chunked"
-          }
-        }
+  "schemaId": "azureMonitorCommonAlertSchema",
+  "data": {
+    "essentials": {
+      "monitoringService": "CostAlerts",
+      "firedDateTime": "2024-11-26T03:56:23.555Z",
+      "description": "The total spend for your budget, Test_forcasted_budget, is forecasted to reach $1111.11 before the end of the period. This amount exceeds your specified budget threshold of $50.00.",
+      "essentialsVersion": "1.0",
+      "alertContextVersion": "1.0",
+      "alertId": "/subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.CostManagement/alerts/Test_Alert",
+      "alertRule": null,
+      "severity": null,
+      "signalType": null,
+      "monitorCondition": "Fired",
+      "alertTargetIDs": null,
+      "configurationItems": [
+        "budgets"
+      ],
+      "originAlertId": null
+    },
+    "alertContext": {
+      "AlertCategory": "budgets",
+      "AlertData": {
+        "Scope": "/subscriptions/11111111-1111-1111-1111-111111111111/",
+        "ThresholdType": "Forecasted",
+        "BudgetType": "Cost",
+        "BudgetThreshold": "$50.00",
+        "NotificationThresholdAmount": "$50.00",
+        "BudgetName": "Test_forcasted_budget",
+        "BudgetId": "/subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Consumption/budgets/Test_forcasted_budget",
+        "BudgetStartDate": "2022-11-01",
+        "BudgetCreator": "test@sample.test",
+        "Unit": "USD",
+        "SpentAmount": "$999.99",
+        "ForecastedTotalForPeriod": "$1111.11"
       }
     }
-  },
-  "runAfter": {
-    "HTTP": [
-      "SUCCEEDED",
-      "FAILED"
-    ]
   }
 }

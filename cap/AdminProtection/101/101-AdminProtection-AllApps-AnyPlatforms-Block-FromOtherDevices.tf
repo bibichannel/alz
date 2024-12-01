@@ -14,8 +14,8 @@ variable "excluded_groups" {
 }
 
 resource "azuread_conditional_access_policy" "admin_protection_block_from_other_devices" {
-  display_name =  "101-AdminProtection-AllApps-AnyPlatforms-Block-FromOtherDevices"
-  state = var.cap_state
+  display_name = "101-AdminProtection-AllApps-AnyPlatforms-Block-FromOtherDevices"
+  state        = var.cap_state
   conditions {
     client_app_types = ["browser", "mobileAppsAndDesktopClients"]
 
@@ -30,7 +30,7 @@ resource "azuread_conditional_access_policy" "admin_protection_block_from_other_
     platforms {
       included_platforms = ["all"]
     }
-    
+
     devices {
       filter {
         mode = "exclude"

@@ -180,7 +180,7 @@ module "tag_governance_policy_definitions" {
 }
 
 module "audit_deny_tag_for_resources" {
-  source = "..//modules/initiative"
+  source                  = "..//modules/initiative"
   initiative_name         = "tag_governance"
   initiative_display_name = "Tag Governance"
   initiative_description  = "Tag Governance"
@@ -202,7 +202,7 @@ module "audit_denyaction_log_analytics_workspace_policy_definitions" {
 }
 
 module "audit_denyaction_log_analytics_workspace" {
-  source = "../modules/initiative"
+  source                  = "../modules/initiative"
   initiative_name         = "audit_denyaction_law"
   initiative_display_name = "Ensure Log Analytics Workspace compliance and protection"
   initiative_description  = "Ensure Log Analytics Workspace compliance and protection"

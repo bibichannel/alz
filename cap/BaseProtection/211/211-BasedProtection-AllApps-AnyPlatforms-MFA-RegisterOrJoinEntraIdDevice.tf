@@ -14,8 +14,8 @@ variable "excluded_groups" {
 }
 
 resource "azuread_conditional_access_policy" "base_protection_mfa_register_or_join_device" {
-  display_name  = "211-BasedProtection-AllApps-AnyPlatforms-MFA-RegisterOrJoinEntraIdDevice"
-  state = var.cap_state
+  display_name = "211-BasedProtection-AllApps-AnyPlatforms-MFA-RegisterOrJoinEntraIdDevice"
+  state        = var.cap_state
 
   conditions {
     client_app_types = ["browser", "mobileAppsAndDesktopClients"]
@@ -40,7 +40,7 @@ resource "azuread_conditional_access_policy" "base_protection_mfa_register_or_jo
   }
 
   grant_controls {
-    operator = "OR"
+    operator                          = "OR"
     authentication_strength_policy_id = "/policies/authenticationStrengthPolicies/00000000-0000-0000-0000-000000000002"
   }
 }

@@ -14,8 +14,8 @@ variable "excluded_groups" {
 }
 
 resource "azuread_conditional_access_policy" "base_protection_mfa_or_compliant" {
-  display_name  = "200-BaseProtection-AllApps-AnyPlatforms-MFAorCompliant"
-  state = var.cap_state
+  display_name = "200-BaseProtection-AllApps-AnyPlatforms-MFAorCompliant"
+  state        = var.cap_state
 
 
 

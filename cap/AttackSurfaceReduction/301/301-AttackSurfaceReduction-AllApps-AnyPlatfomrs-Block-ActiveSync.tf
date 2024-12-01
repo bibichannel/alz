@@ -14,8 +14,8 @@ variable "excluded_groups" {
 }
 
 resource "azuread_conditional_access_policy" "attack_surface_reduction_block_activesync" {
-  display_name  = "301-AttackSurfaceReduction-AllApps-AnyPlatforms-Block-ActiveSync"
-  state = var.cap_state
+  display_name = "301-AttackSurfaceReduction-AllApps-AnyPlatforms-Block-ActiveSync"
+  state        = var.cap_state
 
   conditions {
     client_app_types = ["exchangeActiveSync"]

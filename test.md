@@ -18,3 +18,17 @@ https://management.azure.com//subscriptions/bb35a463-4d55-482a-9c1d-e3434bdaa168
 @{triggerBody()?['data']?['alertContext']['AlertData']['Scope']} 
 @{triggerBody()?['data']?['alertContext']['AlertData']['ThresholdType']}
 @{triggerBody()?['data']?['alertContext']['AlertData']['BudgetThreshold']}
+
+
+terraform import azurerm_monitor_metric_alert.main /subscriptions/bb35a463-4d55-482a-9c1d-e3434bdaa168/resourceGroups/testinggggg/providers/Microsoft.Insights/metricAlerts/example-metricalert
+
+/subscriptions/bb35a463-4d55-482a-9c1d-e3434bdaa168/resourceGroups/testinggggg/providers/microsoft.insights/activityLogAlerts/Create or update budget alert
+
+terraform import azurerm_monitor_activity_log_alert.example /subscriptions/bb35a463-4d55-482a-9c1d-e3434bdaa168/resourceGroups/testinggggg/providers/microsoft.Insights/activityLogAlerts/testingAlertCustomRule
+
+terraform import azurerm_monitor_activity_log_alert.example /subscriptions/bb35a463-4d55-482a-9c1d-e3434bdaa168/resourceGroups/testinggggg/providers/Microsoft.Insights/activityLogAlerts/testingAlertCustomRule
+
+body('HTTP')?['properties']?['amount']
+body('HTTP')?['properties']?['currentSpend']?['amount']
+float(body('HTTP')?['properties']?['amount'])
+float(body('HTTP')?['properties']?['currentSpend']?['amount'])

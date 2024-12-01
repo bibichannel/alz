@@ -14,8 +14,8 @@ variable "excluded_groups" {
 }
 
 resource "azuread_conditional_access_policy" "base_protection_mfa_or_compliant_register_security_info" {
-  display_name  = "201-BaseProtection-AllApps-AnyPlatforms-MFAorCompliant-RegisterSecurityInfo"
-  state = var.cap_state
+  display_name = "201-BaseProtection-AllApps-AnyPlatforms-MFAorCompliant-RegisterSecurityInfo"
+  state        = var.cap_state
 
   conditions {
     client_app_types = ["browser", "mobileAppsAndDesktopClients"]

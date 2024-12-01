@@ -5,12 +5,12 @@ variable "cap_state" {
 
 variable "included_groups" {
   description = "The groups to include in the user block policy"
-  type = list(string)
+  type        = list(string)
 }
 
 variable "excluded_groups" {
   description = "The groups to exclude in the user block policy"
-  type = list(string)
+  type        = list(string)
 }
 
 

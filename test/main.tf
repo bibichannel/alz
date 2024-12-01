@@ -14,7 +14,7 @@ provider "azurerm" {
 }
 
 variable "json_data" {
-  type = string
+  type    = string
   default = <<EOF
   {
     "overrides": [

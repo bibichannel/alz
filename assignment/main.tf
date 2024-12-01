@@ -30,7 +30,7 @@ module "builtin_definitions_assignment" {
 
 module "custom_definitions_assignment" {
   for_each = { for idx, def in local.custom_definitions_updated : idx => def }
-  source = "../modules/def_assignment"
+  source   = "../modules/def_assignment"
 
   definition                  = each.value.definition
   assignment_scope            = local.assignment_scope_id
@@ -60,7 +60,7 @@ module "custom_definitions_assignment" {
 
 module "builtin_definition_sets_assignment" {
   for_each = { for idx, def in local.builtin_defnition_sets_updated : idx => def }
-  source = "../modules/set_assignment"
+  source   = "../modules/set_assignment"
 
   assignment_scope            = local.assignment_scope_id
   initiative                  = each.value.initiative
@@ -92,7 +92,7 @@ module "builtin_definition_sets_assignment" {
 
 module "custom_definition_sets_assignment" {
   for_each = { for idx, def in local.custom_defnition_sets_updated : idx => def }
-  source = "../modules/set_assignment"
+  source   = "../modules/set_assignment"
 
   assignment_scope            = local.assignment_scope_id
   initiative                  = each.value.initiative

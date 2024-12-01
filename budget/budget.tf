@@ -1,5 +1,3 @@
-
-
 # resource "azurerm_consumption_budget_subscription" "this" {
 #   name            = "budget-example"
 #   subscription_id = data.azurerm_subscription.current.id

@@ -269,7 +269,7 @@ module "enforce_tag_specification_custom_policy_definitions" {
 }
 
 module "enforce_tag_specification" {
-  source = "..//modules/initiative"
+  source                  = "..//modules/initiative"
   initiative_name         = "enforce_tag_specification"
   initiative_display_name = "Enforce tag according to specific requirements"
   initiative_description  = "Enforce tag according to specific requirements"
@@ -291,18 +291,18 @@ module "deny_sources_without_trusted_image_custom_policy_definitions" {
 }
 
 data "azurerm_policy_definition" "k8s_allowed_images_policy_definitions" {
-  name     = "febd0533-8e55-448f-b837-bd0e06f16469"
+  name = "febd0533-8e55-448f-b837-bd0e06f16469"
 }
 
 module "deny_sources_without_trusted_image" {
-  source = "..//modules/initiative"
+  source                  = "..//modules/initiative"
   initiative_name         = "deny_sources_without_trusted_image"
   initiative_display_name = "Enforce trusted image from trusted source"
   initiative_description  = "Enforce trusted image from trusted source"
   initiative_category     = "Image"
   management_group_id     = var.intermediate_root_management_group_id
   merge_parameters        = false
-  initiative_version = "1.0.0"
+  initiative_version      = "1.0.0"
   member_definitions = concat(
     [for policy in module.deny_sources_without_trusted_image_custom_policy_definitions : policy.definition],
     [data.azurerm_policy_definition.k8s_allowed_images_policy_definitions]
