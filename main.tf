@@ -3,7 +3,7 @@ data "azurerm_management_group" "contoso" {
 }
 
 # module "definitions" {
-#   source                                = ".//definitions"
+#   source                                = ".//../definitions"
 #   intermediate_root_management_group_id = data.azurerm_management_group.contoso.id
 #   landing_zones_management_group_id     = data.azurerm_management_group.contoso.id
 #   connectivity_management_group_id      = data.azurerm_management_group.contoso.id

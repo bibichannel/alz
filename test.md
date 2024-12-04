@@ -32,3 +32,9 @@ body('HTTP')?['properties']?['amount']
 body('HTTP')?['properties']?['currentSpend']?['amount']
 float(body('HTTP')?['properties']?['amount'])
 float(body('HTTP')?['properties']?['currentSpend']?['amount'])
+
+https://management.azure.com/{scope}/providers/Microsoft.Consumption/budgets/{budgetName}?api-version=2024-08-01
+
+https://management.azure.com/subscriptions/bb35a463-4d55-482a-9c1d-e3434bdaa168/providers/Microsoft.Consumption/budgets/limit-services-cost?api-version=2024-08-01
+
+https://management.azure.com/subscriptions/bb35a463-4d55-482a-9c1d-e3434bdaa168/providers/Microsoft.Consumption/budgets/limit-services-cost?api-version=2024-08-01
