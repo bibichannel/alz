@@ -1,5 +1,5 @@
 name: Deploy Sentinal
-run-name: ${{ github.actor }} deploys Sentinal on Azure
+run-name: "${{ contains(github.head_ref, 'feature/') && 'Feature' || contains(github.head_ref, 'bugfix/') && 'Bugfix' || 'Update' }}: ${{ github.head_ref }} by @${{ github.actor }}"
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
 
 jobs:
   Scan_Secrets:
-    runs-on: ubuntu-latest
+    runs-on:  ubuntu-24.04
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4

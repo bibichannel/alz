@@ -72,7 +72,7 @@ CheckModules("Az.MonitoringSolutions")
 CheckModules("Az.Monitor")
 
 $SecuredPassword = ConvertTo-SecureString $Secret -AsPlainText -Force
-$Credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $ClientId,, $SecuredPassword
+$Credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $ClientId, $SecuredPassword
 Connect-AzAccount -ServicePrincipal -TenantId $TenantId, -Credential $Credential
 $subscriptions = Get-AzSubscription
 
