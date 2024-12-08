@@ -5,14 +5,14 @@ resource "azurerm_user_assigned_identity" "this" {
 }
 
 resource "azurerm_role_assignment" "identity_logic_app" {
-  scope                = data.azurerm_subscription.current.id
+  scope                = azurerm_resource_group.this.id
   role_definition_name = "Resource Policy Contributor"
   principal_id         = azurerm_user_assigned_identity.this.principal_id
 } 
 
 
 resource "azurerm_role_assignment" "reader_role" {
-  scope                = data.azurerm_subscription.current.id
+  scope                = azurerm_resource_group.this.id
   role_definition_name = "Reader"
   principal_id         = azurerm_user_assigned_identity.this.principal_id
 } 
