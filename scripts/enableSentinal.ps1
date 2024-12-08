@@ -6,7 +6,7 @@ param(
     [string]$SecretParam,
 
     [Parameter(Mandatory=$true)]
-    [string]$TenantIdParam,
+    $TenantIdParam,
 
     [Parameter(Mandatory=$true)]
     [string]$WorkingDirectoryParam

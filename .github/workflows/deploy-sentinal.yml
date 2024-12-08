@@ -34,7 +34,12 @@ jobs:
 
       - name: Enable Sentinel
         uses: azure/powershell@v2
+        env:
+          client_id: ${{ secrets.AZURE_CLIENT_ID }}
+          client_secret: ${{ secrets.AZURE_CLIENT_SECRET }}
+          tenant_id: ${{ secrets.AZURE_TENANT_ID }}
+          working_directory: "${{ github.workspace }}/scripts/"
         with:
-          inlineScript: ./scripts/enableSentinal.ps1 -ClientIdParam ${{ secrets.AZURE_CLIENT_ID }} -SecretParam ${{ secrets.AZURE_CLIENT_SECRET }} -TenantIdParam ${{ secrets.AZURE_TENANT_ID }} -WorkingDirectoryParam "${{ github.workspace }}/scripts/"
+          inlineScript: ./scripts/enableSentinal.ps1 -ClientIdParam $Env:client_id -SecretParam $Env:client_secret -TenantIdParam $Env:tenant_id -WorkingDirectoryParam $Env:working_directory
           azPSVersion: "latest"
 
