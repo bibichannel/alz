@@ -1,0 +1,10 @@
+{
+    "Subscriptions": [
+        {
+            "SubscriptionId": "bb35a463-4d55-482a-9c1d-e3434bdaa168",
+            "ResourceGroup": "deploy-sentinal",
+            "Workspace": "testing-deploy-Workspace",
+            "Location": "southeastasia"
+        }
+    ]
+}

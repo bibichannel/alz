@@ -1,0 +1,46 @@
+name: Deploy Sentinal
+run-name: ${{ github.actor }} deploy sentinal on Azure
+
+on:
+  push:
+    paths:
+      - 'scripts/**'
+      - '.github/workflows/deploy-sentinal.yml'
+
+jobs:
+  Scan_Secrets:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+
+      - name: Secret Scanning
+        uses: trufflesecurity/trufflehog@main
+        with:
+          extra_args: --only-verified
+
+  Deploy_Sentinal:
+    runs-on: windows-latest
+    needs: Scan_Secrets_in_commit
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: Enable Sentinel
+        uses: azure/powershell@v2
+        env:
+          client_id: ${{ secrets.AZURE_CLIENT_ID }}
+          client_secret: ${{ secrets.AZURE_CLIENT_SECRET }}
+          subscription_id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          tenant_id: ${{ secrets.AZURE_TENANT_ID }}
+          working_directory: "${{ github.workspace }}/scripts/"
+        with:
+          inlineScript: ./scripts/run_azps_cmdlets.ps1 -ClientId $client_id -Secret $client_secret -TenantId $tenant_id -WorkingDirectory $working_directory
+          azPSVersion: "latest"
+

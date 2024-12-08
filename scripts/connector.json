@@ -1,0 +1,32 @@
+{
+    "connectors": [   
+        {
+            "kind": "AzureActivityLog"
+        },
+        {
+            "kind": "AzureActiveDirectoryDiagnostics",
+            "properties": {
+                "logs": [
+                    {
+                        "category": "SignInLogs",
+                        "enabled": true
+                    },
+                    {
+                        "category": "AuditLogs",
+                        "enabled": true
+                    }
+                ]
+            }
+        },
+        {
+            "kind": "MicrosoftDefenderAdvancedThreatProtection",
+            "properties": {
+                "dataTypes": {
+                    "alerts": {
+                        "state": "enabled"
+                    }
+                }
+            }
+        }    
+    ]
+}
