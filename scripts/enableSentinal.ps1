@@ -66,7 +66,6 @@ function CheckModules($module) {
 CheckModules("Az.Resources")
 CheckModules("Az.OperationalInsights")
 CheckModules("Az.SecurityInsights")
-CheckModules("Az.MonitoringSolutions")
 CheckModules("Az.Monitor")
 
 $SecuredPassword = ConvertTo-SecureString $Secret -AsPlainText -Force
