@@ -1,5 +1,5 @@
 name: Deploy Sentinal
-run-name: ${{ github.actor }} deploy sentinal on Azure
+run-name: ${{ github.actor }} deploys Sentinal on Azure
 
 on:
   push:
@@ -27,7 +27,7 @@ jobs:
 
   Deploy_Sentinal:
     runs-on: windows-latest
-    needs: Scan_Secrets_in_commit
+    needs: Scan_Secrets
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
