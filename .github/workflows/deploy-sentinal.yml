@@ -1,5 +1,5 @@
 name: Deploy Sentinal
-run-name: "${{ contains(github.head_ref, 'feature/') && 'Feature' || contains(github.head_ref, 'bugfix/') && 'Bugfix' || 'Update' }}: ${{ github.head_ref }} by @${{ github.actor }}"
+run-name: CI for ${{ github.event.repository.name }} - ${{ github.event_name }} - ${{ github.run_id }}
 
 on:
   push:
@@ -37,7 +37,6 @@ jobs:
         env:
           client_id: ${{ secrets.AZURE_CLIENT_ID }}
           client_secret: ${{ secrets.AZURE_CLIENT_SECRET }}
-          subscription_id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           tenant_id: ${{ secrets.AZURE_TENANT_ID }}
           working_directory: "${{ github.workspace }}/scripts/"
         with:

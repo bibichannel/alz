@@ -34,8 +34,6 @@ if ($configData -eq $null) {
     exit
 }
 
-
-
 $enableRules = 'Yes'
 
 $Connectors_rule = @('azureactivedirectory','microsoft365defender', 'azureactivity')
