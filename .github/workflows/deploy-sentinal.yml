@@ -40,6 +40,6 @@ jobs:
           tenant_id: ${{ secrets.AZURE_TENANT_ID }}
           working_directory: "${{ github.workspace }}/scripts/"
         with:
-          inlineScript: ./scripts/enableSentinal.ps1 -ClientId $Env:client_id -Secret $Env:client_secret -TenantId $Env:tenant_id -WorkingDirectory $Env:working_directory
+          inlineScript: ./scripts/enableSentinal.ps1 -ClientIdParam $Env:client_id -SecretParam $Env:client_secret -TenantIdParam $Env:tenant_id -WorkingDirectoryParam $Env:working_directory
           azPSVersion: "latest"
 

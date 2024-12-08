@@ -1,15 +1,15 @@
 param(
     [Parameter(Mandatory=$true)]
-    [string]$ClientId,
+    [string]$ClientIdParam,
 
     [Parameter(Mandatory=$true)]
-    [string]$Secret,
+    [string]$SecretParam,
 
     [Parameter(Mandatory=$true)]
-    [string]$TenantId,
+    [string]$TenantIdParam,
 
     [Parameter(Mandatory=$true)]
-    [string]$WorkingDirectory
+    [string]$WorkingDirectoryParam
 )
 
 function Read-ConfigData {
@@ -26,7 +26,7 @@ function Read-ConfigData {
     return $config
 }
 
-$configPath = $WorkingDirectory + "config.json"
+$configPath = $WorkingDirectoryParam + "config.json"
 $configData = Read-ConfigData -ConfigPath $configPath
 
 if ($configData -eq $null) {
@@ -68,9 +68,9 @@ CheckModules("Az.OperationalInsights")
 CheckModules("Az.SecurityInsights")
 CheckModules("Az.Monitor")
 
-$SecuredPassword = ConvertTo-SecureString $Secret -AsPlainText -Force
-$Credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $ClientId, $SecuredPassword
-Connect-AzAccount -ServicePrincipal -TenantId $TenantId, -Credential $Credential
+$SecuredPassword = ConvertTo-SecureString $SecretParam -AsPlainText -Force
+$Credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $ClientIdParam, $SecuredPassword
+Connect-AzAccount -ServicePrincipal -TenantId $TenantIdParam, -Credential $Credential
 $subscriptions = Get-AzSubscription
 
 $foundSubscription = $false
@@ -103,7 +103,7 @@ foreach ($subscription in $subscriptions) {
     Write-Host "Location: $Location"
 
 
-    $ConnectorsFile = $WorkingDirectory + "connectors.json"
+    $ConnectorsFile = $WorkingDirectoryParam + "connectors.json"
     # Attempt to get the resource group
     Get-AzResourceGroup -Name $ResourceGroup -ErrorVariable notPresent -ErrorAction SilentlyContinue
 
