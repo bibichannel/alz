@@ -1,0 +1,29 @@
+﻿scope,type,description,group,role
+BI,management group,Bibi zone (L0),BI-AZ-Reader,Reader
+BI-FZ,management group,Foudation Zone(L1),BI-AZ-FZ-Reader,Reader
+BI-WZ,management group,Working Zone (L1),BI-AZ-WZ-Reader,Reader
+BI-DZ,management group,Decommision Zone (L1),BI-AZ-DZ-Reader,Reader
+BI-SZ,management group,Sandbox (L1),BI-AZ-SbZ-Reader,Reader
+BI-FZ-IZ,management group,Identity Zone (L2),BI-AZ-IDZ-RbacAdmin,Role Based Access Control Administrator
+BI-FZ-IZ,management group,Identity Zone (L2),BI-AZ-IDZ-Contributor,Contributor
+BI-FZ-IZ,management group,Identity Zone (L2),BI-AZ-IDZ-IdOps,IdOps
+BI-FZ-IZ,management group,Identity Zone (L2),BI-AZ-IDZ-Reader,Reader
+BI-FZ-CZ,management group,Connectivity Zone (L2),BI-AZ-CZ-RbacAdmin,Role Based Access Control Administrator
+BI-FZ-CZ,management group,Connectivity Zone (L2),BI-AZ-CZ- Contributor,Contributor
+BI-FZ-CZ,management group,Connectivity Zone (L2),BI-AZ-CZ-NetOps,NetOps
+BI-FZ-CZ,management group,Connectivity Zone (L2),BI-AZ-CZ-Reader,Reader
+BI-FZ-SZ,management group,Security Zone (L2),BI-AZ-SZ-RbacAdmin,Role Based Access Control Administrator
+BI-FZ-SZ,management group,Security Zone (L2),BI-AZ-SZ- Contributor,Contributor
+BI-FZ-SZ,management group,Security Zone (L2),BI-AZ-SZ-SecOps,NetOps
+BI-FZ-SZ,management group,Security Zone (L2),BI-AZ-SZ-Reader,Reader
+BI-FZ-MZ,management group,Management Zone (L2),BI-AZ-MZ-RbacAdmin,Role Based Access Control Administrator
+BI-FZ-MZ,management group,Management Zone (L2),BI-AZ-MZ- Contributor,Contributor
+BI-FZ-MZ,management group,Management Zone (L2),BI-AZ-MZ-MgtOps,NetOps
+BI-FZ-MZ,management group,Management Zone (L2),BI-AZ-MZ-Reader,Reader
+BI-WZ-ITZ,management group,IT Zone (L2),BI-ITZ-Reader,Reader
+BI-WZ-INZ,management group,Internal Zone (L2),BI-AZ-InZ-RbacAdmin,Role Based Access Control Administrator
+BI-WZ-INZ,management group,Internal Zone (L2),BI-AZ-InZ- Contributor,Contributor
+BI-WZ-INZ,management group,Internal Zone (L2),BI-AZ-InZ-Reader,Reader
+BI-WZ-EXZ,management group,External Zone (L2),BI-AZ-ExZ-RbacAdmin,Role Based Access Control Administrator
+BI-WZ-EXZ,management group,External Zone (L2),BI-AZ-ExZ-Contributor,Contributor
+BI-WZ-EXZ,management group,External Zone (L2),BI-AZ-ExZ-Reader,Reader

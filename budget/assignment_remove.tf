@@ -16,9 +16,9 @@ resource "azurerm_logic_app_trigger_http_request" "budget_write_alerts_action" {
 }
 
 resource "azurerm_logic_app_action_custom" "budget_scope_variable" {
-  name = "budget-scope-variable"
+  name         = "budget-scope-variable"
   logic_app_id = azurerm_logic_app_workflow.delele_policy_assignemt_workflow.id
-  body = <<BODY
+  body         = <<BODY
   {
     "runAfter": {},
     "type": "InitializeVariable",
@@ -36,10 +36,10 @@ resource "azurerm_logic_app_action_custom" "budget_scope_variable" {
 }
 
 resource "azurerm_logic_app_action_custom" "budget_name_variable" {
-  depends_on = [azurerm_logic_app_action_custom.budget_scope_variable]
-  name = "budget-name-variable"
+  depends_on   = [azurerm_logic_app_action_custom.budget_scope_variable]
+  name         = "budget-name-variable"
   logic_app_id = azurerm_logic_app_workflow.delele_policy_assignemt_workflow.id
-  body = <<BODY
+  body         = <<BODY
   {
     "runAfter": {
       "${azurerm_logic_app_action_custom.budget_scope_variable.name}": [
@@ -61,7 +61,7 @@ resource "azurerm_logic_app_action_custom" "budget_name_variable" {
 }
 
 resource "azurerm_logic_app_action_custom" "budget_status" {
-  depends_on = [azurerm_logic_app_action_custom.budget_name_variable]
+  depends_on   = [azurerm_logic_app_action_custom.budget_name_variable]
   name         = "budget-status"
   logic_app_id = azurerm_logic_app_workflow.delele_policy_assignemt_workflow.id
   body         = <<BODY
@@ -90,7 +90,7 @@ resource "azurerm_logic_app_action_custom" "budget_status" {
 }
 
 resource "azurerm_logic_app_action_custom" "budget_status_conditions" {
-  depends_on = [azurerm_logic_app_action_custom.budget_status]
+  depends_on   = [azurerm_logic_app_action_custom.budget_status]
   name         = "budget-status-conditions"
   logic_app_id = azurerm_logic_app_workflow.delele_policy_assignemt_workflow.id
   body         = <<BODY

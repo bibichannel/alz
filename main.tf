@@ -19,14 +19,18 @@ data "azurerm_management_group" "contoso" {
 #   source = "./cap"  
 # }
 
-module "budget" {
-  source = "./budget"
-}
+# module "budget" {
+#   source = "./budget"
+# }
 
-output "resource_group_name" {
-  value = module.budget.resource_group_name
-}
+# output "resource_group_name" {
+#   value = module.budget.resource_group_name
+# }
 
-output "resource_group_location" {
-  value = module.budget.resource_group_location
+# output "resource_group_location" {
+#   value = module.budget.resource_group_location
+# }
+
+module "rbac" {
+  source = "./rbac"
 }
