@@ -1,0 +1,2 @@
+subscription,scope,type,description,group,role,condition
+bb35a463-4d55-482a-9c1d-e3434bdaa168,deploy-sentinal,resource group,Foudation Zone(L1),BI-AZ-FZ-Reader,IdOps,

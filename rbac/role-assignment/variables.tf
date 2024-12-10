@@ -1,14 +1,12 @@
-# map(object({
-#     role_definition_id_or_name             = string
-#     principal_id                           = string
-#     description                            = optional(string, null)
-#     skip_service_principal_aad_check       = optional(bool, false)
-#     condition                              = optional(string, null)
-#     condition_version                      = optional(string, null)
-#     delegated_managed_identity_resource_id = optional(string, null)
-#   }))
+variable "role_aasignment_at_mg_matrix" {
+  type = any
+}
 
-variable "role_aasignment_matrix" {
+variable "role_aasignment_at_sub_matrix" {
+  type = any
+}
+
+variable "role_aasignment_at_rg_matrix" {
   type = any
 }
 

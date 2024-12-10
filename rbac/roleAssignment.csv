@@ -1,8 +1,8 @@
 ﻿scope,type,description,group,role,condition
 BI,management group,Bibi zone (L0),BI-AZ-Reader,Reader,
-BI-FZ,management group,Foudation Zone(L1),BI-AZ-FZ-Reader,Reader,1
-BI-WZ,management group,Working Zone (L1),BI-AZ-WZ-Reader,Reader,2
-BI-DZ,management group,Decommision Zone (L1),BI-AZ-DZ-Reader,Reader,3
+BI-FZ,management group,Foudation Zone(L1),BI-AZ-FZ-Reader,Reader,
+BI-WZ,management group,Working Zone (L1),BI-AZ-WZ-Reader,Reader,
+BI-DZ,management group,Decommision Zone (L1),BI-AZ-DZ-Reader,Reader,
 BI-SZ,management group,Sandbox (L1),BI-AZ-SbZ-Reader,Reader,
 BI-FZ-IZ,management group,Identity Zone (L2),BI-AZ-IDZ-RbacAdmin,Role Based Access Control Administrator,
 BI-FZ-IZ,management group,Identity Zone (L2),BI-AZ-IDZ-Contributor,Contributor,

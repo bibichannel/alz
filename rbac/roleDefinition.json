@@ -4,7 +4,7 @@
             "name": "IdOps",
             "description": "This is a custom role created via Terraform",
             "scope" : "test",
-            "assignable_scopes": ["test", "consoto"],
+            "assignable_scopes": ["test"],
             "permissions": {
                 "actions": ["Microsoft.Resources/subscriptions/resourceGroups/read"],
                 "not_actions": [],
@@ -16,7 +16,7 @@
             "name": "NetOps",
             "description": "This is a custom role created via Terraform",
             "scope" : "test",
-            "assignable_scopes": ["test", "consoto"],
+            "assignable_scopes": ["test"],
             "permissions": {
                 "actions": ["Microsoft.Resources/subscriptions/resourceGroups/read"],
                 "not_actions": [],
