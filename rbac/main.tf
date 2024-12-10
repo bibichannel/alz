@@ -11,6 +11,10 @@ locals {
 data "azurerm_subscription" "primary" {
 }
 
+output "subs_id" {
+  value = data.azurerm_subscription.primary.id
+}
+
 data "azurerm_management_group" "consoto" {
   name = "testing_mg"
 }
