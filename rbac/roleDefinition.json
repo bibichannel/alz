@@ -1,24 +1,192 @@
 {
-    "roles" : [
+    "roles": [
         {
-            "name": "IdOps",
-            "description": "This is a custom role created via Terraform",
-            "scope" : "test",
-            "assignable_scopes": ["test"],
+            "name": "RbacAdmin",
+            "description": "Custom Role Based Access Control Administrator Built-in role.",
+            "scope": "test",
+            "assignable_scopes": [
+                "test"
+            ],
             "permissions": {
-                "actions": ["Microsoft.Resources/subscriptions/resourceGroups/read"],
+                "actions": [
+                    "*/read",
+                    "Microsoft.Support/*",
+                    "Microsoft.Authorization/roleAssignments/write",
+                    "Microsoft.Authorization/roleAssignments/delete"
+                ],
                 "not_actions": [],
                 "data_actions": [],
                 "not_data_actions": []
             }
         },
         {
-            "name": "NetOps",
-            "description": "This is a custom role created via Terraform",
-            "scope" : "test",
-            "assignable_scopes": ["test"],
+            "name": "CloudOps",
+            "description": "This is a custom role for CloudOps team",
+            "scope": "test",
+            "assignable_scopes": [
+                "test"
+            ],
             "permissions": {
-                "actions": ["Microsoft.Resources/subscriptions/resourceGroups/read"],
+                "actions": [
+                    "*"
+                ],
+                "not_actions": [
+                    "*/delete",
+                    "Microsoft.Authorization/*/Delete",
+                    "Microsoft.Authorization/*/Write",
+                    "Microsoft.Authorization/elevateAccess/Action",
+                    "Microsoft.Authorization/*/Action"
+                ],
+                "data_actions": [],
+                "not_data_actions": []
+            }
+        },
+        {
+            "name": "NetOps",
+            "description": "This is a custom role for NetOps team",
+            "scope": "test",
+            "assignable_scopes": [
+                "test"
+            ],
+            "permissions": {
+                "actions": [
+                    "Microsoft.Network/virtualNetworks/join/action",
+                    "Microsoft.Cdn/profiles/secrets/write",
+                    "Microsoft.Cdn/operationresults/profileresults/secretresults/read",
+                    "Microsoft.Network/virtualNetworks/read",
+                    "Microsoft.Cdn/profiles/secrets/read",
+                    "Microsoft.Network/trafficManagerProfiles/*",
+                    "Microsoft.Network/privateDnsOperationStatuses/*",
+                    "Microsoft.Cdn/operationresults/profileresults/customdomainresults/read",
+                    "Microsoft.Authorization/*/read",
+                    "Microsoft.Network/privateDnsZones/*",
+                    "Microsoft.Resources/subscriptions/resourceGroups/read",
+                    "Microsoft.Cdn/profiles/*",
+                    "Microsoft.Cdn/profiles/endpoints/*",
+                    "Microsoft.Insights/alertRules/*",
+                    "Microsoft.Resources/deployments/*",
+                    "Microsoft.Network/dnsZones/*",
+                    "Microsoft.Cdn/profiles/customdomains/write",
+                    "Microsoft.Network/privateDnsOperationResults/*",
+                    "Microsoft.ResourceHealth/availabilityStatuses/read",
+                    "Microsoft.Cdn/edgenodes/read",
+                    "Microsoft.ClassicNetwork/*",
+                    "Microsoft.Cdn/profiles/customdomains/read",
+                    "Microsoft.Cdn/operationresults/*",
+                    "Microsoft.Support/*",
+                    "Microsoft.Network/*"
+                ],
+                "not_actions": [
+                    "Microsoft.Network/*/delete",
+                    "Microsoft.Cdn/*/delete",
+                    "Microsoft.ClassicNetwork/*/delete",
+                    "Microsoft.ResourceHealth/*/delete",
+                    "Microsoft.Insights/*/delete",
+                    "Microsoft.Resources/deployments/delete"
+                ],
+                "data_actions": [],
+                "not_data_actions": []
+            }
+        },
+        {
+            "name": "SecOps",
+            "description": "This is a custom role for SecOps team",
+            "scope": "test",
+            "assignable_scopes": [
+                "test"
+            ],
+            "permissions": {
+                "actions": [
+                    "*/read",
+                    "Microsoft.IoTFirmwareDefense/*",
+                    "Microsoft.OperationalInsights/workspaces/analytics/query/action",
+                    "Microsoft.Storage/storageAccounts/fileservices/write",
+                    "Microsoft.Authorization/policyExemptions/*",
+                    "Microsoft.Logic/workflows/triggers/listCallbackUrl/action",
+                    "Microsoft.Insights/alertRules/*",
+                    "Microsoft.Support/*",
+                    "Microsoft.ClassicCompute/virtualMachines/*/write",
+                    "Microsoft.PolicyInsights/policyStates/triggerEvaluation/action",
+                    "Microsoft.Security/automations/write",
+                    "Microsoft.Security/register/action",
+                    "Microsoft.Authorization/policySetDefinitions/*",
+                    "Microsoft.Authorization/policyAssignments/*",
+                    "Microsoft.Resources/deployments/validate/action",
+                    "Microsoft.Storage/storageAccounts/blobServices/containers/write",
+                    "Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey/action",
+                    "Microsoft.KeyVault/locations/deletedManagedHsms/purge/action",
+                    "Microsoft.Resources/deployments/*",
+                    "Microsoft.Insights/workbooks/*",
+                    "Microsoft.Storage/storageAccounts/write",
+                    "Microsoft.AppComplianceAutomation/*",
+                    "Microsoft.Authorization/policyDefinitions/*",
+                    "Microsoft.IoTSecurity/*",
+                    "Microsoft.Security/*",
+                    "Microsoft.Storage/storageAccounts/listKeys/action",
+                    "Microsoft.PolicyInsights/policyStates/queryResults/action",
+                    "Microsoft.Storage/storageAccounts/blobServices/write",
+                    "Microsoft.Attestation/attestationProviders/attestation/write",
+                    "Microsoft.Web/sites/hostruntime/webhooks/api/workflows/triggers/listCallbackUrl/action",
+                    "Microsoft.SecurityInsights/*",
+                    "Microsoft.Resources/subscriptions/resourceGroups/write",
+                    "Microsoft.KeyVault/managedHSMs/*",
+                    "Microsoft.OperationalInsights/workspaces/savedSearches/*",
+                    "Microsoft.Security/assessments/write",
+                    "Microsoft.Security/unregister/action"
+                ],
+                "not_actions": [
+                ],
+                "data_actions": [
+                    "Microsoft.KeyVault/vaults/*"
+                ],
+                "not_data_actions": [
+                    "Microsoft.KeyVault/vaults/delete"
+                ]
+            }
+        },
+        {
+            "name": "IdOps",
+            "description": "This is a custom role IdOps team",
+            "scope": "test",
+            "assignable_scopes": [
+                "test"
+            ],
+            "permissions": {
+                "actions": [
+                    "Microsoft.Resources/subscriptions/resourceGroups/read"
+                ],
+                "not_actions": [],
+                "data_actions": [],
+                "not_data_actions": []
+            }
+        },
+        {
+            "name": "MgtOps",
+            "description": "This is a custom role MgtOps",
+            "scope": "test",
+            "assignable_scopes": [
+                "test"
+            ],
+            "permissions": {
+                "actions": [
+                    "Microsoft.Resources/subscriptions/resourceGroups/read"
+                ],
+                "not_actions": [],
+                "data_actions": [],
+                "not_data_actions": []
+            }
+        },
+        {
+            "name": "PrjOps",
+            "description": "This is a custom role for PrjOps team",
+            "scope": "test",
+            "assignable_scopes": [
+                "test"
+            ],
+            "permissions": {
+                "actions": [
+                    "Microsoft.Resources/subscriptions/resourceGroups/read"
+                ],
                 "not_actions": [],
                 "data_actions": [],
                 "not_data_actions": []
