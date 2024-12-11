@@ -58,6 +58,7 @@ CheckModules("Az.Resources")
 CheckModules("Az.OperationalInsights")
 CheckModules("Az.SecurityInsights")
 CheckModules("Az.Monitor")
+CheckModules("Az.MonitoringSolutions")
 
 $subscriptions = Get-AzSubscription
 
