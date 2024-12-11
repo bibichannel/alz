@@ -130,9 +130,8 @@ foreach ($subscription in $subscriptions) {
             Write-Host "Azure Sentinel is already installed on workspace $($Workspace)"
         }
         else {    
-            New-AzMonitorLogAnalyticsSolution -Type SecurityInsights -ResourceGroupName $ResourceGroup -Location $Location -WorkspaceResourceId $WorkspaceObject.ResourceId
+            New-AzMonitorLogAnalyticsSolution -Type SecurityInsights -ResourceGroupName $ResourceGroup -Location $WorkspaceObject.Location -WorkspaceResourceId $WorkspaceObject.ResourceId
         }
-
         try {
             $attempts++
             Write-Host "Trying to get Azure Sentinel Alert Rule Templates..."
