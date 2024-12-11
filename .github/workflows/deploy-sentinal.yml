@@ -1,5 +1,5 @@
 name: Deploy Sentinal
-run-name: CI for ${{ github.event.repository.name }} - ${{ github.event_name }} - ${{ github.run_id }}
+run-name: CI for ${{ github.event.repository.name }} - ${{ github.event_name }} by @${{ github.actor }} - ${{ github.run_id }}  
 
 on:
   push:
