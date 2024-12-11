@@ -1,14 +1,5 @@
 param(
     [Parameter(Mandatory=$true)]
-    [string]$ClientIdParam,
-
-    [Parameter(Mandatory=$true)]
-    [string]$SecretParam,
-
-    [Parameter(Mandatory=$true)]
-    [string]$TenantIdParam,
-
-    [Parameter(Mandatory=$true)]
     [string]$WorkingDirectoryParam
 )
 
@@ -68,9 +59,6 @@ CheckModules("Az.OperationalInsights")
 CheckModules("Az.SecurityInsights")
 CheckModules("Az.Monitor")
 
-$SecuredPassword = ConvertTo-SecureString $SecretParam -AsPlainText -Force
-$Credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $ClientIdParam, $SecuredPassword
-Connect-AzAccount -ServicePrincipal -TenantId $TenantIdParam, -Credential $Credential
 $subscriptions = Get-AzSubscription
 
 $foundSubscription = $false

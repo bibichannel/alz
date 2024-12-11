@@ -1,5 +1,5 @@
 name: Deploy Sentinal
-run-name: CI for ${{ github.event.repository.name }} - ${{ github.event_name }} by @${{ github.actor }} - ${{ github.run_id }}  
+run-name: CI for ${{ github.event.repository.name }} - ${{ github.event_name }} by @${{ github.actor }} - ${{ github.run_id }}
 
 on:
   push:
@@ -32,18 +32,17 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
 
+      - name: Azure Login action
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+          enable-AzPSSession: true
+
       - name: Enable Sentinel
         uses: azure/powershell@v2
         env:
-          client_id: ${{ secrets.AZURE_CLIENT_ID }}
-          client_secret: ${{ secrets.AZURE_CLIENT_SECRET }}
-          tenant_id: ${{ secrets.AZURE_TENANT_ID }}
           working_directory: "${{ github.workspace }}/scripts/"
         with:
           azPSVersion: "latest"
           inlineScript: |
-            ./scripts/enableSentinal.ps1 `
-              -ClientIdParam "$Env:client_id" `
-              -SecretParam "$Env:client_secret" `
-              -TenantIdParam "$Env:tenant_id" `
-              -WorkingDirectoryParam "$Env:working_directory"
+            ./scripts/enableSentinal.ps1 -WorkingDirectoryParam $Env:working_directory
