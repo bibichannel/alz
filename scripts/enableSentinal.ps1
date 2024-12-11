@@ -115,7 +115,7 @@ foreach ($subscription in $subscriptions) {
         Write-Host "Resource Group $ResourceGroup already exists. Skipping..."
     }
 
-    $attemptLimit = 5
+    $attemptLimit = 3
     $attempts = 0
     $success = $false
 
@@ -153,6 +153,14 @@ foreach ($subscription in $subscriptions) {
         } catch {
             if ($_.Exception.Message -match "is not onboarded to Microsoft Sentinel") {
                 Write-Host "Workspace '$Workspace' is not onboarded to Microsoft Sentinel. Retrying in 30 seconds..."
+                try{
+                    New-AzSentinelOnboardingState -ResourceGroupName $ResourceGroup -WorkspaceName $Workspace -Name "default"
+                }
+                catch{
+                    $errorReturn = $_
+                    Write-Error "Unable to create onboarding state with error message: $errorReturn" -ErrorAction Stop
+                }
+
                 Start-Sleep -Seconds 30
             } else {
                 Write-Host "An unexpected error occurred: $($_.Exception.Message)"

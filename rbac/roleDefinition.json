@@ -9,10 +9,10 @@
             ],
             "permissions": {
                 "actions": [
-                    "*/read",
-                    "Microsoft.Support/*",
-                    "Microsoft.Authorization/roleAssignments/write",
-                    "Microsoft.Authorization/roleAssignments/delete"
+                "*/read",
+                "Microsoft.Support/*",
+                "Microsoft.Authorization/roleAssignments/write",
+                "Microsoft.Authorization/roleAssignments/delete"
                 ],
                 "not_actions": [],
                 "data_actions": [],
@@ -50,6 +50,8 @@
             ],
             "permissions": {
                 "actions": [
+                    "*/read",
+                    "Microsoft.MobileNetwork/*",
                     "Microsoft.Network/virtualNetworks/join/action",
                     "Microsoft.Cdn/profiles/secrets/write",
                     "Microsoft.Cdn/operationresults/profileresults/secretresults/read",
@@ -77,12 +79,13 @@
                     "Microsoft.Network/*"
                 ],
                 "not_actions": [
+                    "Microsoft.MobileNetwork/*/delete",
                     "Microsoft.Network/*/delete",
                     "Microsoft.Cdn/*/delete",
                     "Microsoft.ClassicNetwork/*/delete",
-                    "Microsoft.ResourceHealth/*/delete",
                     "Microsoft.Insights/*/delete",
-                    "Microsoft.Resources/deployments/delete"
+                    "Microsoft.Resources/deployments/delete",
+                    "Microsoft.Resources/deployments/*/delete"
                 ],
                 "data_actions": [],
                 "not_data_actions": []
@@ -135,13 +138,22 @@
                     "Microsoft.Security/unregister/action"
                 ],
                 "not_actions": [
+                    "Microsoft.Authorization/*/delete",
+                    "Microsoft.Insights/*/delete",
+                    "Microsoft.SecurityInsights/*/delete",
+                    "Microsoft.OperationalInsights/workspaces/savedSearches/delete",
+                    "Microsoft.Security/*/delete",
+                    "Microsoft.AppComplianceAutomation/*/delete",
+                    "Microsoft.IoTSecurity/*/delete",
+                    "Microsoft.KeyVault/managedHSMs/delete",
+                    "Microsoft.IoTFirmwareDefense/*/delete",
+                    "Microsoft.Resources/deployments/delete",
+                    "Microsoft.Resources/deployments/*/delete"
                 ],
                 "data_actions": [
                     "Microsoft.KeyVault/vaults/*"
                 ],
-                "not_data_actions": [
-                    "Microsoft.KeyVault/vaults/delete"
-                ]
+                "not_data_actions": []
             }
         },
         {
@@ -153,9 +165,39 @@
             ],
             "permissions": {
                 "actions": [
-                    "Microsoft.Resources/subscriptions/resourceGroups/read"
+                    "*/read",
+                    "Microsoft.Support/*",
+                    "microsoft.app/*",
+                    "Microsoft.AppPlatform/*",
+                    "Microsoft.AVS/*",
+                    "Microsoft.Batch/*",
+                    "Microsoft.ClassicCompute/*",
+                    "Microsoft.Compute/*",
+                    "Microsoft.ComputeSchedule/*",
+                    "microsoft.connectedvmwarevsphere/*",
+                    "Microsoft.DesktopVirtualization/*",
+                    "Microsoft.ServiceFabric/*",
+                    "Microsoft.Resources/deployments/*",
+                    "Microsoft.HybridCompute/*",
+                    "Microsoft.AzureStackHCI/virtualMachineInstances/restart/action",
+                    "Microsoft.AzureStackHCI/virtualMachineInstances/start/action",
+                    "Microsoft.AzureStackHCI/virtualMachineInstances/stop/action"
                 ],
-                "not_actions": [],
+                "not_actions": [
+                    "*/read",
+                    "microsoft.app/*/delete",
+                    "Microsoft.AppPlatform/*/delete",
+                    "Microsoft.AVS/*/delete",
+                    "Microsoft.Batch/*/delete",
+                    "Microsoft.ClassicCompute/*/delete",
+                    "Microsoft.Compute/*/delete",
+                    "microsoft.connectedvmwarevsphere/*/delete",
+                    "Microsoft.DesktopVirtualization/*/delete",
+                    "Microsoft.ServiceFabric/*/delete",
+                    "Microsoft.Resources/deployments/delete",
+                    "Microsoft.Resources/deployments/*/delete",
+                    "Microsoft.HybridCompute/*/delete"
+                ],
                 "data_actions": [],
                 "not_data_actions": []
             }
@@ -169,9 +211,65 @@
             ],
             "permissions": {
                 "actions": [
-                    "Microsoft.Resources/subscriptions/resourceGroups/read"
+                    "*/read",
+                    "Microsoft.Support/*",
+                    "Microsoft.Resources/deployments/*",
+                    "Microsoft.ClassicStorage/*",
+                    "Microsoft.DataShare/*",
+                    "Microsoft.ElasticSan/*",
+                    "Microsoft.NetApp/*",
+                    "Microsoft.Storage/*",
+                    "Microsoft.StorageCache/*",
+                    "Microsoft.StorageSync/*",
+                    "Microsoft.Chaos/*",
+                    "Microsoft.DevCenter/*",
+                    "Microsoft.DevTestLab/*",
+                    "Microsoft.LabServices/*",
+                    "Microsoft.LoadTestService/*",
+                    "Microsoft.VisualStudio/*",
+                    "Microsoft.CostManagement/*",
+                    "Microsoft.Billing/*",
+                    "Microsoft.Consumption/*",
+                    "Microsoft.BillingBenefits/*"
+                    
                 ],
-                "not_actions": [],
+                "not_actions": [
+                    "Microsoft.ClassicStorage/*/delete",
+                    "Microsoft.DataShare/*/delete",
+                    "Microsoft.ElasticSan/*/delete",
+                    "Microsoft.NetApp/*/delete",
+                    "Microsoft.Storage/*/delete",
+                    "Microsoft.StorageCache/*/delete",
+                    "Microsoft.StorageSync/*/delete",
+                    "Microsoft.ClassicStorage/*/action",
+                    "Microsoft.DataShare/*/action",
+                    "Microsoft.ElasticSan/*/action",
+                    "Microsoft.NetApp/*/action",
+                    "Microsoft.Storage/*/action",
+                    "Microsoft.StorageCache/*/action",
+                    "Microsoft.StorageSync/*/action",
+                    "Microsoft.Resources/deployments/delete",
+                    "Microsoft.Resources/deployments/*/delete",
+                    "Microsoft.Chaos/*/delete",
+                    "Microsoft.DevCenter/*/delete",
+                    "Microsoft.DevTestLab/*/delete",
+                    "Microsoft.LabServices/*/delete",
+                    "Microsoft.LoadTestService/*/delete",
+                    "Microsoft.VisualStudio/*/delete",
+                    "Microsoft.CostManagement/*/delete",
+                    "Microsoft.Consumption/*/delete",
+                    "Microsoft.BillingBenefits/*/delete",
+                    "Microsoft.Chaos/*/action",
+                    "Microsoft.DevCenter/*/action",
+                    "Microsoft.DevTestLab/*/action",
+                    "Microsoft.LabServices/*/action",
+                    "Microsoft.LoadTestService/*/action",
+                    "Microsoft.VisualStudio/*/action",
+                    "Microsoft.CostManagement/*/action",
+                    "Microsoft.Billing/*/action",
+                    "Microsoft.Consumption/*/action",
+                    "Microsoft.BillingBenefits/*/action"
+                ],
                 "data_actions": [],
                 "not_data_actions": []
             }
@@ -185,9 +283,63 @@
             ],
             "permissions": {
                 "actions": [
-                    "Microsoft.Resources/subscriptions/resourceGroups/read"
+                    "*/read",
+                    "Microsoft.Support/*",
+                    "microsoft.app/*",
+                    "Microsoft.AppPlatform/*",
+                    "Microsoft.AVS/*",
+                    "Microsoft.Batch/*",
+                    "Microsoft.ClassicCompute/*",
+                    "Microsoft.Compute/*",
+                    "Microsoft.ComputeSchedule/*",
+                    "microsoft.connectedvmwarevsphere/*",
+                    "Microsoft.DesktopVirtualization/*",
+                    "Microsoft.ServiceFabric/*",
+                    "Microsoft.Resources/deployments/*",
+                    "Microsoft.HybridCompute/*",
+                    "Microsoft.ClassicStorage/*",
+                    "Microsoft.DataShare/*",
+                    "Microsoft.ElasticSan/*",
+                    "Microsoft.NetApp/*",
+                    "Microsoft.Storage/*",
+                    "Microsoft.StorageCache/*",
+                    "Microsoft.StorageSync/*",
+                    "Microsoft.Chaos/*",
+                    "Microsoft.DevCenter/*",
+                    "Microsoft.DevTestLab/*",
+                    "Microsoft.LabServices/*",
+                    "Microsoft.LoadTestService/*",
+                    "Microsoft.VisualStudio/*",
+                    "Microsoft.AzureStackHCI/virtualMachineInstances/restart/action",
+                    "Microsoft.AzureStackHCI/virtualMachineInstances/start/action",
+                    "Microsoft.AzureStackHCI/virtualMachineInstances/stop/action"
                 ],
-                "not_actions": [],
+                "not_actions": [
+                    "microsoft.app/*/delete",
+                    "Microsoft.AppPlatform/*/delete",
+                    "Microsoft.AVS/*/delete",
+                    "Microsoft.Batch/*/delete",
+                    "Microsoft.ClassicCompute/*/delete",
+                    "Microsoft.Compute/*/delete",
+                    "microsoft.connectedvmwarevsphere/*/delete",
+                    "Microsoft.DesktopVirtualization/*/delete",
+                    "Microsoft.ServiceFabric/*/delete",
+                    "Microsoft.Resources/deployments/delete",
+                    "Microsoft.Resources/deployments/*/delete",
+                    "Microsoft.HybridCompute/*/delete",
+                    "Microsoft.ClassicStorage/*/delete",
+                    "Microsoft.DataShare/*/delete",
+                    "Microsoft.ElasticSan/*/delete",
+                    "Microsoft.NetApp/*/delete",
+                    "Microsoft.Storage/*/delete",
+                    "Microsoft.StorageCache/*/delete",
+                    "Microsoft.Chaos/*/delete",
+                    "Microsoft.DevCenter/*/delete",
+                    "Microsoft.DevTestLab/*/delete",
+                    "Microsoft.LabServices/*/delete",
+                    "Microsoft.LoadTestService/*/delete",
+                    "Microsoft.VisualStudio/*/delete"
+                ],
                 "data_actions": [],
                 "not_data_actions": []
             }
