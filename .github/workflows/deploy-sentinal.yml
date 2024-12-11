@@ -4,12 +4,12 @@ run-name: CI for ${{ github.event.repository.name }} - ${{ github.event_name }} 
 on:
   push:
     paths:
-      - 'scripts/**'
-      - '.github/workflows/deploy-sentinal.yml'
+      - "scripts/**"
+      - ".github/workflows/deploy-sentinal.yml"
 
 jobs:
   Scan_Secrets:
-    runs-on:  ubuntu-24.04
+    runs-on: ubuntu-24.04
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
@@ -40,10 +40,10 @@ jobs:
           tenant_id: ${{ secrets.AZURE_TENANT_ID }}
           working_directory: "${{ github.workspace }}/scripts/"
         with:
-          inlineScript: |
-            Write-Host "client_id: $Env:client_id - $client_id"
-            Write-Host "working_directory $Env:working_directory - $working_directory"
-            Write-Host "Enabling Sentinel"
-            ./scripts/enableSentinal.ps1 -ClientIdParam $Env:client_id -SecretParam $Env:client_secret -TenantIdParam $Env:tenant_id -WorkingDirectoryParam $Env:working_directory
           azPSVersion: "latest"
-
+          inlineScript: |
+            ./scripts/enableSentinal.ps1 `
+              -ClientIdParam "$Env:client_id" `
+              -SecretParam "$Env:client_secret" `
+              -TenantIdParam "$Env:tenant_id" `
+              -WorkingDirectoryParam "$Env:working_directory"
