@@ -31,13 +31,6 @@ function Enable-AzResourceProvider {
         [string]$resourceProviderName
     )
 
-    # Check if the $resourceProviderName is a valid Azure Resource Provider
-    $validProviders = Get-AzResourceProvider
-    if (-not ($validProviders.ProviderNamespace -contains $resourceProviderName)) {
-        Write-Error "Invalid resource provider: $resourceProviderName"
-        exit
-    }
-
     # Verify if the resource provider is already registered
     try {
         $provider = Get-AzResourceProvider -ProviderNamespace $resourceProviderName
