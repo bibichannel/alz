@@ -1,7 +1,7 @@
 function CheckModules($module) {
     $installedModule = Get-InstalledModule -Name $module -ErrorAction SilentlyContinue
     if ($null -eq $installedModule) {
-        Write-Warning "The $module PowerShell module is not found"
+        Write-Warning "The $module PowerShell module is not found."
         #check for Admin Privleges
         $currentPrincipal = New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())
 
