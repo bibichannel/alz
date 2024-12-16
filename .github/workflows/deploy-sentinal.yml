@@ -42,11 +42,18 @@ jobs:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
           enable-AzPSSession: true
 
-      - name: Enable Sentinel
+      - name: Enable Resource Provider
         uses: azure/powershell@v2
-        env:
-          working_directory: "${{ github.workspace }}/scripts/"
         with:
           azPSVersion: "latest"
           inlineScript: |
-            ./scripts/enableSentinal.ps1 -WorkingDirectoryParam $Env:working_directory
+            ./scripts/enableProvider.ps1
+
+      # - name: Enable Sentinel
+      #   uses: azure/powershell@v2
+      #   env:
+      #     working_directory: "${{ github.workspace }}/scripts/"
+      #   with:
+      #     azPSVersion: "latest"
+      #     inlineScript: |
+      #       ./scripts/enableSentinal.ps1 -WorkingDirectoryParam $Env:working_directory
