@@ -1,0 +1,21 @@
+name: Deploy Azure Resources
+run-name: CI for ${{ github.event.repository.name }} - ${{ github.event_name }} by @${{ github.actor }} - ${{ github.run_id }}
+
+on:
+  push:
+    paths-ignore:
+      - "scripts/**"
+      - ".github/workflows/deploy-az.yml"
+
+jobs:
+  Scan_Secrets:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
