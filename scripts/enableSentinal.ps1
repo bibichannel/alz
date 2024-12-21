@@ -25,10 +25,6 @@ if ($configData -eq $null) {
     exit
 }
 
-$enableRules = 'Yes'
-
-$Connectors_rule = @('azureactivedirectory','microsoft365defender', 'azureactivity')
-
 function CheckModules($module) {
     $installedModule = Get-InstalledModule -Name $module -ErrorAction SilentlyContinue
     if ($null -eq $installedModule) {

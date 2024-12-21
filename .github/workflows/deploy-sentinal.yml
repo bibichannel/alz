@@ -46,14 +46,10 @@ jobs:
         uses: azure/powershell@v2
         with:
           azPSVersion: "latest"
-          inlineScript: |
-            ./scripts/enableProvider.ps1
 
-      # - name: Enable Sentinel
-      #   uses: azure/powershell@v2
-      #   env:
-      #     working_directory: "${{ github.workspace }}/scripts/"
-      #   with:
-      #     azPSVersion: "latest"
-      #     inlineScript: |
-      #       ./scripts/enableSentinal.ps1 -WorkingDirectoryParam $Env:working_directory
+      - name: Enable Sentinel
+        shell: pwsh
+        env:
+          working_directory: "${{ github.workspace }}/scripts/"
+        run: |
+          ./scripts/enableSentinal.ps1 -WorkingDirectoryParam $workingDirectoryParam
